@@ -19,6 +19,19 @@ document.addEventListener('DOMContentLoaded', () => {
 function initHeader() {
   const header = document.getElementById('site-header');
   if (!header) return;
+  const themeBlocks = Array.from(document.querySelectorAll('section[data-header-theme], footer[data-header-theme]'));
+
+  function updateHeaderTheme() {
+    const probeY = header.offsetHeight + 8;
+    const activeBlock = themeBlocks.find(block => {
+      const rect = block.getBoundingClientRect();
+      return rect.top <= probeY && rect.bottom > probeY;
+    });
+    const theme = (activeBlock && activeBlock.dataset.headerTheme) ? activeBlock.dataset.headerTheme : 'light';
+
+    header.classList.toggle('header-theme-light', theme === 'light');
+    header.classList.toggle('header-theme-dark', theme === 'dark');
+  }
 
   function onScroll() {
     if (window.scrollY > 60) {
@@ -26,9 +39,11 @@ function initHeader() {
     } else {
       header.classList.remove('scrolled');
     }
+    updateHeaderTheme();
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', updateHeaderTheme);
   onScroll();
 }
 

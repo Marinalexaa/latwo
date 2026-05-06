@@ -20,7 +20,7 @@ const translations = {
     hero_btn_call: 'Забронювати безкоштовний Discovery Call',
     hero_btn_checklist: 'AI Readiness чекліст',
     hero_title: 'Від хаосу до системи з AI',
-    hero_subtitle: 'Допомагаємо компаніям використовувати штучний інтелект так, щоб бізнес працював швидше, частина задач виконувалась автоматично. Звільняємо від рутини для стратегічного зростання, використовуючи передові AI-рішення.',
+    hero_subtitle: 'Допомагаємо компаніям використовувати штучний інтелект так, щоб бізнес працював швидше,\nчастина задач виконувалась автоматично.\nЗвільняємо від рутини для стратегічного зростання, використовуючи передові AI-рішення.',
     hero_stat1_num: '3x',
     hero_stat1_label: 'зростання доходу',
     hero_stat2_num: '20+',
@@ -270,7 +270,7 @@ const translations = {
     hero_btn_call: 'Book a Free Discovery Call',
     hero_btn_checklist: 'AI Readiness Checklist',
     hero_title: 'From Chaos to System with AI',
-    hero_subtitle: 'We help companies use artificial intelligence so that business runs faster, some tasks are performed automatically. We free you from routine for strategic growth, using advanced AI solutions.',
+    hero_subtitle: 'We help companies use artificial intelligence so that business runs faster,\nsome tasks are performed automatically.\nWe free you from routine for strategic growth using advanced AI solutions.',
     hero_stat1_num: '3x',
     hero_stat1_label: 'revenue growth',
     hero_stat2_num: '20+',
@@ -522,9 +522,12 @@ function applyTranslations() {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const attr = el.getAttribute('data-i18n-attr');
+    const isHtml = el.hasAttribute('data-i18n-html');
     const val = t(key);
     if (attr) {
       el.setAttribute(attr, val);
+    } else if (isHtml) {
+      el.innerHTML = String(val).replace(/\n/g, '<br>');
     } else {
       el.textContent = val;
     }
