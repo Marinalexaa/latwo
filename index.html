@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latwo — AI-консалтингова агенція нового покоління</title>
+  <meta name="description" content="Допомагаємо компаніям використовувати штучний інтелект так, щоб бізнес працював швидше. Від хаосу до системи з AI." />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header id="site-header">
+  <div class="header-inner">
+    <a href="https://latwo.eu" class="header-logo">Łatwo</a>
+
+    <nav class="header-nav">
+      <a href="pages/cases.html" data-i18n="nav_cases">Кейси</a>
+      <a href="#services" data-i18n="nav_services" class="smooth-scroll">Послуги</a>
+      <a href="pages/about.html" data-i18n="nav_about">Про нас</a>
+      <a href="#pricing" data-i18n="nav_pricing" class="smooth-scroll">Ціни</a>
+      <a href="#faq" data-i18n="nav_faq" class="smooth-scroll">FAQs</a>
+    </nav>
+
+    <div class="header-right">
+      <a href="#contact" data-i18n="nav_contact" class="smooth-scroll">Контакти</a>
+      <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" rel="noopener" data-i18n="nav_instagram">Instagram</a>
+      <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" rel="noopener" data-i18n="nav_linkedin">LinkedIn</a>
+
+      <!-- Language Switcher -->
+      <div class="lang-switcher" id="lang-switcher">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="current-lang">Ukrainian</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <button class="lang-option" data-lang="uk">🇺🇦 Українська</button>
+          <button class="lang-option" data-lang="en">🇬🇧 English</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="pages/cases.html" data-i18n="nav_cases">Кейси</a>
+  <a href="#services" data-i18n="nav_services" class="smooth-scroll mobile-nav-close">Послуги</a>
+  <a href="pages/about.html" data-i18n="nav_about">Про нас</a>
+  <a href="#pricing" data-i18n="nav_pricing" class="smooth-scroll mobile-nav-close">Ціни</a>
+  <a href="#faq" data-i18n="nav_faq" class="smooth-scroll mobile-nav-close">FAQs</a>
+  <a href="#contact" data-i18n="nav_contact" class="smooth-scroll mobile-nav-close">Контакти</a>
+  <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank">Instagram</a>
+  <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank">LinkedIn</a>
+</nav>
+
+<!-- ============================================================
+     SECTION 0 — HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    <span data-i18n="hero_badge">AI-КОНСАЛТИНГОВА АГЕНЦІЯ НОВОГО ПОКОЛІННЯ</span>
+  </div>
+
+  <div class="hero-buttons">
+    <a href="#contact" class="btn btn-orange smooth-scroll">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+      <span data-i18n="hero_btn_call">Забронювати безкоштовний Discovery Call</span>
+    </a>
+    <a href="#contact" class="btn btn-white smooth-scroll" id="checklist-btn">
+      <span data-i18n="hero_btn_checklist">AI Readiness чекліст</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </a>
+  </div>
+
+  <h1 class="hero-title" data-i18n="hero_title">Від хаосу до системи з AI</h1>
+  <p class="hero-subtitle" data-i18n="hero_subtitle">Допомагаємо компаніям використовувати штучний інтелект так, щоб бізнес працював швидше, частина задач виконувалась автоматично. Звільняємо від рутини для стратегічного зростання, використовуючи передові AI-рішення.</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="#4ade80" stroke-width="2.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+      </div>
+      <div class="hero-stat-value"><span data-i18n="hero_stat1_num">3x</span> <span data-i18n="hero_stat1_label">зростання доходу</span></div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-icon hero-stat-logos">
+        <span class="mini-logo">D</span>
+        <span class="mini-logo">S</span>
+        <span class="mini-logo orange">K</span>
+      </div>
+      <div class="hero-stat-value"><span data-i18n="hero_stat2_num">20+</span> <span data-i18n="hero_stat2_label">трансформованих бізнесів</span></div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-icon hero-stars">★★★★★</div>
+      <div class="hero-stat-value"><span data-i18n="hero_stat3_num">7+</span> <span data-i18n="hero_stat3_label">років досвіду</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 1 — PHOTO + PARTNERS
+     ============================================================ -->
+<section id="photo-section">
+  <div class="photo-wrapper" id="spas-photo">
+    <img src="images/spas-speaking.jpg" alt="Stanislav speaking at AI event" loading="lazy"
+         onerror="this.parentElement.style.background='linear-gradient(135deg,#122E47,#071624)';this.parentElement.style.minHeight='400px';this.style.display='none';" />
+  </div>
+</section>
+
+<section id="partners">
+  <p class="partners-label" data-i18n="partners_title">НАШІ КЛІЄНТИ ТА ПАРТНЕРИ</p>
+  <div class="partners-track-wrapper">
+    <div class="partners-track">
+      <span class="partner-logo-text">CARBAZAR</span>
+      <span class="partner-logo-text">Samar</span>
+      <span class="partner-logo-text">DOBROKAR</span>
+      <span class="partner-logo-text">Exleasingcar.com.ua</span>
+      <span class="partner-logo-text">CARBAZAR</span>
+      <span class="partner-logo-text">CARBAZAR</span>
+      <span class="partner-logo-text">Samar</span>
+      <span class="partner-logo-text">DOBROKAR</span>
+      <span class="partner-logo-text">Exleasingcar.com.ua</span>
+      <span class="partner-logo-text">CARBAZAR</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 2 — PROBLEMS
+     ============================================================ -->
+<section id="problems">
+  <div class="container">
+    <div class="problems-heading">
+      <span class="section-label" data-i18n="problems_badge">ПРОБЛЕМИ, ЯКІ МИ ВИРІШУЄМО</span>
+      <span class="section-title-ghost" data-i18n="problems_title_ghost">Впізнаєте себе?</span>
+      <span class="section-title-solid" data-i18n="problems_title">Ви втомилися від:</span>
+    </div>
+
+    <div class="problems-grid">
+      <div class="problem-card scroll-scale">
+        <div class="problem-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <span class="problem-text" data-i18n="problem_1">Рутини, що поглинає ваш час?</span>
+      </div>
+      <div class="problem-card scroll-scale">
+        <div class="problem-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+        </div>
+        <span class="problem-text" data-i18n="problem_2">Рішень, що приймаються "наосліп"?</span>
+      </div>
+      <div class="problem-card scroll-scale">
+        <div class="problem-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+        </div>
+        <span class="problem-text" data-i18n="problem_3">Хаосу в бізнес-процесах, що заважає зростанню?</span>
+      </div>
+      <div class="problem-card scroll-scale">
+        <div class="problem-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <span class="problem-text" data-i18n="problem_4">Відчуття, що ви відстаєте від конкурентів, які вже використовують AI?</span>
+      </div>
+    </div>
+
+    <div class="your-pain">Your Pain</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 3 — AI TRANSFORMATION PROCESS
+     ============================================================ -->
+<section id="process">
+  <div class="container">
+    <span class="section-label" data-i18n="process_badge">ЩО МИ ПРОПОНУЄМО</span>
+    <span class="section-title-ghost" data-i18n="process_title_ghost">AI-трансформація</span>
+    <span class="section-title-solid" data-i18n="process_title">З результатом на кожному етапі</span>
+    <p class="section-desc" data-i18n="process_subtitle">Ми не просто "впроваджуємо AI", ми будуємо систему, яка дозволяє вашому бізнесу працювати ефективніше, рости швидше та приймати правильні рішення.</p>
+
+    <div class="process-grid">
+      <div class="process-card scroll-reveal">
+        <span class="process-number">1</span>
+        <div class="process-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3 data-i18n="process_1_title">Дослідження</h3>
+        <p data-i18n="process_1_desc">Глибоке занурення у ваш бізнес, виявлення унікальних потреб, цілей та больових точок. Ми слухаємо, аналізуємо та розуміємо вашу унікальну ситуацію.</p>
+      </div>
+      <div class="process-card scroll-reveal">
+        <span class="process-number">2</span>
+        <div class="process-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3 data-i18n="process_2_title">Аудит та оцінка</h3>
+        <p data-i18n="process_2_desc">Комплексний аналіз поточного стану ваших процесів, інфраструктури та даних. Оцінка готовності до AI-трансформації та виявлення ключових можливостей.</p>
+      </div>
+      <div class="process-card scroll-reveal">
+        <span class="process-number">3</span>
+        <div class="process-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3 data-i18n="process_3_title">Стратегія та план</h3>
+        <p data-i18n="process_3_desc">Розробка індивідуальної, реалістичної стратегії та детальної дорожньої карти впровадження AI, що відповідає вашим бізнес-цілям.</p>
+      </div>
+      <div class="process-card scroll-reveal">
+        <span class="process-number">4</span>
+        <div class="process-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <h3 data-i18n="process_4_title">Впровадження</h3>
+        <p data-i18n="process_4_desc">Безпосереднє впровадження AI-рішень, інтеграція AI-інструментів та систем у вашу існуючу інфраструктуру з допомогою no-code інструментів.</p>
+      </div>
+      <div class="process-card scroll-reveal">
+        <span class="process-number">5</span>
+        <div class="process-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3 data-i18n="process_5_title">Моніторинг</h3>
+        <p data-i18n="process_5_desc">Постійний моніторинг ефективності, збір даних та аналіз результатів для підтвердження ROI та виявлення зон для покращення.</p>
+      </div>
+      <div class="process-card scroll-reveal">
+        <span class="process-number">6</span>
+        <div class="process-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 data-i18n="process_6_title">Підтримка</h3>
+        <p data-i18n="process_6_desc">Постійне вдосконалення та оптимізація впроваджених рішень для досягнення максимального та сталого ефекту. Підтримка по завершенню трансформації.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4 — WHY LATWO
+     ============================================================ -->
+<section id="why-latwo">
+  <div class="why-inner container">
+    <div class="why-photo scroll-reveal">
+      <img src="images/stanislav-portrait.jpg" alt="Stanislav Buchatskyi — Latwo founder"
+           onerror="this.parentElement.style.background='linear-gradient(135deg,#e8e9ea,#d0d1d2)';this.parentElement.style.minHeight='500px';this.style.display='none';" />
+    </div>
+    <div class="why-content scroll-reveal">
+      <span class="why-script">Here to help</span>
+      <span class="section-label" data-i18n="why_badge">ЧОМУ ВАРТО ПРАЦЮВАТИ З НАМИ</span>
+      <h2 data-i18n="why_title">Latwo — ідеальний партнер</h2>
+      <p data-i18n="why_subtitle">Ми виділяємося на ринку завдяки унікальному поєднанню досвіду, підходу та цінностей.</p>
+      <div class="why-features">
+        <div class="why-feature">
+          <h4 data-i18n="why_1_title">Практичний досвід</h4>
+          <p data-i18n="why_1_desc">Ми не теоретики, а практики. Щодня використовуємо AI у власних процесах, тому знаємо, як він працює в реальних умовах.</p>
+        </div>
+        <div class="why-feature">
+          <h4 data-i18n="why_2_title">Орієнтація на результат</h4>
+          <p data-i18n="why_2_desc">Наша мета — не просто надати консультацію, а забезпечити вимірювані, відчутні результати, які трансформують ваш бізнес.</p>
+        </div>
+        <div class="why-feature">
+          <h4 data-i18n="why_3_title">Справжнє партнерство</h4>
+          <p data-i18n="why_3_desc">Ми стаємо продовженням вашої команди, працюючи пліч-о-пліч для досягнення спільних цілей, забезпечуючи прозорість та постійну комунікацію.</p>
+        </div>
+        <div class="why-feature">
+          <h4 data-i18n="why_4_title">AI-Native ДНК</h4>
+          <p data-i18n="why_4_desc">Ми побудовані на AI. Наші внутрішні процеси та інструменти інтегровані зі штучним інтелектом, що дозволяє нам працювати швидше та ефективніше.</p>
+        </div>
+      </div>
+      <a href="#contact" class="btn btn-orange smooth-scroll" id="why-checklist-btn" style="width:100%;justify-content:center;">
+        <span data-i18n="why_btn">Завантажити AI Readiness чекліст</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 5 — SERVICES
+     ============================================================ -->
+<section id="services">
+  <div class="container">
+    <span class="section-label" data-i18n="services_badge">НАШІ КЛЮЧОВІ ПОСЛУГИ</span>
+    <span class="section-title-ghost" data-i18n="services_title_ghost">Стратегічні рішення</span>
+    <span class="section-title-solid" data-i18n="services_title">Для зростання вашого бізнесу</span>
+    <p class="section-desc" data-i18n="services_subtitle">Ми пропонуємо повний спектр послуг з AI-трансформації, від стратегічного планування та глибокого консалтингу до бездоганного впровадження та постійної підтримки.</p>
+
+    <div class="services-grid">
+      <div class="service-card scroll-reveal">
+        <span class="service-number">1</span>
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </div>
+        <h3 data-i18n="service_1_title">Аналіз бізнесу і можливостей AI</h3>
+        <p data-i18n="service_1_desc">Це перший крок для компаній, які хочуть зрозуміти, як штучний інтелект може допомогти їхньому бізнесу. Детально розбираємо, як працює компанія, і показуємо, де AI може дати найбільший результат та звільнити від рутини.</p>
+        <a href="pages/cases.html" class="service-link">
+          <span data-i18n="service_learn_more">Дізнатись більше</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="service-card scroll-reveal">
+        <span class="service-number">2</span>
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3 data-i18n="service_2_title">Автоматизація процесів за допомогою AI</h3>
+        <p data-i18n="service_2_desc">Наступний рівень використання штучного інтелекту. Допомагаємо налаштувати систему, у якій частина задач виконується автоматично. Створюємо AI-агентів, які можуть виконувати задачі самостійно, працювати за розкладом і взаємодіяти з іншими системами компанії.</p>
+        <a href="pages/cases.html" class="service-link">
+          <span data-i18n="service_learn_more">Дізнатись більше</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="service-card scroll-reveal">
+        <span class="service-number">3</span>
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3 data-i18n="service_3_title">Навчання команди працювати з AI</h3>
+        <p data-i18n="service_3_desc">Практичні заняття для компаній, де команда вчиться використовувати штучний інтелект у своїй роботі. За 3 дні пояснюємо технологію простою мовою, разом створюємо AI-помічника, показуємо, як застосовувати AI у щоденних задачах.</p>
+        <a href="pages/cases.html" class="service-link">
+          <span data-i18n="service_learn_more">Дізнатись більше</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="service-card scroll-reveal">
+        <span class="service-number">4</span>
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <h3 data-i18n="service_4_title">Розробка AI-продуктів і автоматизацій</h3>
+        <p data-i18n="service_4_desc">Іноді після аудиту стає зрозуміло: готового інструменту для вашого процесу просто не існує. Ми будуємо його — швидко та під конкретну задачу вашого бізнесу. MVP прототип за 1 тиждень, повноцінний продукт — за 1 місяць.</p>
+        <a href="pages/cases.html" class="service-link">
+          <span data-i18n="service_learn_more">Дізнатись більше</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 6 — CASE 1 (Light)
+     ============================================================ -->
+<section id="case-1">
+  <div class="case-inner container">
+    <span class="case-script" data-i18n="case1_script">Client Win!</span>
+    <div class="case-content scroll-reveal">
+      <span class="section-label" data-i18n="case1_badge">ОДИН З НАШИХ КЛІЄНТІВ</span>
+      <h2 data-i18n="case1_title">Трансформація дилера імпортних авто</h2>
+      <p data-i18n="case1_desc">Коли ми вперше надали безкоштовну консультацію замовнику, вони переживали складний період. Після декількох discovery сесій та аналізу бізнес-процесів ми визначили ключові показники та цільову аудиторію. Впровадили AI-агентів C-level, переглянули витрати, побудували нову мотиваційну модель для команди, налаштували AI фінансовий моніторинг та автоматичні звіти для прийняття управлінських рішень. Побудували систему.</p>
+      <div class="case-stats">
+        <div class="case-stat">
+          <h3 data-i18n="case1_stat1_num">45%</h3>
+          <p data-i18n="case1_stat1_label">Зросли доходи від B2B клієнтів, погасили борги та зобов'язання</p>
+        </div>
+        <div class="case-stat">
+          <h3 data-i18n="case1_stat2_num">500-550</h3>
+          <p data-i18n="case1_stat2_label">Вийшли на нові ринки, зросла кількість імпортованих авто в місяць</p>
+        </div>
+        <div class="case-stat">
+          <h3 data-i18n="case1_stat3_num">30%</h3>
+          <p data-i18n="case1_stat3_label">Зросла конверсія заявок на покупку авто з Європи</p>
+        </div>
+        <div class="case-stat">
+          <h3 data-i18n="case1_stat4_num">80%</h3>
+          <p data-i18n="case1_stat4_label">Зросла кількість лояльних клієнтів, що повертаються</p>
+        </div>
+      </div>
+      <a href="#contact" class="btn btn-orange smooth-scroll">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+        <span data-i18n="case1_btn">Час трансформувати ваш бізнес</span>
+      </a>
+    </div>
+    <div class="case-image scroll-reveal">
+      <img src="images/case-car-dealer.jpg" alt="Car dealer transformation"
+           onerror="this.parentElement.style.background='linear-gradient(135deg,#e8e9ea,#d0d1d2)';this.parentElement.style.minHeight='400px';this.style.display='none';" />
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 7 — TESTIMONIALS CAROUSEL
+     ============================================================ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <div>
+        <span class="section-label" data-i18n="testimonials_badge">ВІДГУКИ КЛІЄНТІВ ТА ПАРТНЕРІВ</span>
+        <span class="section-title-ghost" data-i18n="testimonials_title_ghost">Перевірені стратегії</span>
+        <span class="section-title-solid" data-i18n="testimonials_title">Відчутні результати</span>
+      </div>
+      <div>
+        <p data-i18n="testimonials_subtitle">Маючи перевірений досвід та практичні знання у AI-автоматизаціях, ми допоможемо вам досягти сталого зростання та довгострокових результатів</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonials-track-wrapper">
+    <div class="testimonials-track">
+      <div class="testimonial-card dark">
+        <div class="testimonial-author">
+          <div class="testimonial-author-avatar">Д</div>
+          <div>
+            <div class="testimonial-name">Дмитро</div>
+            <div class="testimonial-role">Фінансовий директор</div>
+          </div>
+        </div>
+        <div class="testimonial-quote">"</div>
+        <p>Latwo впровадили для нас комплексну систему Data &amp; Decision Intelligence, яка не просто збирає дані, а перетворює їх на чіткі, дієві інсайти.</p>
+      </div>
+      <div class="testimonial-card dark">
+        <div class="testimonial-author">
+          <div class="testimonial-author-avatar">К</div>
+          <div>
+            <div class="testimonial-name">Костянтин</div>
+            <div class="testimonial-role">Власник компанії</div>
+          </div>
+        </div>
+        <div class="testimonial-quote">"</div>
+        <p>Тепер AI-агенти автоматично відстежують статус доставки кожного авто, надсилають оновлення клієнтам, генерують документи та допомагають у первинній обробці запитів.</p>
+      </div>
+      <div class="testimonial-card dark">
+        <div class="testimonial-author">
+          <div class="testimonial-author-avatar">О</div>
+          <div>
+            <div class="testimonial-name">Оксана</div>
+            <div class="testimonial-role">CEO</div>
+          </div>
+        </div>
+        <div class="testimonial-quote">"</div>
+        <p>AI-трансформація звільнила наших менеджерів від рутинної роботи, дозволивши їм зосередитись на розвитку та розширенні клієнтської бази. Ефективність зросла.</p>
+      </div>
+      <div class="testimonial-card dark">
+        <div class="testimonial-author">
+          <div class="testimonial-author-avatar">А</div>
+          <div>
+            <div class="testimonial-name">Андрій</div>
+            <div class="testimonial-role">COO логістичної компанії</div>
+          </div>
+        </div>
+        <div class="testimonial-quote">"</div>
+        <p>Ми довго відкладали трансформацію, бо не розуміли з чого почати. LATWO дали чітку дорожню карту і впевненість, що масштабування — це реальний план, а не мрія.</p>
+      </div>
+      <!-- Duplicates for seamless loop -->
+      <div class="testimonial-card dark">
+        <div class="testimonial-author">
+          <div class="testimonial-author-avatar">Д</div>
+          <div>
+            <div class="testimonial-name">Дмитро</div>
+            <div class="testimonial-role">Фінансовий директор</div>
+          </div>
+        </div>
+        <div class="testimonial-quote">"</div>
+        <p>Latwo впровадили для нас комплексну систему Data &amp; Decision Intelligence, яка не просто збирає дані, а перетворює їх на чіткі, дієві інсайти.</p>
+      </div>
+      <div class="testimonial-card dark">
+        <div class="testimonial-author">
+          <div class="testimonial-author-avatar">К</div>
+          <div>
+            <div class="testimonial-name">Костянтин</div>
+            <div class="testimonial-role">Власник компанії</div>
+          </div>
+        </div>
+        <div class="testimonial-quote">"</div>
+        <p>Тепер AI-агенти автоматично відстежують статус доставки кожного авто, надсилають оновлення клієнтам, генерують документи та допомагають у первинній обробці запитів.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 8 — PRICING
+     ============================================================ -->
+<section id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header">
+      <div>
+        <span class="section-label" data-i18n="pricing_badge">ШЛЯХИ ДО ВАШОГО ЗРОСТАННЯ</span>
+        <span class="section-title-ghost" style="color:rgba(255,255,255,0.25);" data-i18n="pricing_title_ghost">Позбудьтесь хаосу</span>
+        <span class="section-title-solid" style="color:var(--white-primary);" data-i18n="pricing_title">Делегуйте рутину AI</span>
+      </div>
+      <p data-i18n="pricing_subtitle">Три пакети, розроблені для різних етапів вашої AI-трансформації. Від першого аудиту до постійного стратегічного супроводу.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Start -->
+      <div class="pricing-card scroll-reveal">
+        <div class="pricing-card-header">
+          <span class="pricing-plan-name" data-i18n="plan1_name">Старт</span>
+          <div class="pricing-price">
+            <div class="pricing-price-main" data-i18n="plan1_price">від €490</div>
+            <div class="pricing-price-sub" data-i18n="plan1_duration">з людини, 3 дні</div>
+          </div>
+        </div>
+        <div class="pricing-service-name" data-i18n="plan1_service">AI Training для команд</div>
+        <div class="pricing-service-desc" data-i18n="plan1_tagline">Навчіть команду працювати з AI, а не боятися його</div>
+        <ul class="pricing-features">
+          <li data-i18n="plan1_f1">Огляд AI-інструментів під ваш бізнес</li>
+          <li data-i18n="plan1_f2">Навчання роботі з ChatGPT, automation tools, AI-агентами</li>
+          <li data-i18n="plan1_f3">Оптимізація щоденних задач (маркетинг, операційка, продажі)</li>
+          <li data-i18n="plan1_f4">Розбір реальних процесів компанії</li>
+          <li data-i18n="plan1_f5">Готові сценарії використання AI</li>
+          <li data-i18n="plan1_f6">Q&amp;A + підтримка після навчання</li>
+        </ul>
+        <div class="pricing-result" data-i18n="plan1_result">Результат: команда, яка швидше працює, менше витрачає часу на рутину і приймає кращі рішення.</div>
+        <a href="#contact" class="btn btn-outline-white pricing-btn smooth-scroll">
+          <span data-i18n="plan1_btn">Обрати пропозицію</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Growth (Popular) -->
+      <div class="pricing-card popular scroll-reveal">
+        <span class="popular-badge" data-i18n="pricing_popular">Popular</span>
+        <div class="pricing-card-header">
+          <span class="pricing-plan-name" data-i18n="plan2_name">Ріст</span>
+          <div class="pricing-price">
+            <div class="pricing-price-main" data-i18n="plan2_price">від €1000</div>
+            <div class="pricing-price-sub" data-i18n="plan2_duration">2-3 тижнів</div>
+          </div>
+        </div>
+        <div class="pricing-service-name" data-i18n="plan2_service">AI Product Launch (MVP)</div>
+        <div class="pricing-service-desc" data-i18n="plan2_tagline">Перевірте ідею та створіть продукт, який працює</div>
+        <ul class="pricing-features">
+          <li data-i18n="plan2_f1">Аналіз ідеї та формування концепції продукту</li>
+          <li data-i18n="plan2_f2">Визначення use cases і бізнес-логіки</li>
+          <li data-i18n="plan2_f3">Розробка MVP</li>
+          <li data-i18n="plan2_f4">Тестування та збір зворотного зв'язку</li>
+          <li data-i18n="plan2_f5">Інтеграція з існуючими системами</li>
+          <li data-i18n="plan2_f6">Розробка AI-продукту</li>
+          <li data-i18n="plan2_f7">Рекомендації для масштабування</li>
+        </ul>
+        <div class="pricing-result" data-i18n="plan2_result">Результат: робочий продукт, перевірені гіпотези та чітке розуміння, куди масштабуватись.</div>
+        <a href="#contact" class="btn btn-orange pricing-btn smooth-scroll">
+          <span data-i18n="plan2_btn">Обрати пропозицію</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Scale -->
+      <div class="pricing-card scroll-reveal">
+        <div class="pricing-card-header">
+          <span class="pricing-plan-name" data-i18n="plan3_name">Масштаб</span>
+          <div class="pricing-price">
+            <div class="pricing-price-main" data-i18n="plan3_price">договірна</div>
+            <div class="pricing-price-sub" data-i18n="plan3_duration">від 3 тижнів</div>
+          </div>
+        </div>
+        <div class="pricing-service-name" data-i18n="plan3_service">AI Transformation &amp; Automation</div>
+        <div class="pricing-service-desc" data-i18n="plan3_tagline">Побудуйте системний бізнес, який масштабується без хаосу</div>
+        <ul class="pricing-features">
+          <li data-i18n="plan3_f1">Глибокий аудит бізнес-процесів</li>
+          <li data-i18n="plan3_f2">Виявлення вузьких місць і втрат ефективності</li>
+          <li data-i18n="plan3_f3">AI Readiness Assessment</li>
+          <li data-i18n="plan3_f4">Побудова архітектури автоматизації</li>
+          <li data-i18n="plan3_f5">Впровадження AI-рішень та інтеграцій</li>
+          <li data-i18n="plan3_f6">Дорожня карта масштабування</li>
+        </ul>
+        <div class="pricing-result" data-i18n="plan3_result">Результат: контрольований, ефективний бізнес із системами, які працюють замість хаосу.</div>
+        <a href="#contact" class="btn btn-outline-white pricing-btn smooth-scroll">
+          <span data-i18n="plan3_btn">Обрати пропозицію</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 9 — CASE 2 (Dark)
+     ============================================================ -->
+<section id="case-2">
+  <div class="case-2-inner container">
+    <div class="case-2-image scroll-reveal">
+      <img src="images/case-car-night.jpg" alt="AI Agent implementation for car auction"
+           onerror="this.parentElement.style.background='linear-gradient(135deg,#1a3a5c,#0d2035)';this.parentElement.style.minHeight='450px';this.style.display='none';" />
+    </div>
+    <div class="case-2-content scroll-reveal">
+      <span class="case-2-script" data-i18n="case2_script">Client Win!</span>
+      <span class="section-label" data-i18n="case2_badge">ОДИН З НАШИХ КЛІЄНТІВ</span>
+      <h2 data-i18n="case2_title">Впровадження AI Agent</h2>
+      <p data-i18n="case2_desc">Ми допомогли компанії з продажу авто на аукціоні впровадити AI-систему, яка аналізує поведінку клієнтів на сайті, їхні вподобання та історію лотів. Завдяки цьому вони можуть пропонувати кожному відвідувачу найбільш релевантні моделі, опції та фінансові пропозиції.</p>
+      <div class="case-2-stats">
+        <div class="case-2-stat">
+          <h3 data-i18n="case2_stat1_num">80%</h3>
+          <p data-i18n="case2_stat1_label">Збільшились продажі після впровадження комплексної системи Data &amp; Decision Intelligence.</p>
+        </div>
+        <div class="case-2-stat">
+          <h3 data-i18n="case2_stat2_num">50%</h3>
+          <p data-i18n="case2_stat2_label">Збільшилась ефективність роботи з аукціонами після впровадження AI системи для аналізу цінових тенденцій.</p>
+        </div>
+        <div class="case-2-stat">
+          <h3 data-i18n="case2_stat3_num">40%</h3>
+          <p data-i18n="case2_stat3_label">Звільнився час менеджерів від рутинної роботи.</p>
+        </div>
+        <div class="case-2-stat">
+          <h3 data-i18n="case2_stat4_num">22%</h3>
+          <p data-i18n="case2_stat4_label">Підвищилась конверсія нових заявок.</p>
+        </div>
+      </div>
+      <a href="#contact" class="btn btn-orange smooth-scroll">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+        <span data-i18n="case2_btn">Час трансформувати ваш бізнес</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 10 — FAQ
+     ============================================================ -->
+<section id="faq">
+  <div class="faq-inner container">
+    <span class="faq-script" data-i18n="faq_script">FAQs</span>
+    <div class="faq-layout">
+      <div class="faq-content">
+        <span class="section-label" data-i18n="faq_badge">ЩО НАС ЗАПИТУЮТЬ</span>
+        <span class="section-title-ghost" data-i18n="faq_title_ghost">Є питання?</span>
+        <span class="section-title-solid" data-i18n="faq_title">Відповідаємо</span>
+        <p class="faq-subtitle" data-i18n="faq_subtitle">Найпоширеніші питання, які власники бізнесів ставлять нам перед співпрацею та трансформацією</p>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span data-i18n="faq_q1">Що таке AI-трансформація і чому мій бізнес її потребує?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p data-i18n="faq_a1">AI-трансформація — це системне впровадження штучного інтелекту у ваші бізнес-процеси. Це не просто використання ChatGPT, а побудова системи, де AI автоматизує рутину, допомагає приймати рішення на основі даних та звільняє вашу команду для стратегічної роботи. Бізнеси, які впроваджують AI зараз, отримують конкурентну перевагу, яку буде важко наздогнати пізніше.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span data-i18n="faq_q2">Скільки часу зазвичай займає проект з впровадження AI?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p data-i18n="faq_a2">Залежно від масштабу: навчання команди — 3 дні, MVP продукт — 2-3 тижні, повна AI-трансформація бізнесу — від 3 тижнів до кількох місяців. Ми завжди починаємо з безкоштовного Discovery Call, де оцінюємо ваші потреби та даємо чіткі терміни.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span data-i18n="faq_q3">Що робити, якщо мій бізнес не має великої кількості даних?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p data-i18n="faq_a3">Це дуже поширена ситуація, і вона не є перешкодою. Ми починаємо з того, що є, і паралельно будуємо системи збору та структурування даних. Багато AI-рішень чудово працюють навіть з невеликими обсягами даних. Головне — правильний підхід та інструменти.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span data-i18n="faq_q4">Як Latwo забезпечує безпеку та конфіденційність моїх даних?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p data-i18n="faq_a4">Безпека даних — наш пріоритет. Ми підписуємо NDA з кожним клієнтом, використовуємо лише перевірені та сертифіковані AI-платформи, дотримуємось GDPR та інших стандартів захисту даних. Ваші бізнес-дані ніколи не використовуються для навчання зовнішніх моделей без вашого дозволу.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span data-i18n="faq_q5">Який типовий ROI (повернення інвестицій) для AI-рішень, впроваджених Latwo?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p data-i18n="faq_a5">За нашим досвідом, клієнти бачать ROI вже протягом перших 3-6 місяців. Типові результати: 30-80% зростання продажів, 40% звільнення часу команди від рутини, 22-30% підвищення конверсії. Конкретні цифри залежать від вашого бізнесу та впровадженого рішення.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span data-i18n="faq_q6">Як мені розпочати співпрацю з Latwo?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p data-i18n="faq_a6">Дуже просто! Натисніть кнопку "Забронювати безкоштовний Discovery Call" або заповніть форму нижче. Ми проведемо безкоштовну 45-хвилинну консультацію, де розберемо ваш бізнес, визначимо потенціал AI та запропонуємо конкретний план дій.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-photo">
+        <img src="images/faq-consultant.jpg" alt="Latwo consultant"
+             onerror="this.parentElement.style.background='linear-gradient(135deg,#e8e9ea,#d0d1d2)';this.parentElement.style.minHeight='500px';this.style.display='none';" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 11 — CONTACT FORM
+     ============================================================ -->
+<section id="contact">
+  <div class="contact-outer">
+    <span class="contact-script" data-i18n="contact_script">Contact</span>
+    <div class="contact-inner">
+      <span class="section-label" data-i18n="contact_badge">ЗВ'ЯЖІТЬСЯ З НАМИ</span>
+      <span class="section-title-ghost" data-i18n="contact_title_ghost">Готові до змін?</span>
+      <span class="section-title-solid contact-title-solid" data-i18n="contact_title">Давайте починати</span>
+      <p class="contact-subtitle" data-i18n="contact_subtitle">Для консультації або безкоштовного AI Readiness чекліста заповніть, будь ласка, форму</p>
+
+      <form class="contact-form" id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label><span data-i18n="contact_name">ІМ'Я</span> <span class="required">*</span></label>
+            <input type="text" name="name" data-i18n-attr="placeholder" data-i18n="contact_name_ph" placeholder="Іван Петренко" required />
+          </div>
+          <div class="form-group">
+            <label><span data-i18n="contact_email">EMAIL</span> <span class="required">*</span></label>
+            <input type="email" name="email" placeholder="ivan.petrenko@gmail.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label data-i18n="contact_company">НАЗВА КОМПАНІЇ</label>
+            <input type="text" name="company" data-i18n-attr="placeholder" data-i18n="contact_company_ph" placeholder="Петренко Ентерпрайз" />
+          </div>
+          <div class="form-group">
+            <label><span data-i18n="contact_service">ВАРІАНТ ПОСЛУГИ</span> <span class="required">*</span></label>
+            <select name="service" required>
+              <option value="" data-i18n="contact_service_ph">Вибрати…</option>
+              <option value="analysis" data-i18n="service_opt1">Аналіз бізнесу і можливостей AI</option>
+              <option value="automation" data-i18n="service_opt2">Автоматизація процесів за допомогою AI</option>
+              <option value="training" data-i18n="service_opt3">Навчання команди працювати з AI</option>
+              <option value="product" data-i18n="service_opt4">Розробка AI-продуктів і автоматизацій</option>
+              <option value="transformation" data-i18n="service_opt5">AI Transformation &amp; Automation</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label><span data-i18n="contact_message">РОЗКАЖІТЬ ПРО ВАШ БІЗНЕС ТА ПОТРЕБИ</span> <span class="required">*</span></label>
+          <textarea name="message" data-i18n-attr="placeholder" data-i18n="contact_message_ph" placeholder="Напишіть ваш запит…" required></textarea>
+        </div>
+        <label class="form-checkbox">
+          <input type="checkbox" name="discovery_call" />
+          <span data-i18n="contact_discovery">ХОЧУ ЗАБРОНЮВАТИ БЕЗКОШТОВНУ КОНСУЛЬТАЦІЮ ПО AI-ТРАНСФОРМАЦІЇ</span>
+        </label>
+        <button type="submit" class="btn btn-orange form-submit-btn">
+          <span data-i18n="contact_btn">Відправити</span>
+        </button>
+      </form>
+      <div class="form-success" id="form-success">
+        <p data-i18n="contact_success">✅ Дякуємо! Ми отримали ваше повідомлення і зв'яжемося з вами найближчим часом.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 12 — SOCIAL PROOF WALL
+     ============================================================ -->
+<section id="social-proof">
+  <div class="reviews-rows">
+    <!-- Row 1 — scrolls left -->
+    <div class="reviews-row reviews-row-left">
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">М</div><div><div class="review-mini-name">Марина</div><div class="review-mini-role">Засновниця освітнього проєкту</div></div></div><div class="review-mini-quote">"</div><p>Я боялась складних технологій, але LATWO пояснили і впровадили все без стресу. Тепер бізнес працює як система, навіть коли мене немає поруч.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">А</div><div><div class="review-mini-name">Андрій</div><div class="review-mini-role">COO логістичної компанії</div></div></div><div class="review-mini-quote">"</div><p>Ми довго відкладали трансформацію, бо не розуміли з чого почати. LATWO дали чітку дорожню карту і впевненість, що масштабування — це реальний план, а не мрія.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">В</div><div><div class="review-mini-name">Віталій</div><div class="review-mini-role">Засновник SaaS-стартапу</div></div></div><div class="review-mini-quote">"</div><p>З Latwo ми вибудували системну модель управління через AI. Бізнес став більш структурованим і привабливим для інвесторів.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">І</div><div><div class="review-mini-name">Ірина</div><div class="review-mini-role">Засновниця e-commerce бренду</div></div></div><div class="review-mini-quote">"</div><p>Я втомилась тримати все на собі та працювала 24/7. Після впровадження системи від Latwo продажі стали стабільними, а я — спокійнішою.</p></div>
+      <!-- Duplicates -->
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">М</div><div><div class="review-mini-name">Марина</div><div class="review-mini-role">Засновниця освітнього проєкту</div></div></div><div class="review-mini-quote">"</div><p>Я боялась складних технологій, але LATWO пояснили і впровадили все без стресу. Тепер бізнес працює як система, навіть коли мене немає поруч.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">А</div><div><div class="review-mini-name">Андрій</div><div class="review-mini-role">COO логістичної компанії</div></div></div><div class="review-mini-quote">"</div><p>Ми довго відкладали трансформацію, бо не розуміли з чого почати. LATWO дали чітку дорожню карту і впевненість, що масштабування — це реальний план, а не мрія.</p></div>
+    </div>
+
+    <!-- Row 2 — scrolls right -->
+    <div class="reviews-row reviews-row-right">
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">С</div><div><div class="review-mini-name">Сергій</div><div class="review-mini-role">Власник будівельного бізнесу</div></div></div><div class="review-mini-quote">"</div><p>Я приймав рішення інтуїтивно і часто сумнівався. LATWO допомогли вибудувати аналітику, і тепер я бачу бізнес чітко та без ілюзій.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">О</div><div><div class="review-mini-name">Оксана</div><div class="review-mini-role">CEO виробничої компанії</div></div></div><div class="review-mini-quote">"</div><p>Ми постійно гасили пожежі й не розуміли, куди зникає прибуток. Latwo навели порядок у процесах, і вперше бізнес став керованим, а не хаотичним.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">Н</div><div><div class="review-mini-name">Наталія</div><div class="review-mini-role">Власниця ресторану</div></div></div><div class="review-mini-quote">"</div><p>Наша команда боялась технологій, але Latwo пояснили все просто і впровадили рішення без стресу. Бізнес працює навіть коли мене немає поруч.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">Д</div><div><div class="review-mini-name">Дмитро</div><div class="review-mini-role">Комерційний директор</div></div></div><div class="review-mini-quote">"</div><p>Ми думали, що працюємо ефективно, поки не побачили, скільки ресурсів витрачаємо. LATWO змінили наше мислення і показали, як керувати бізнесом через дані.</p></div>
+      <!-- Duplicates -->
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">С</div><div><div class="review-mini-name">Сергій</div><div class="review-mini-role">Власник будівельного бізнесу</div></div></div><div class="review-mini-quote">"</div><p>Я приймав рішення інтуїтивно і часто сумнівався. LATWO допомогли вибудувати аналітику, і тепер я бачу бізнес чітко та без ілюзій.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">О</div><div><div class="review-mini-name">Оксана</div><div class="review-mini-role">CEO виробничої компанії</div></div></div><div class="review-mini-quote">"</div><p>Ми постійно гасили пожежі й не розуміли, куди зникає прибуток. Latwo навели порядок у процесах, і вперше бізнес став керованим, а не хаотичним.</p></div>
+    </div>
+
+    <!-- Row 3 — scrolls left -->
+    <div class="reviews-row reviews-row-left">
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">П</div><div><div class="review-mini-name">Павло</div><div class="review-mini-role">Засновник IT-компанії</div></div></div><div class="review-mini-quote">"</div><p>Наші продажі були нестабільні, і це постійно тримало в напрузі. Після впровадження системи від LATWO ми нарешті отримали прогнозованість і ріст.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">Т</div><div><div class="review-mini-name">Тетяна</div><div class="review-mini-role">HR-директор</div></div></div><div class="review-mini-quote">"</div><p>Latwo допомогли автоматизувати рекрутинг та онбординг. Тепер процеси займають вдвічі менше часу, а якість кандидатів зросла.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">Р</div><div><div class="review-mini-name">Роман</div><div class="review-mini-role">Власник медичної клініки</div></div></div><div class="review-mini-quote">"</div><p>AI-агенти взяли на себе запис пацієнтів, нагадування та первинну обробку запитів. Персонал зосередився на тому, що дійсно важливо.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">Л</div><div><div class="review-mini-name">Людмила</div><div class="review-mini-role">Директор з продажів</div></div></div><div class="review-mini-quote">"</div><p>З Latwo ми побудували систему, яка сама кваліфікує ліди та розподіляє їх між агентами. Конверсія зросла на 35%.</p></div>
+      <!-- Duplicates -->
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">П</div><div><div class="review-mini-name">Павло</div><div class="review-mini-role">Засновник IT-компанії</div></div></div><div class="review-mini-quote">"</div><p>Наші продажі були нестабільні, і це постійно тримало в напрузі. Після впровадження системи від LATWO ми нарешті отримали прогнозованість і ріст.</p></div>
+      <div class="review-mini-card"><div class="review-mini-author"><div class="review-mini-avatar">Т</div><div><div class="review-mini-name">Тетяна</div><div class="review-mini-role">HR-директор</div></div></div><div class="review-mini-quote">"</div><p>Latwo допомогли автоматизувати рекрутинг та онбординг. Тепер процеси займають вдвічі менше часу, а якість кандидатів зросла.</p></div>
+    </div>
+  </div>
+
+  <!-- CTA overlay -->
+  <div class="social-proof-cta">
+    <p class="social-proof-label" data-i18n="cta_label">РЕАЛЬНІ РЕЗУЛЬТАТИ</p>
+    <h2 data-i18n="cta_title">Готові трансформувати ваш бізнес з AI?</h2>
+    <p data-i18n="cta_subtitle">Створимо з AI структуру, що звільнить вас від рутини й дозволить мислити стратегічно, творити та зростати.</p>
+    <a href="#contact" class="btn btn-orange smooth-scroll">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+      <span data-i18n="cta_btn">Забронювати безкоштовну консультацію</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h2><a href="https://latwo.eu" style="color:inherit;text-decoration:none;">Latwo</a></h2>
+      <p data-i18n="footer_desc">AI-консалтингова агенція нового покоління. Перетворіть хаос на систему та почніть зростати вже сьогодні.</p>
+    </div>
+
+    <div class="footer-links-center">
+      <a href="#faq" data-i18n="footer_faq" class="smooth-scroll">FAQs</a>
+      <a href="pages/privacy.html" data-i18n="footer_privacy">Політика конфіденційності</a>
+      <a href="pages/cookies.html" data-i18n="footer_cookies">Політика cookies</a>
+    </div>
+
+    <div class="footer-nav-columns">
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer_nav_title">НАВІГАЦІЯ</h4>
+        <ul>
+          <li><a href="pages/cases.html" data-i18n="footer_cases">Кейси</a></li>
+          <li><a href="#services" data-i18n="footer_services" class="smooth-scroll">Послуги</a></li>
+          <li><a href="pages/about.html" data-i18n="footer_about">Про нас</a></li>
+          <li><a href="#pricing" data-i18n="footer_pricing" class="smooth-scroll">Ціни</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer_contact_title">ЗВ'ЯЗОК</h4>
+        <ul>
+          <li><a href="#contact" data-i18n="footer_contact_link" class="smooth-scroll">Контакти</a></li>
+          <li><a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" rel="noopener" data-i18n="footer_instagram">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" rel="noopener" data-i18n="footer_linkedin">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span data-i18n="footer_copy">© 2026 Latwo. All rights reserved.</span>
+    <span><span data-i18n="footer_created">Created by</span> <a href="https://latwo.eu" style="text-decoration:underline;">Latwo</a></span>
+  </div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
