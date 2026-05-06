@@ -18,7 +18,9 @@ const translations = {
     // HERO
     hero_badge: 'AI-КОНСАЛТИНГОВА АГЕНЦІЯ НОВОГО ПОКОЛІННЯ',
     hero_btn_call: 'Забронювати безкоштовний Discovery Call',
+    hero_btn_call_hover: 'Отримати безкоштовну консультацію',
     hero_btn_checklist: 'AI Readiness чекліст',
+    hero_btn_checklist_hover: 'Завантажити безкоштовно',
     hero_title: 'Від хаосу до системи з AI',
     hero_subtitle: 'Допомагаємо компаніям використовувати штучний інтелект так, щоб бізнес працював швидше,\nчастина задач виконувалась автоматично.\nЗвільняємо від рутини для стратегічного зростання, використовуючи передові AI-рішення.',
     hero_stat1_num: '3x',
@@ -268,7 +270,9 @@ const translations = {
     // HERO
     hero_badge: 'AI CONSULTING AGENCY OF THE NEW GENERATION',
     hero_btn_call: 'Book a Free Discovery Call',
+    hero_btn_call_hover: 'Get a free consultation',
     hero_btn_checklist: 'AI Readiness Checklist',
+    hero_btn_checklist_hover: 'Download for free',
     hero_title: 'From Chaos to System with AI',
     hero_subtitle: 'We help companies use artificial intelligence so that business runs faster,\nsome tasks are performed automatically.\nWe free you from routine for strategic growth using advanced AI solutions.',
     hero_stat1_num: '3x',

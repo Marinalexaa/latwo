@@ -5,8 +5,8 @@
 /* --- Google Fonts Import --- */
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
-/* Moderustic & Wix Madefor Text via Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Moderustic:wght@300;400;500;600;700;800&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+/* Moderustic, Parkinsans & Wix Madefor Text via Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Moderustic:wght@300;400;500;600;700;800&family=Parkinsans:wght@300;400;500;600;700;800&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 /* ============================================================
    CSS CUSTOM PROPERTIES (Design Tokens)
@@ -31,6 +31,7 @@
 
   /* Typography */
   --font-heading: 'Moderustic', sans-serif;
+  --font-logo: 'Parkinsans', sans-serif;
   --font-subheading: 'Wix Madefor Text', sans-serif;
   --font-script: 'Kaushan Script', cursive;
 
@@ -146,9 +147,19 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-subheading);
   font-weight: 600;
   font-size: 1rem;
-  transition: all var(--transition);
+  line-height: 1.25;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background-color var(--transition), border-color var(--transition), color var(--transition);
   cursor: pointer;
   text-decoration: none;
+}
+
+.btn svg {
+  flex-shrink: 0;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px);
 }
 
 .btn-orange {
@@ -162,6 +173,7 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 0 0 12px rgba(255,255,255,0.6);
   background-color: #c94e2a;
   border-color: #c94e2a;
+  box-shadow: 0 14px 28px rgba(227, 92, 54, 0.28);
 }
 
 .btn-white {
@@ -172,6 +184,44 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-white:hover {
   color: var(--brand-orange);
+  box-shadow: 0 14px 28px rgba(255, 255, 255, 0.24);
+}
+
+.btn-text-stack {
+  display: inline-grid;
+  align-items: center;
+  justify-items: start;
+  min-height: 1.4em;
+  overflow: hidden;
+}
+
+.btn-text {
+  grid-area: 1 / 1;
+  display: inline-block;
+  white-space: nowrap;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.28s ease;
+}
+
+.btn-text.default {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.btn-text.hover {
+  transform: translateY(135%);
+  opacity: 0;
+}
+
+.btn:hover .btn-text.default,
+.btn:focus-visible .btn-text.default {
+  transform: translateY(-135%);
+  opacity: 0;
+}
+
+.btn:hover .btn-text.hover,
+.btn:focus-visible .btn-text.hover {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .btn-outline-white {
@@ -237,8 +287,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-logo {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-family: var(--font-logo);
+  font-size: 28px;
+  line-height: 0.7;
   font-weight: 400;
   letter-spacing: 0.01em;
   color: var(--header-text);
@@ -255,16 +306,37 @@ h1, h2, h3, h4, h5, h6 {
 
 .header-nav a {
   font-family: var(--font-subheading);
-  font-size: 0.95rem;
+  font-size: 16px;
+  line-height: 1.4;
   font-weight: 500;
   letter-spacing: 0.01em;
   color: var(--header-text);
   opacity: 0.85;
-  transition: opacity var(--transition);
+  position: relative;
+  transition: opacity var(--transition), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.header-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .header-nav a:hover {
   opacity: 1;
+  transform: translateY(-1px);
+}
+
+.header-nav a:hover::after,
+.header-nav a:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .header-right {
@@ -276,7 +348,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .header-right a {
   font-family: var(--font-subheading);
-  font-size: 0.95rem;
+  font-size: 16px;
+  line-height: 1.4;
   font-weight: 500;
   color: var(--header-text);
   opacity: 0.85;
@@ -386,7 +459,7 @@ h1, h2, h3, h4, h5, h6 {
    HERO SECTION
    ============================================================ */
 #hero {
-  background: #122E47;
+  background: linear-gradient(180deg, #122E47 0%, #0E2439 56%, #071624 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -402,7 +475,8 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 12px;
+  line-height: 1.4;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -417,6 +491,18 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   background-color: #4ade80;
   flex-shrink: 0;
+  animation: hero-dot-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes hero-dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.45);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 10px rgba(74, 222, 128, 0);
+  }
 }
 
 .hero-buttons {
@@ -429,20 +515,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: 80px;
   font-weight: 400;
   color: var(--white-primary);
-  line-height: 1.05;
+  line-height: 1.1;
   margin-bottom: 1.5rem;
 }
 
 .hero-subtitle {
   font-family: var(--font-subheading);
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: 20px;
+  font-weight: 400;
   color: rgba(255,255,255,0.75);
   max-width: 900px;
   margin: 0 auto 3rem;
-  line-height: 1.7;
+  line-height: 1.4;
 }
 
 .hero-stats {
@@ -472,9 +559,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-stat-value {
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-family: var(--font-subheading);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .hero-stat-label {
@@ -1830,6 +1918,16 @@ h1, h2, h3, h4, h5, h6 {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
+  .hero-title {
+    font-size: 64px;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
   .process-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1874,7 +1972,18 @@ h1, h2, h3, h4, h5, h6 {
   .header-logo {
     order: 2;
     margin-right: auto;
-    font-size: 1.42rem;
+    font-size: 24px;
+    line-height: 0.7;
+  }
+
+  .hero-title {
+    font-size: 42px;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    line-height: 1.4;
   }
 
   .why-inner,
@@ -1968,7 +2077,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .mobile-nav a {
   color: var(--white-primary);
-  font-size: 1.02rem;
+  font-size: 16px;
+  line-height: 1.4;
   font-family: var(--font-subheading);
   font-weight: 500;
   padding: 0.62rem 0;
@@ -2091,9 +2201,10 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: var(--font-subheading);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
   color: var(--white-primary);
 }
 
