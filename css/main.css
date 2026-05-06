@@ -291,7 +291,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 28px;
   line-height: 0.7;
   font-weight: 400;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.04em;
   color: var(--header-text);
   text-decoration: none;
   flex-shrink: 0;
@@ -309,34 +309,51 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 16px;
   line-height: 1.4;
   font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--header-text);
+  letter-spacing: -0.02em;
+  color: transparent;
   opacity: 0.85;
+  display: inline-grid;
+  align-items: center;
+  justify-items: start;
+  min-height: 1.4em;
+  overflow: hidden;
   position: relative;
-  transition: opacity var(--transition), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity var(--transition);
+}
+
+.header-nav a::before,
+.header-nav a::after {
+  grid-area: 1 / 1;
+  content: attr(data-label);
+  color: var(--header-text);
+  white-space: nowrap;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.28s ease;
+}
+
+.header-nav a::before {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .header-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -6px;
-  height: 2px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(135%);
+  opacity: 0;
 }
 
 .header-nav a:hover {
   opacity: 1;
-  transform: translateY(-1px);
+}
+
+.header-nav a:hover::before,
+.header-nav a:focus-visible::before {
+  transform: translateY(-135%);
+  opacity: 0;
 }
 
 .header-nav a:hover::after,
 .header-nav a:focus-visible::after {
-  transform: scaleX(1);
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .header-right {
@@ -351,6 +368,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 16px;
   line-height: 1.4;
   font-weight: 500;
+  letter-spacing: -0.02em;
   color: var(--header-text);
   opacity: 0.85;
   transition: opacity var(--transition);
@@ -478,7 +496,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 12px;
   line-height: 1.4;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--white-primary);
   opacity: 0.8;
@@ -517,15 +535,32 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-size: 80px;
   font-weight: 400;
+  letter-spacing: -0.04em;
   color: var(--white-primary);
   line-height: 1.1;
   margin-bottom: 1.5rem;
+  animation: hero-title-appear 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 0.2s;
+}
+
+@keyframes hero-title-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(26px) scale(0.98);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 
 .hero-subtitle {
   font-family: var(--font-subheading);
   font-size: 20px;
   font-weight: 400;
+  letter-spacing: -0.02em;
   color: rgba(255,255,255,0.75);
   max-width: 900px;
   margin: 0 auto 3rem;

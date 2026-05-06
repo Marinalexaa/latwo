@@ -539,6 +539,11 @@ function applyTranslations() {
 
   // Update html lang attribute
   document.documentElement.lang = currentLang === 'uk' ? 'uk' : 'en';
+
+  // Sync animated nav labels (desktop header)
+  document.querySelectorAll('#site-header .header-nav a').forEach(link => {
+    link.setAttribute('data-label', link.textContent.trim());
+  });
 }
 
 function updateLangUI() {
