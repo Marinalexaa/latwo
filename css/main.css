@@ -163,17 +163,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-orange {
-  background-color: var(--brand-orange);
+  background: linear-gradient(180deg, #ea6740 0%, #df5933 100%);
   color: var(--white-primary);
-  border: 2px solid var(--brand-orange);
+  border: 1.5px solid rgba(255, 255, 255, 0.34);
+  box-shadow: 0 12px 34px rgba(227, 92, 54, 0.28), inset 0 1px 0 rgba(255,255,255,0.24);
 }
 
 .btn-orange:hover {
   color: var(--white-primary);
-  text-shadow: 0 0 12px rgba(255,255,255,0.6);
-  background-color: #c94e2a;
-  border-color: #c94e2a;
-  box-shadow: 0 14px 28px rgba(227, 92, 54, 0.28);
+  text-shadow: 0 0 10px rgba(255,255,255,0.35);
+  background: linear-gradient(180deg, #ef714a 0%, #e25f39 100%);
+  border-color: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 14px 30px rgba(227, 92, 54, 0.34), inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
 .btn-white {
@@ -283,6 +284,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  min-height: 64px;
   gap: 2rem;
 }
 
@@ -302,15 +304,17 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 1.75rem;
   flex: 1;
+  align-self: center;
 }
 
-.header-nav a {
+.header-nav a,
+.header-right > a {
   font-family: var(--font-subheading);
   font-size: 16px;
   line-height: 1.4;
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: transparent;
+  color: var(--header-text);
   opacity: 0.85;
   display: inline-grid;
   align-items: center;
@@ -318,11 +322,19 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 1.4em;
   overflow: hidden;
   position: relative;
+  align-self: center;
   transition: opacity var(--transition);
 }
 
+.header-nav a[data-label],
+.header-right > a[data-label] {
+  color: transparent;
+}
+
 .header-nav a::before,
-.header-nav a::after {
+.header-nav a::after,
+.header-right > a::before,
+.header-right > a::after {
   grid-area: 1 / 1;
   content: attr(data-label);
   color: var(--header-text);
@@ -330,28 +342,35 @@ h1, h2, h3, h4, h5, h6 {
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.28s ease;
 }
 
-.header-nav a::before {
+.header-nav a::before,
+.header-right > a::before {
   transform: translateY(0);
   opacity: 1;
 }
 
-.header-nav a::after {
+.header-nav a::after,
+.header-right > a::after {
   transform: translateY(135%);
   opacity: 0;
 }
 
-.header-nav a:hover {
+.header-nav a:hover,
+.header-right > a:hover {
   opacity: 1;
 }
 
 .header-nav a:hover::before,
-.header-nav a:focus-visible::before {
+.header-nav a:focus-visible::before,
+.header-right > a:hover::before,
+.header-right > a:focus-visible::before {
   transform: translateY(-135%);
   opacity: 0;
 }
 
 .header-nav a:hover::after,
-.header-nav a:focus-visible::after {
+.header-nav a:focus-visible::after,
+.header-right > a:hover::after,
+.header-right > a:focus-visible::after {
   transform: translateY(0);
   opacity: 1;
 }
@@ -361,21 +380,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 1.5rem;
   flex-shrink: 0;
-}
-
-.header-right a {
-  font-family: var(--font-subheading);
-  font-size: 16px;
-  line-height: 1.4;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  color: var(--header-text);
-  opacity: 0.85;
-  transition: opacity var(--transition);
-}
-
-.header-right a:hover {
-  opacity: 1;
+  align-self: center;
 }
 
 /* Language Switcher */
@@ -559,7 +564,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-subtitle {
   font-family: var(--font-subheading);
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: -0.02em;
   color: rgba(255,255,255,0.75);
   max-width: 900px;
@@ -2165,18 +2170,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mini-logo-img {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.95);
-  background: rgba(255,255,255,0.14);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.28);
-  margin-left: -6px;
+  width: 62px;
+  height: 40px;
+  border-radius: 14px;
+  object-fit: contain;
+  border: 0;
+  padding: 8px 9px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(6, 15, 25, 0.38);
+  margin-left: -16px;
 }
 
 .mini-logo-img:first-child {
   margin-left: 0;
+}
+
+.hero-stat-logos .mini-logo-img:nth-child(1) {
+  transform: rotate(-8deg);
+}
+
+.hero-stat-logos .mini-logo-img:nth-child(2) {
+  transform: rotate(-1.5deg);
+}
+
+.hero-stat-logos .mini-logo-img:nth-child(3) {
+  transform: rotate(7deg);
 }
 
 /* Testimonial name/role inside dark cards */

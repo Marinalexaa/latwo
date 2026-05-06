@@ -541,7 +541,7 @@ function applyTranslations() {
   document.documentElement.lang = currentLang === 'uk' ? 'uk' : 'en';
 
   // Sync animated nav labels (desktop header)
-  document.querySelectorAll('#site-header .header-nav a').forEach(link => {
+  document.querySelectorAll('#site-header .header-nav a, #site-header .header-right > a').forEach(link => {
     link.setAttribute('data-label', link.textContent.trim());
   });
 }
