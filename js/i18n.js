@@ -104,6 +104,7 @@ const translations = {
     case1_stat4_num: '80%',
     case1_stat4_label: 'Зросла кількість лояльних клієнтів, що повертаються',
     case1_btn: 'Час трансформувати ваш бізнес',
+    case1_btn_hover: 'Отримати безкоштовну консультацію',
 
     // CASE 2
     case2_badge: 'ОДИН З НАШИХ КЛІЄНТІВ',
@@ -119,6 +120,7 @@ const translations = {
     case2_stat4_num: '22%',
     case2_stat4_label: 'Підвищилась конверсія нових заявок.',
     case2_btn: 'Час трансформувати ваш бізнес',
+    case2_btn_hover: 'Отримати безкоштовну консультацію',
 
     // TESTIMONIALS
     testimonials_badge: 'ВІДГУКИ КЛІЄНТІВ ТА ПАРТНЕРІВ',
@@ -130,7 +132,7 @@ const translations = {
     pricing_badge: 'ШЛЯХИ ДО ВАШОГО ЗРОСТАННЯ',
     pricing_title_ghost: 'Позбудьтесь хаосу',
     pricing_title: 'Делегуйте рутину AI',
-    pricing_subtitle: 'Три пакети, розроблені для різних етапів вашої AI-трансформації. Від першого аудиту до постійного стратегічного супроводу.',
+    pricing_subtitle: 'Три пакети, розроблені для різних етапів вашої AI-трансформації. Від першого навчання та аудиту до автоматизації операційки.',
     pricing_popular: 'Popular',
     plan1_name: 'Старт',
     plan1_price: 'від €490',
@@ -145,6 +147,7 @@ const translations = {
     plan1_f6: 'Q&A + підтримка після навчання',
     plan1_result: 'Результат: команда, яка швидше працює, менше витрачає часу на рутину і приймає кращі рішення.',
     plan1_btn: 'Обрати пропозицію',
+    plan1_btn_hover: 'Забронювати дзвінок',
     plan2_name: 'Ріст',
     plan2_price: 'від €1000',
     plan2_duration: '2-3 тижнів',
@@ -159,6 +162,7 @@ const translations = {
     plan2_f7: 'Рекомендації для масштабування',
     plan2_result: 'Результат: робочий продукт, перевірені гіпотези та чітке розуміння, куди масштабуватись.',
     plan2_btn: 'Обрати пропозицію',
+    plan2_btn_hover: 'Забронювати дзвінок',
     plan3_name: 'Масштаб',
     plan3_price: 'договірна',
     plan3_duration: 'від 3 тижнів',
@@ -172,6 +176,7 @@ const translations = {
     plan3_f6: 'Дорожня карта масштабування',
     plan3_result: 'Результат: контрольований, ефективний бізнес із системами, які працюють замість хаосу.',
     plan3_btn: 'Обрати пропозицію',
+    plan3_btn_hover: 'Забронювати дзвінок',
 
     // CTA
     cta_label: 'РЕАЛЬНІ РЕЗУЛЬТАТИ',
@@ -217,11 +222,9 @@ const translations = {
     contact_discovery: 'ХОЧУ ЗАБРОНЮВАТИ БЕЗКОШТОВНУ КОНСУЛЬТАЦІЮ ПО AI-ТРАНСФОРМАЦІЇ',
     contact_btn: 'Відправити',
     contact_success: 'Дякуємо! Ми зв\'яжемось з вами найближчим часом.',
-    service_opt1: 'Аналіз бізнесу і можливостей AI',
-    service_opt2: 'Автоматизація процесів за допомогою AI',
-    service_opt3: 'Навчання команди працювати з AI',
-    service_opt4: 'Розробка AI-продуктів і автоматизацій',
-    service_opt5: 'AI Transformation & Automation',
+    service_opt1: 'Старт (Навчання по АІ)',
+    service_opt2: 'Ріст (Розробка MVP)',
+    service_opt3: 'Масштаб (АІ трансформація бізнесу)',
 
     // FOOTER
     footer_desc: 'AI-консалтингова агенція нового покоління. Перетворіть хаос на систему та почніть зростати вже сьогодні.',
@@ -356,6 +359,7 @@ const translations = {
     case1_stat4_num: '80%',
     case1_stat4_label: 'Number of loyal returning customers increased',
     case1_btn: 'Time to transform your business',
+    case1_btn_hover: 'Get a free consultation',
 
     // CASE 2
     case2_badge: 'ONE OF OUR CLIENTS',
@@ -371,6 +375,7 @@ const translations = {
     case2_stat4_num: '22%',
     case2_stat4_label: 'Conversion of new applications increased.',
     case2_btn: 'Time to transform your business',
+    case2_btn_hover: 'Get a free consultation',
 
     // TESTIMONIALS
     testimonials_badge: 'CLIENT & PARTNER TESTIMONIALS',
@@ -382,7 +387,7 @@ const translations = {
     pricing_badge: 'PATHS TO YOUR GROWTH',
     pricing_title_ghost: 'Get rid of chaos',
     pricing_title: 'Delegate routine to AI',
-    pricing_subtitle: 'Three packages designed for different stages of your AI transformation. From the first audit to ongoing strategic support.',
+    pricing_subtitle: 'Three packages designed for different stages of your AI transformation. From first training and audit to operations automation.',
     pricing_popular: 'Popular',
     plan1_name: 'Start',
     plan1_price: 'from €490',
@@ -397,6 +402,7 @@ const translations = {
     plan1_f6: 'Q&A + post-training support',
     plan1_result: 'Result: a team that works faster, spends less time on routine and makes better decisions.',
     plan1_btn: 'Choose plan',
+    plan1_btn_hover: 'Book a call',
     plan2_name: 'Growth',
     plan2_price: 'from €1000',
     plan2_duration: '2-3 weeks',
@@ -411,6 +417,7 @@ const translations = {
     plan2_f7: 'Scaling recommendations',
     plan2_result: 'Result: a working product, tested hypotheses and a clear understanding of where to scale.',
     plan2_btn: 'Choose plan',
+    plan2_btn_hover: 'Book a call',
     plan3_name: 'Scale',
     plan3_price: 'negotiable',
     plan3_duration: 'from 3 weeks',
@@ -424,6 +431,7 @@ const translations = {
     plan3_f6: 'Scaling roadmap',
     plan3_result: 'Result: a controlled, efficient business with systems that work instead of chaos.',
     plan3_btn: 'Choose plan',
+    plan3_btn_hover: 'Book a call',
 
     // CTA
     cta_label: 'REAL RESULTS',
@@ -469,11 +477,9 @@ const translations = {
     contact_discovery: 'I WANT TO BOOK A FREE AI TRANSFORMATION CONSULTATION',
     contact_btn: 'Send',
     contact_success: 'Thank you! We will contact you shortly.',
-    service_opt1: 'Business & AI Opportunity Analysis',
-    service_opt2: 'Process Automation with AI',
-    service_opt3: 'Team Training to Work with AI',
-    service_opt4: 'AI Product & Automation Development',
-    service_opt5: 'AI Transformation & Automation',
+    service_opt1: 'Start (AI Training)',
+    service_opt2: 'Growth (MVP Development)',
+    service_opt3: 'Scale (AI Business Transformation)',
 
     // FOOTER
     footer_desc: 'AI consulting agency of the new generation. Turn chaos into a system and start growing today.',
@@ -518,8 +524,155 @@ function setLanguage(lang) {
   if (!translations[lang]) return;
   currentLang = lang;
   localStorage.setItem('latwo_lang', lang);
+
+  const redirectPath = getLanguageRedirectPath(lang);
+  if (redirectPath) {
+    const nextUrl = new URL(window.location.href);
+    nextUrl.pathname = redirectPath;
+    window.location.href = nextUrl.toString();
+    return;
+  }
+
   applyTranslations();
   updateLangUI();
+}
+
+function getLanguageRedirectPath(lang) {
+  const path = window.location.pathname;
+  const isFileProtocol = window.location.protocol === 'file:';
+
+  const enRootPath = isFileProtocol ? '/en/index.html' : '/en/';
+  const enService1Path = isFileProtocol ? '/en/services-1/index.html' : '/en/services-1/';
+  const enService2Path = isFileProtocol ? '/en/services-2/index.html' : '/en/services-2/';
+  const enService3Path = isFileProtocol ? '/en/services-3/index.html' : '/en/services-3/';
+  const enService4Path = isFileProtocol ? '/en/services-4/index.html' : '/en/services-4/';
+  const ukRootPath = '/index.html';
+
+  if (path.endsWith('/pages/services-1.html') && lang === 'en') {
+    return path.replace('/pages/services-1.html', enService1Path);
+  }
+
+  if (path.endsWith('/pages/services-2.html') && lang === 'en') {
+    return path.replace('/pages/services-2.html', enService2Path);
+  }
+
+  if (path.endsWith('/pages/services-3.html') && lang === 'en') {
+    return path.replace('/pages/services-3.html', enService3Path);
+  }
+
+  if (path.endsWith('/pages/services-4.html') && lang === 'en') {
+    return path.replace('/pages/services-4.html', enService4Path);
+  }
+
+  if ((path.endsWith('/en/services-1/') || path.endsWith('/en/services-1/index.html')) && lang === 'uk') {
+    return path.replace(/\/en\/services-1(?:\/index\.html)?\/?$/, '/pages/services-1.html');
+  }
+
+  if ((path.endsWith('/en/services-2/') || path.endsWith('/en/services-2/index.html')) && lang === 'uk') {
+    return path.replace(/\/en\/services-2(?:\/index\.html)?\/?$/, '/pages/services-2.html');
+  }
+
+  if ((path.endsWith('/en/services-3/') || path.endsWith('/en/services-3/index.html')) && lang === 'uk') {
+    return path.replace(/\/en\/services-3(?:\/index\.html)?\/?$/, '/pages/services-3.html');
+  }
+
+  if ((path.endsWith('/en/services-4/') || path.endsWith('/en/services-4/index.html')) && lang === 'uk') {
+    return path.replace(/\/en\/services-4(?:\/index\.html)?\/?$/, '/pages/services-4.html');
+  }
+
+  if (path.endsWith('/pages/services-1-en.html') && lang === 'uk') {
+    return path.replace('/pages/services-1-en.html', '/pages/services-1.html');
+  }
+
+  if (path.endsWith('/pages/services-2-en.html') && lang === 'uk') {
+    return path.replace('/pages/services-2-en.html', '/pages/services-2.html');
+  }
+
+  if (path.endsWith('/pages/services-3-en.html') && lang === 'uk') {
+    return path.replace('/pages/services-3-en.html', '/pages/services-3.html');
+  }
+
+  if (path.endsWith('/pages/services-4-en.html') && lang === 'uk') {
+    return path.replace('/pages/services-4-en.html', '/pages/services-4.html');
+  }
+
+  if (path.endsWith('/pages/services-1-en.html') && lang === 'en') {
+    return path.replace('/pages/services-1-en.html', enService1Path);
+  }
+
+  if (path.endsWith('/pages/services-2-en.html') && lang === 'en') {
+    return path.replace('/pages/services-2-en.html', enService2Path);
+  }
+
+  if (path.endsWith('/pages/services-3-en.html') && lang === 'en') {
+    return path.replace('/pages/services-3-en.html', enService3Path);
+  }
+
+  if (path.endsWith('/pages/services-4-en.html') && lang === 'en') {
+    return path.replace('/pages/services-4-en.html', enService4Path);
+  }
+
+  if (!path.includes('/en/') && lang === 'en') {
+    if (path.endsWith('/index.html')) {
+      return path.replace(/\/index\.html$/, enRootPath);
+    }
+    if (path.endsWith('/')) {
+      return isFileProtocol ? `${path}en/index.html` : `${path}en/`;
+    }
+  }
+
+  if ((path.endsWith('/en/') || path.endsWith('/en/index.html')) && lang === 'uk') {
+    return path.replace(/\/en(?:\/index\.html)?\/?$/, ukRootPath);
+  }
+
+  return null;
+}
+
+function getLanguageFromPath() {
+  const path = window.location.pathname;
+  if (path.endsWith('/pages/services-1-en.html')) return 'en';
+  if (path.endsWith('/en/services-1/') || path.endsWith('/en/services-1/index.html')) return 'en';
+  if (path.endsWith('/pages/services-2-en.html')) return 'en';
+  if (path.endsWith('/en/services-2/') || path.endsWith('/en/services-2/index.html')) return 'en';
+  if (path.endsWith('/pages/services-3-en.html')) return 'en';
+  if (path.endsWith('/en/services-3/') || path.endsWith('/en/services-3/index.html')) return 'en';
+  if (path.endsWith('/pages/services-4-en.html')) return 'en';
+  if (path.endsWith('/en/services-4/') || path.endsWith('/en/services-4/index.html')) return 'en';
+  if (path.endsWith('/en/') || path.endsWith('/en/index.html')) return 'en';
+  if (path.endsWith('/pages/services-1.html')) return 'uk';
+  if (path.endsWith('/pages/services-2.html')) return 'uk';
+  if (path.endsWith('/pages/services-3.html')) return 'uk';
+  if (path.endsWith('/pages/services-4.html')) return 'uk';
+  return null;
+}
+
+function normalizeLocalIndexPath() {
+  if (window.location.protocol !== 'file:') return;
+  const path = window.location.pathname;
+
+  if (path.endsWith('/en/')) {
+    window.location.replace(`${window.location.href.replace(/\/$/, '')}/index.html`);
+    return;
+  }
+
+  if (path.endsWith('/en/services-1/')) {
+    window.location.replace(`${window.location.href.replace(/\/$/, '')}/index.html`);
+    return;
+  }
+
+  if (path.endsWith('/en/services-2/')) {
+    window.location.replace(`${window.location.href.replace(/\/$/, '')}/index.html`);
+    return;
+  }
+
+  if (path.endsWith('/en/services-3/')) {
+    window.location.replace(`${window.location.href.replace(/\/$/, '')}/index.html`);
+    return;
+  }
+
+  if (path.endsWith('/en/services-4/')) {
+    window.location.replace(`${window.location.href.replace(/\/$/, '')}/index.html`);
+  }
 }
 
 function applyTranslations() {
@@ -560,6 +713,14 @@ function updateLangUI() {
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
+  normalizeLocalIndexPath();
+
+  const langFromPath = getLanguageFromPath();
+  if (langFromPath && langFromPath !== currentLang) {
+    currentLang = langFromPath;
+    localStorage.setItem('latwo_lang', langFromPath);
+  }
+
   applyTranslations();
   updateLangUI();
 

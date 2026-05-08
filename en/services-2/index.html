@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Process Automation — Latwo</title>
+  <meta name="description" content="Latwo Service 2: routine audit, prioritization, automation setup, and team handover for scalable AI operations." />
+  <link rel="stylesheet" href="../../css/main.css" />
+  <style>
+    .service-page-bg {
+      background: var(--bg-page);
+      color: var(--black-primary);
+    }
+
+    .service-content-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .service-hero {
+      padding: 150px 0 110px;
+      text-align: center;
+    }
+
+    .service-hero .section-label {
+      margin-bottom: 1.5rem;
+      color: var(--brand-blue-light);
+      justify-content: center;
+      display: flex;
+      animation: hero-title-appear 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      animation-delay: 0.08s;
+    }
+
+    .service-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 5.2vw, 68px);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      max-width: 760px;
+      margin: 0 auto 1.75rem;
+      animation: hero-title-appear 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      animation-delay: 0.2s;
+    }
+
+    .service-hero .service-hero-meta {
+      font-family: var(--font-subheading);
+      font-size: 16px;
+      line-height: 1.4;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #E35C36;
+      margin-bottom: 1.5rem;
+      animation: hero-title-appear 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      animation-delay: 0.32s;
+    }
+
+    .service-hero p {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: var(--black-secondary);
+      animation: hero-title-appear 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      animation-delay: 0.44s;
+    }
+
+    .service-includes {
+      padding: 0 0 5rem;
+    }
+
+    .service-includes-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .service-includes-left h2 {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      margin-bottom: 1.3rem;
+    }
+
+    .include-item {
+      margin-bottom: 1.65rem;
+    }
+
+    .include-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .include-item h3 {
+      font-family: var(--font-subheading);
+      font-size: 20px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      color: var(--black-primary);
+    }
+
+    .include-item h3 strong {
+      font-weight: 700;
+    }
+
+    .include-item p {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: #404040;
+      max-width: 97%;
+    }
+
+    .service-doc-card {
+      background: radial-gradient(135% 110% at 50% 42%, #fcfcfd 0%, #f5f7f9 54%, #edf1f5 100%);
+      border: 4px solid #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 16px 42px rgba(227, 92, 54, 0.12);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .service-doc-card .script-fade {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: #a9a9a9;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-doc-card h3 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .service-doc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.4rem;
+      flex: 1;
+    }
+
+    .service-doc-list li {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: var(--black-secondary);
+      list-style: none;
+      position: relative;
+      padding-left: 1.1rem;
+    }
+
+    .service-doc-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #8b8b8b;
+    }
+
+    .service-doc-list li strong {
+      font-weight: 700;
+      color: #5f5f5f;
+    }
+
+    .service-doc-card .btn {
+      width: 100%;
+    }
+
+    .service-results {
+      padding: 1.5rem 0 6.5rem;
+      text-align: center;
+    }
+
+    .service-results .section-label {
+      color: var(--brand-blue-light);
+      justify-content: center;
+      display: flex;
+      margin-bottom: 0.6rem;
+    }
+
+    .service-results h2 {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      margin-bottom: 1.15rem;
+    }
+
+    .service-results-intro {
+      max-width: 960px;
+      margin: 0 auto 2.1rem;
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: #3f3f3f;
+    }
+
+    .result-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .result-metric-card {
+      background: radial-gradient(135% 110% at 50% 42%, #fcfcfd 0%, #f5f7f9 54%, #edf1f5 100%);
+      border: 4px solid #ffffff;
+      border-radius: 24px;
+      padding: 1.45rem 1.2rem;
+      min-height: 228px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(6, 16, 28, 0.08);
+    }
+
+    .result-metric-card .metric-value {
+      font-family: var(--font-heading);
+      font-size: 56px;
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--brand-orange);
+      text-shadow: 0 4px 14px rgba(227, 92, 54, 0.32);
+      margin-bottom: 1rem;
+    }
+
+    .result-metric-card p {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      color: var(--brand-blue-light);
+    }
+
+    .result-points {
+      max-width: 980px;
+      margin: 0 auto 2.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+      text-align: center;
+    }
+
+    .result-point {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: #333;
+      position: static;
+      padding-left: 0;
+    }
+
+    .result-point::before {
+      content: "⚡";
+      position: static;
+      display: inline-block;
+      margin-right: 0.45rem;
+    }
+
+    .service-results-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .service-results-actions .btn {
+      min-width: 320px;
+    }
+
+    .service-results-actions .btn-white {
+      border-color: #ffffff;
+      box-shadow: 0 10px 26px rgba(6, 16, 28, 0.08);
+    }
+
+    @media (max-width: 1120px) {
+      .service-includes-inner {
+        grid-template-columns: 1fr;
+      }
+      .service-doc-card {
+        max-width: 760px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .result-metrics {
+        grid-template-columns: 1fr;
+      }
+      .result-metric-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .service-hero {
+        padding: 120px 0 80px;
+      }
+      .service-content-wrap {
+        padding: 0 1rem;
+      }
+      .service-includes,
+      .service-results {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .service-doc-card,
+      .result-metric-card {
+        padding: 1.5rem;
+      }
+      .service-results-actions .btn {
+        min-width: 100%;
+      }
+      .result-points {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body class="service-page-bg">
+
+<header id="site-header">
+  <div class="header-inner">
+    <a href="../index.html" class="header-logo">Latwo</a>
+    <nav class="header-nav">
+      <a href="../../pages/cases.html">Cases</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../../pages/about.html">About us</a>
+      <a href="../index.html#pricing">Pricing</a>
+      <a href="../index.html#faq">FAQs</a>
+    </nav>
+    <div class="header-right">
+      <a href="../index.html#contact">Contacts</a>
+      <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="lang-switcher" id="lang-switcher">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="current-lang">English</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <button class="lang-option" data-lang="uk">🇺🇦 Українська</button>
+          <button class="lang-option" data-lang="en">🇬🇧 English</button>
+        </div>
+      </div>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="../../pages/cases.html">Cases</a>
+  <a href="../index.html#services" class="mobile-nav-close">Services</a>
+  <a href="../../pages/about.html">About us</a>
+  <a href="../index.html#pricing" class="mobile-nav-close">Pricing</a>
+  <a href="../index.html#faq" class="mobile-nav-close">FAQs</a>
+  <a href="../index.html#contact" class="mobile-nav-close">Contacts</a>
+  <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank">Instagram</a>
+  <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank">LinkedIn</a>
+</nav>
+
+<section class="service-hero" data-header-theme="light">
+  <div class="service-content-wrap">
+    <span class="section-label">OUR SERVICES</span>
+    <h1>AI Process Automation</h1>
+    <p class="service-hero-meta">The Next Level · Team: 2-5 people · Timeline: 3-5 weeks</p>
+    <p>When the team already knows what AI is, it's time to ensure that part of the work happens without human intervention. We identify processes that can be automated and set up a system that runs itself.</p>
+  </div>
+</section>
+
+<section class="service-includes" data-header-theme="light">
+  <div class="service-content-wrap">
+    <div class="service-includes-inner">
+      <div class="service-includes-left scroll-reveal">
+      <h2>What's Included:</h2>
+
+      <article class="include-item">
+        <h3>☑️ <strong>Routine Audit</strong> — Identifying Time-Sinks</h3>
+        <p>We analyze the team's daily work: what repeats every day, what takes hours but requires no decisions, and where a human is doing what a machine could do.</p>
+      </article>
+
+      <article class="include-item">
+        <h3>☑️ <strong>Prioritization</strong> — What to Launch First</h3>
+        <p>We don't automate everything at once. We choose 3-5 points where the result will be fast and tangible, and we start there. You see the effect within the first few weeks.</p>
+      </article>
+
+      <article class="include-item">
+        <h3>☑️ <strong>Automation Setup</strong></h3>
+        <p>We configure the system for your specific processes. Data collection from various sources, report preparation, customer request processing, document creation everything repetitive starts happening automatically.</p>
+      </article>
+
+      <article class="include-item">
+        <h3>☑️ <strong>Handover &amp; Training</strong></h3>
+        <p>We show the team how the system works, how to monitor it, and how to expand it further on their own. You are not dependent on us the system is yours.</p>
+      </article>
+      </div>
+
+      <aside class="service-doc-card scroll-reveal">
+        <div class="script-fade">Documentation</div>
+        <h3>To be created</h3>
+        <ul class="service-doc-list">
+          <li><strong>Automation Map</strong> - A complete list of processes running automatically, with a description of the logic for each.</li>
+          <li><strong>Team Instructions</strong> - Guides on how to use, monitor, and expand the automations.</li>
+          <li><strong>Quick Wins Report</strong> - What has been launched, the results achieved, and what's next.</li>
+        </ul>
+        <a href="../index.html#contact" class="btn btn-orange smooth-scroll">
+          <span class="btn-text-stack">
+            <span class="btn-text default">Choose a service</span>
+            <span class="btn-text hover">Start now</span>
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="service-results" data-header-theme="light">
+  <div class="service-content-wrap">
+    <div class="service-results-inner">
+      <span class="section-label">BUSINESS IMPACT</span>
+      <h2>What changes after automation</h2>
+      <p class="service-results-intro">After setting up automations, part of the work simply disappears from the team's calendar, it happens without reminders, without errors, and without human involvement.</p>
+
+    <div class="result-metrics">
+      <article class="result-metric-card scroll-reveal">
+        <div class="metric-value">10-15</div>
+        <p>hours of team capacity<br />reclaimed weekly</p>
+      </article>
+      <article class="result-metric-card scroll-reveal">
+        <div class="metric-value">3</div>
+        <p>automated processes<br />after the first stage</p>
+      </article>
+      <article class="result-metric-card scroll-reveal">
+        <div class="metric-value">3-5</div>
+        <p>weeks — and the system<br />operates independently</p>
+      </article>
+    </div>
+
+    <div class="result-points">
+      <p class="result-point">Repetitive tasks are handled automatically — freeing the team for more important work</p>
+      <p class="result-point">Processes happen regularly and without errors — independent of the human factor</p>
+      <p class="result-point">You get a scalable system — automation grows alongside your business</p>
+    </div>
+
+      <div class="service-results-actions">
+        <a href="../index.html#contact" class="btn btn-orange smooth-scroll">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+          <span class="btn-text-stack">
+            <span class="btn-text default">Free Discovery Call</span>
+            <span class="btn-text hover">Book now</span>
+          </span>
+        </a>
+        <a href="../index.html#pricing" class="btn btn-white smooth-scroll">
+          <span class="btn-text-stack">
+            <span class="btn-text default">View package offers →</span>
+            <span class="btn-text hover">See packages →</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer" data-header-theme="dark">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h2><a href="../index.html" style="color:inherit;text-decoration:none;">Latwo</a></h2>
+      <p>A next-generation AI consulting agency. Turn chaos into systems and start scaling today.</p>
+    </div>
+    <div class="footer-links-center">
+      <a href="../index.html#faq">FAQs</a>
+      <a href="../../pages/privacy.html">Privacy Policy</a>
+      <a href="../../pages/cookies.html">Cookie Policy</a>
+    </div>
+    <div class="footer-nav-columns">
+      <div class="footer-nav-col">
+        <h4>NAVIGATION</h4>
+        <ul>
+          <li><a href="../../pages/cases.html">Cases</a></li>
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../../pages/about.html">About us</a></li>
+          <li><a href="../index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4>CONTACT</h4>
+        <ul>
+          <li><a href="../index.html#contact">Contacts</a></li>
+          <li><a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Latwo. All rights reserved.</span>
+    <span><span>Created by</span> <a href="https://latwo.eu" style="text-decoration:underline;">Latwo</a></span>
+  </div>
+</footer>
+
+<script src="../../js/i18n.js"></script>
+<script src="../../js/main.js"></script>
+</body>
+</html>

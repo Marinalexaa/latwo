@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initContactForm();
   initChecklist();
+  initPricingContactPrefill();
+  initTestimonialsHoverCarousel();
+  initSocialProofAvatars();
+  initFooterNavAnimationLabels();
 });
 
 /* ============================================================
@@ -259,6 +263,224 @@ function initChecklist() {
 }
 
 /* ============================================================
+   PRICING → CONTACT prefill
+   ============================================================ */
+function initPricingContactPrefill() {
+  const serviceSelect = document.querySelector('#contact-form select[name="service"]');
+  if (!serviceSelect) return;
+
+  document.querySelectorAll('.pricing-btn[data-service]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const serviceValue = btn.getAttribute('data-service');
+      if (!serviceValue) return;
+      serviceSelect.value = serviceValue;
+      serviceSelect.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  });
+}
+
+/* ============================================================
+   TESTIMONIALS HOVER CAROUSEL
+   ============================================================ */
+function initTestimonialsHoverCarousel() {
+  const section = document.getElementById('testimonials');
+  if (!section) return;
+
+  const wrapper = section.querySelector('.testimonials-track-wrapper');
+  const track = wrapper ? wrapper.querySelector('.testimonials-track') : null;
+  if (!wrapper || !track) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let running = false;
+  let animating = false;
+  let moveTimer = null;
+  let pauseTimer = null;
+
+  const getCards = () => Array.from(track.querySelectorAll('.testimonial-card'));
+
+  function clearTimers() {
+    if (moveTimer) {
+      clearTimeout(moveTimer);
+      moveTimer = null;
+    }
+    if (pauseTimer) {
+      clearTimeout(pauseTimer);
+      pauseTimer = null;
+    }
+  }
+
+  function markCenterCard(targetIndex = 1) {
+    const cards = getCards();
+    cards.forEach(card => card.classList.remove('is-center'));
+    const centerCard = cards[targetIndex] || cards[1];
+    if (centerCard) centerCard.classList.add('is-center');
+  }
+
+  function nextDurationMs() {
+    return 1700 + Math.floor(Math.random() * 450);
+  }
+
+  function step() {
+    if (!running || animating) return;
+
+    const cards = getCards();
+    if (cards.length < 2) return;
+
+    animating = true;
+    const firstCard = cards[0];
+    const trackStyle = window.getComputedStyle(track);
+    const gap = parseFloat(trackStyle.gap || trackStyle.columnGap || '0') || 0;
+    const travel = firstCard.offsetWidth + gap;
+    const duration = nextDurationMs();
+
+    markCenterCard(2);
+    track.style.setProperty('--card-motion-ms', `${duration}ms`);
+    track.style.transition = `transform ${duration}ms cubic-bezier(0.25, 0.86, 0.32, 1)`;
+    track.style.transform = `translate3d(-${travel}px, 0, 0)`;
+
+    const onTransitionEnd = (event) => {
+      if (event.propertyName !== 'transform') return;
+      track.removeEventListener('transitionend', onTransitionEnd);
+      track.style.transition = 'none';
+      track.appendChild(firstCard);
+      track.style.transform = 'translate3d(0, 0, 0)';
+      markCenterCard();
+      animating = false;
+
+      pauseTimer = setTimeout(() => {
+        if (!running) return;
+        requestAnimationFrame(step);
+      }, 200);
+    };
+
+    track.addEventListener('transitionend', onTransitionEnd);
+  }
+
+  function start() {
+    if (running) return;
+    running = true;
+    wrapper.classList.add('is-animating');
+    markCenterCard();
+    pauseTimer = setTimeout(step, 500);
+  }
+
+  function stop() {
+    running = false;
+    animating = false;
+    clearTimers();
+    wrapper.classList.remove('is-animating');
+    track.style.transition = 'none';
+    track.style.transform = 'translate3d(0, 0, 0)';
+    markCenterCard();
+  }
+
+  section.addEventListener('mouseenter', start);
+  section.addEventListener('mouseleave', stop);
+  section.addEventListener('focusin', start);
+  section.addEventListener('focusout', stop);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+  });
+
+  markCenterCard();
+}
+
+/* ============================================================
+   SOCIAL PROOF AVATARS — PNG with fallback
+   ============================================================ */
+function initSocialProofAvatars() {
+  const cards = document.querySelectorAll('#social-proof .review-mini-card');
+  if (!cards.length) return;
+
+  const imagePrefix = window.location.pathname.includes('/en/') ? '../' : '';
+  const fallbackPool = [
+    `${imagePrefix}images/testimonial-andrii.png`,
+    `${imagePrefix}images/testimonial-dmytro.png`,
+    `${imagePrefix}images/testimonial-oksana.png`,
+    `${imagePrefix}images/testimonial-kostiantyn.png`
+  ];
+
+  cards.forEach((card, index) => {
+    const avatar = card.querySelector('.review-mini-avatar');
+    const nameEl = card.querySelector('.review-mini-name');
+    if (!avatar) return;
+
+    const rawName = (nameEl ? nameEl.textContent : '').trim();
+    if (!rawName) return;
+
+    const parts = rawName.split(/\s+/).filter(Boolean);
+    const initials = parts.slice(0, 2).map(part => part[0]).join('').toUpperCase() || rawName[0].toUpperCase();
+    const slug = slugifyName(rawName);
+    const preferredSrc = `${imagePrefix}images/testimonial-${slug}.png`;
+    const fallbackSrc = fallbackPool[index % fallbackPool.length];
+
+    avatar.textContent = initials;
+
+    const img = document.createElement('img');
+    img.alt = rawName;
+    img.loading = 'lazy';
+    img.src = preferredSrc;
+    let usingFallback = false;
+    img.onerror = () => {
+      if (usingFallback) return;
+      usingFallback = true;
+      img.src = fallbackSrc;
+    };
+    img.onload = () => {
+      avatar.textContent = '';
+      avatar.appendChild(img);
+    };
+  });
+}
+
+/* ============================================================
+   FOOTER NAV LABELS — keep hover animation text synced
+   ============================================================ */
+function initFooterNavAnimationLabels() {
+  const footer = document.getElementById('footer');
+  if (!footer) return;
+
+  const selector = '.footer-links-center a, .footer-nav-col ul li a';
+
+  const syncLabels = () => {
+    footer.querySelectorAll(selector).forEach(link => {
+      const label = (link.textContent || '').trim().replace(/\s+/g, ' ');
+      if (!label) return;
+      link.setAttribute('data-label', label);
+      link.setAttribute('aria-label', label);
+    });
+  };
+
+  syncLabels();
+
+  const observer = new MutationObserver(() => syncLabels());
+  observer.observe(footer, {
+    childList: true,
+    subtree: true,
+    characterData: true
+  });
+}
+
+function slugifyName(name) {
+  const map = {
+    а: 'a', б: 'b', в: 'v', г: 'h', ґ: 'g', д: 'd', е: 'e', є: 'ie', ж: 'zh', з: 'z',
+    и: 'y', і: 'i', ї: 'yi', й: 'y', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p',
+    р: 'r', с: 's', т: 't', у: 'u', ф: 'f', х: 'kh', ц: 'ts', ч: 'ch', ш: 'sh', щ: 'shch',
+    ь: '', ю: 'yu', я: 'ya'
+  };
+
+  return name
+    .toLowerCase()
+    .replace(/[’']/g, '')
+    .split('')
+    .map(char => map[char] !== undefined ? map[char] : char)
+    .join('')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/* ============================================================
    SMOOTH SCROLL for anchor links
    ============================================================ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -281,7 +503,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    ============================================================ */
 document.addEventListener('visibilitychange', () => {
   const tracks = document.querySelectorAll(
-    '.partners-track, .testimonials-track, .reviews-row-1, .reviews-row-2, .reviews-row-3'
+    '.partners-track, .testimonials-track, .reviews-row-left, .reviews-row-right'
   );
   tracks.forEach(track => {
     track.style.animationPlayState = document.hidden ? 'paused' : 'running';
