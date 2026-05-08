@@ -230,6 +230,7 @@ const translations = {
     footer_desc: 'AI-консалтингова агенція нового покоління. Перетворіть хаос на систему та почніть зростати вже сьогодні.',
     footer_nav_title: 'НАВІГАЦІЯ',
     footer_contact_title: 'ЗВ\'ЯЗОК',
+    footer_legal_title: 'LEGAL',
     footer_faq: 'FAQs',
     footer_privacy: 'Політика конфіденційності',
     footer_cookies: 'Політика cookies',
@@ -485,6 +486,7 @@ const translations = {
     footer_desc: 'AI consulting agency of the new generation. Turn chaos into a system and start growing today.',
     footer_nav_title: 'NAVIGATION',
     footer_contact_title: 'CONTACT',
+    footer_legal_title: 'LEGAL',
     footer_faq: 'FAQs',
     footer_privacy: 'Privacy Policy',
     footer_cookies: 'Cookie Policy',
@@ -700,10 +702,14 @@ function applyTranslations() {
 }
 
 function updateLangUI() {
+  const labelText = currentLang === 'uk' ? 'Ukrainian' : 'English';
+
   const currentLabel = document.getElementById('current-lang');
-  if (currentLabel) {
-    currentLabel.textContent = currentLang === 'uk' ? 'Ukrainian' : 'English';
-  }
+  if (currentLabel) currentLabel.textContent = labelText;
+
+  document.querySelectorAll('.current-lang-label').forEach(label => {
+    label.textContent = labelText;
+  });
 
   // Update active state in dropdown
   document.querySelectorAll('.lang-option').forEach(opt => {

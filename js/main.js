@@ -97,17 +97,36 @@ function initScrollZoom() {
    LANGUAGE SWITCHER
    ============================================================ */
 function initLangSwitcher() {
-  const switcher = document.getElementById('lang-switcher');
-  const dropdown = document.getElementById('lang-dropdown');
-  if (!switcher || !dropdown) return;
+  const switchers = document.querySelectorAll('.lang-switcher');
+  if (!switchers.length) return;
 
-  switcher.addEventListener('click', (e) => {
-    e.stopPropagation();
-    dropdown.classList.toggle('open');
+  switchers.forEach((switcher) => {
+    const dropdown = switcher.querySelector('.lang-dropdown');
+    if (!dropdown) return;
+
+    const trigger = switcher.querySelector('.mobile-lang-trigger') || switcher;
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      switchers.forEach((otherSwitcher) => {
+        if (otherSwitcher === switcher) return;
+        const otherDropdown = otherSwitcher.querySelector('.lang-dropdown');
+        if (otherDropdown) otherDropdown.classList.remove('open');
+        otherSwitcher.classList.remove('is-open');
+      });
+
+      dropdown.classList.toggle('open');
+      switcher.classList.toggle('is-open', dropdown.classList.contains('open'));
+    });
   });
 
   document.addEventListener('click', () => {
-    dropdown.classList.remove('open');
+    switchers.forEach((switcher) => {
+      const dropdown = switcher.querySelector('.lang-dropdown');
+      if (dropdown) dropdown.classList.remove('open');
+      switcher.classList.remove('is-open');
+    });
   });
 }
 
@@ -116,12 +135,15 @@ function initLangSwitcher() {
    ============================================================ */
 function toggleMobileNav() {
   const nav = document.getElementById('mobile-nav');
-  if (nav) nav.classList.toggle('open');
+  if (!nav) return;
+  nav.classList.toggle('open');
+  document.body.classList.toggle('mobile-menu-open', nav.classList.contains('open'));
 }
 
 function closeMobileNav() {
   const nav = document.getElementById('mobile-nav');
   if (nav) nav.classList.remove('open');
+  document.body.classList.remove('mobile-menu-open');
 }
 
 /* ============================================================
@@ -130,15 +152,23 @@ function closeMobileNav() {
 function initMobileNav() {
   const hamburger = document.getElementById('hamburger');
   if (!hamburger) return;
+
+  const closeMenu = () => {
+    closeMobileNav();
+    hamburger.classList.remove('open');
+  };
+
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
     toggleMobileNav();
   });
-  document.querySelectorAll('.mobile-nav-close').forEach(link => {
-    link.addEventListener('click', () => {
-      closeMobileNav();
-      hamburger.classList.remove('open');
-    });
+
+  document.querySelectorAll('#mobile-nav a, .mobile-nav-close').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.querySelectorAll('.mobile-lang-option').forEach(button => {
+    button.addEventListener('click', closeMenu);
   });
 }
 
@@ -291,29 +321,41 @@ function initTestimonialsHoverCarousel() {
   if (!wrapper || !track) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  let running = false;
+  let running = true;
   let animating = false;
-  let moveTimer = null;
   let pauseTimer = null;
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
   const getCards = () => Array.from(track.querySelectorAll('.testimonial-card'));
-
-  function clearTimers() {
-    if (moveTimer) {
-      clearTimeout(moveTimer);
-      moveTimer = null;
-    }
-    if (pauseTimer) {
-      clearTimeout(pauseTimer);
-      pauseTimer = null;
-    }
-  }
 
   function markCenterCard(targetIndex = 1) {
     const cards = getCards();
     cards.forEach(card => card.classList.remove('is-center'));
     const centerCard = cards[targetIndex] || cards[1];
     if (centerCard) centerCard.classList.add('is-center');
+  }
+
+  function markCenterCardByViewport() {
+    const cards = getCards();
+    if (!cards.length) return;
+
+    const wrapperRect = wrapper.getBoundingClientRect();
+    const centerX = wrapperRect.left + wrapperRect.width / 2;
+    let bestCard = cards[0];
+    let bestDistance = Number.POSITIVE_INFINITY;
+
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.left + rect.width / 2;
+      const distance = Math.abs(cardCenter - centerX);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        bestCard = card;
+      }
+    });
+
+    cards.forEach(card => card.classList.remove('is-center'));
+    bestCard.classList.add('is-center');
   }
 
   function nextDurationMs() {
@@ -344,46 +386,55 @@ function initTestimonialsHoverCarousel() {
       track.style.transition = 'none';
       track.appendChild(firstCard);
       track.style.transform = 'translate3d(0, 0, 0)';
-      markCenterCard();
+      if (isMobile) {
+        markCenterCardByViewport();
+      } else {
+        markCenterCard();
+      }
       animating = false;
 
       pauseTimer = setTimeout(() => {
         if (!running) return;
         requestAnimationFrame(step);
-      }, 200);
+      }, 500);
     };
 
     track.addEventListener('transitionend', onTransitionEnd);
   }
 
-  function start() {
-    if (running) return;
-    running = true;
-    wrapper.classList.add('is-animating');
-    markCenterCard();
-    pauseTimer = setTimeout(step, 500);
-  }
-
   function stop() {
     running = false;
     animating = false;
-    clearTimers();
+    if (pauseTimer) {
+      clearTimeout(pauseTimer);
+      pauseTimer = null;
+    }
     wrapper.classList.remove('is-animating');
     track.style.transition = 'none';
     track.style.transform = 'translate3d(0, 0, 0)';
     markCenterCard();
   }
 
-  section.addEventListener('mouseenter', start);
-  section.addEventListener('mouseleave', stop);
-  section.addEventListener('focusin', start);
-  section.addEventListener('focusout', stop);
-
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stop();
+    if (document.hidden) {
+      stop();
+      return;
+    }
+
+    if (!running) {
+      running = true;
+      wrapper.classList.add('is-animating');
+      pauseTimer = setTimeout(step, 500);
+    }
   });
 
-  markCenterCard();
+  wrapper.classList.add('is-animating');
+  if (isMobile) {
+    requestAnimationFrame(markCenterCardByViewport);
+  } else {
+    markCenterCard();
+  }
+  pauseTimer = setTimeout(step, 500);
 }
 
 /* ============================================================
@@ -412,25 +463,44 @@ function initSocialProofAvatars() {
     const parts = rawName.split(/\s+/).filter(Boolean);
     const initials = parts.slice(0, 2).map(part => part[0]).join('').toUpperCase() || rawName[0].toUpperCase();
     const slug = slugifyName(rawName);
-    const preferredSrc = `${imagePrefix}images/testimonial-${slug}.png`;
     const fallbackSrc = fallbackPool[index % fallbackPool.length];
+    const avatarNameVariants = {
+      andriy: ['andriy', 'andrii'],
+      serhiy: ['serhiy', 'serhii'],
+      nataliya: ['nataliya', 'nataliia'],
+      vitaliy: ['vitaliy', 'vitalii'],
+      lyudmyla: ['lyudmyla', 'liudmyla'],
+      tetyana: ['tetyana', 'tetiana']
+    };
+
+    const slugVariants = avatarNameVariants[slug] || [slug];
+    const candidateSources = [
+      ...slugVariants.map(variant => `${imagePrefix}images/testimonial-${variant}.png`),
+      fallbackSrc
+    ];
 
     avatar.textContent = initials;
 
     const img = document.createElement('img');
     img.alt = rawName;
     img.loading = 'lazy';
-    img.src = preferredSrc;
-    let usingFallback = false;
+    let sourceIndex = 0;
+
+    const setNextSource = () => {
+      if (sourceIndex >= candidateSources.length) return;
+      img.src = candidateSources[sourceIndex];
+      sourceIndex += 1;
+    };
+
     img.onerror = () => {
-      if (usingFallback) return;
-      usingFallback = true;
-      img.src = fallbackSrc;
+      setNextSource();
     };
     img.onload = () => {
       avatar.textContent = '';
       avatar.appendChild(img);
     };
+
+    setNextSource();
   });
 }
 
