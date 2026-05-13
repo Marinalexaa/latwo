@@ -3,118 +3,481 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Кейси — Latwo AI Consulting</title>
   <meta name="description" content="Реальні кейси трансформації бізнесів за допомогою AI від Latwo. Дивіться результати наших клієнтів." />
   <link rel="stylesheet" href="../css/main.css" />
   <style>
-    .page-hero {
-      background: var(--brand-blue-dark);
-      padding: 140px 2rem 80px;
-      text-align: center;
+    :root {
+      --cases-section-top-gap: 5.2rem;
     }
-    .page-hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      color: var(--white-primary);
+
+    .cases-page {
+      background: var(--bg-page);
+      padding: var(--cases-section-top-gap) 0 2.5rem;
+    }
+
+    .cases-shell {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .cases-hero {
+      margin-bottom: 4rem;
+    }
+
+    .cases-hero .section-label {
+      margin-bottom: 1.25rem;
+      color: var(--brand-blue-light);
+      font-size: 12px;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-align: center;
+      width: 100%;
+    }
+
+    .cases-headline {
+      font-family: var(--font-heading);
+      font-size: 56px;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: var(--black-primary);
+      max-width: 860px;
       margin-bottom: 1rem;
     }
-    .page-hero p {
-      font-size: 16px;
+
+    .cases-subheadline {
+      font-size: 20px;
       letter-spacing: -0.02em;
-      color: rgba(255,255,255,0.7);
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
+      line-height: 1.4;
+      color: var(--black-secondary);
+      max-width: 860px;
     }
+
     .cases-section {
-      padding: 5rem 2rem;
-      background: var(--bg-page);
+      padding: var(--cases-section-top-gap) 0 5rem;
     }
-    .cases-list {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 4rem;
+
+    .cases-section.cases-section-dark {
+      background: linear-gradient(180deg, #123555 0%, #08243d 62%, #061c31 100%);
+      padding-top: var(--cases-section-top-gap);
+      padding-bottom: 5rem;
     }
-    .case-full {
+
+    .cases-section-dark .cases-headline {
+      color: rgba(204, 220, 238, 0.45);
+    }
+
+    .cases-section-dark .cases-subheadline {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .case-panel {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: center;
-      background: var(--bg-white);
+      gap: 1.4rem;
+      align-items: stretch;
+      margin-top: 2.4rem;
+    }
+
+    .case-panel.case-panel-primary {
+      grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.22fr);
+    }
+
+    .case-panel.case-panel-dark {
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    }
+
+    .case-panel.case-panel-dark .case-content {
+      order: 1;
+    }
+
+    .case-panel.case-panel-dark .case-media {
+      order: 2;
+    }
+
+    .case-media {
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border: 4px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 16px 34px rgba(6, 16, 28, 0.2);
+      min-height: 520px;
+      background: linear-gradient(135deg, #25405e, #0f2740);
     }
-    .case-full.reverse { direction: rtl; }
-    .case-full.reverse > * { direction: ltr; }
-    .case-full-image {
-      height: 400px;
-      overflow: hidden;
-    }
-    .case-full-image img {
+
+    .case-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
+      display: block;
     }
-    .case-full-image-placeholder {
+
+    .case-content {
+      border-radius: 20px;
+      border: 4px solid rgba(255, 255, 255, 0.55);
+      padding: 2.2rem 2rem;
+      background: rgba(255, 255, 255, 0.24);
+      box-shadow: 0 14px 30px rgba(6, 16, 28, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-content.case-content-dark {
+      background: radial-gradient(130% 120% at 50% 100%, rgba(227, 92, 54, 0.14) 0%, rgba(9, 30, 50, 0.86) 32%, rgba(3, 22, 39, 0.96) 100%);
+      border-color: rgba(62, 96, 128, 0.5);
+      box-shadow: 0 20px 44px rgba(2, 10, 18, 0.58);
+    }
+
+    .case-block + .case-block {
+      margin-top: 1.75rem;
+    }
+
+    .case-block h3 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      color: var(--black-primary);
+      margin-bottom: 0.7rem;
+    }
+
+    .case-content-dark .case-block h3,
+    .case-content-dark .case-impact-title {
+      color: var(--white-primary);
+    }
+
+    .case-block p {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: var(--black-secondary);
+    }
+
+    .case-content-dark .case-block p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .case-impact {
+      margin-top: 1.85rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .case-impact-title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--black-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .case-impact-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .case-impact-card {
+      border-radius: 14px;
+      border: 1px solid rgba(18, 46, 71, 0.14);
+      background: rgba(255, 255, 255, 0.74);
+      padding: 0.8rem 0.7rem;
+      text-align: center;
+      box-shadow: 0 10px 18px rgba(6, 16, 28, 0.08);
+    }
+
+    .case-content-dark .case-impact-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 12px 24px rgba(1, 8, 15, 0.38);
+    }
+
+    .case-impact-card strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--brand-orange);
+      margin-bottom: 0.35rem;
+    }
+
+    .case-impact-card span {
+      display: block;
+      font-size: 12px;
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+      color: var(--black-secondary);
+    }
+
+    .case-content-dark .case-impact-card span {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .cases-card-btn {
+      width: 100%;
+      margin-top: auto;
+      justify-content: center;
+      gap: 0.7rem;
+      font-size: 16px;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 18px 34px rgba(227, 92, 54, 0.38), 0 0 54px rgba(227, 92, 54, 0.28);
+    }
+
+    .cases-card-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .cases-story {
+      margin-top: 2.5rem;
+    }
+
+    .cases-story-header {
+      margin-top: var(--cases-section-top-gap);
+      margin-bottom: 2.2rem;
+    }
+
+    .cases-story-card {
+      border-radius: 20px;
+      border: 4px solid rgba(62, 96, 128, 0.5);
+      background: radial-gradient(135% 120% at 50% 100%, rgba(227, 92, 54, 0.1) 0%, rgba(7, 30, 52, 0.88) 38%, rgba(4, 24, 42, 0.98) 100%);
+      box-shadow: 0 20px 44px rgba(2, 10, 18, 0.56);
+      padding: 2rem 2.2rem;
+      margin-top: 1.8rem;
+    }
+
+    .cases-story-card h3 {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: var(--white-primary);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .cases-story-card p {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .cases-story-card p + p {
+      margin-top: 1.2rem;
+    }
+
+    .cases-story-media {
+      margin-top: 0;
+      border-radius: 20px;
+      border: 4px solid rgba(62, 96, 128, 0.45);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(1, 8, 15, 0.62);
+      min-height: 0;
+      aspect-ratio: 16 / 9;
+      background: #041827;
+      position: relative;
+    }
+
+    .cases-story-media iframe {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, var(--brand-blue-light), var(--brand-blue-dark));
-      display: flex;
+      display: block;
+      border: 0;
+    }
+
+    .cases-story-player {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cases-story-player iframe {
+      width: 100% !important;
+      height: 100% !important;
+      border: 0;
+      display: block;
+    }
+
+    .cases-story-fallback {
+      position: absolute;
+      inset: auto 1rem 1rem 1rem;
+      z-index: 2;
+      display: none;
       align-items: center;
       justify-content: center;
-      font-size: 4rem;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      background: rgba(4, 24, 42, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: var(--white-primary);
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: -0.01em;
     }
-    .case-full-content {
-      padding: 2.5rem;
+
+    .cases-story-fallback.is-visible {
+      display: flex;
     }
-    .case-full-content .section-label {
-      margin-bottom: 0.5rem;
+
+    .cases-final {
+      background: var(--bg-page);
+      padding: var(--cases-section-top-gap) 0 5.4rem;
+      text-align: center;
     }
-    .case-full-content h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--black-primary);
-    }
-    .case-full-content > p {
-      font-size: 16px;
+
+    .cases-disclaimer {
+      font-size: 12px;
       letter-spacing: -0.02em;
-      color: var(--black-secondary);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    .case-full-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      line-height: 1.5;
+      text-transform: uppercase;
+      color: var(--brand-blue-light);
       margin-bottom: 2rem;
     }
-    .case-full-stat h3 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--black-primary);
-      margin-bottom: 0.25rem;
-    }
-    .case-full-stat p {
-      font-size: 16px;
-      letter-spacing: -0.02em;
-      color: var(--black-secondary);
-      line-height: 1.6;
-    }
-    .case-script-tag {
-      font-family: var(--font-script);
+
+    .cases-final h2 {
+      font-family: var(--font-heading);
       font-size: 56px;
-      color: var(--brand-orange);
-      display: block;
-      margin-bottom: 1rem;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--black-primary);
+      margin-bottom: 1.1rem;
     }
+
+    .cases-final p {
+      font-size: 20px;
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+      color: var(--black-secondary);
+      max-width: 760px;
+      margin: 0 auto 1.8rem;
+    }
+
+    .cases-final .cases-disclaimer {
+      font-size: 12px !important;
+      line-height: 1.5;
+    }
+
+    .cases-final .btn {
+      margin: 0 auto;
+      font-size: 16px;
+      min-width: min(100%, 520px);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 20px 44px rgba(227, 92, 54, 0.42), 0 0 64px rgba(227, 92, 54, 0.3);
+    }
+
+    @media (max-width: 1024px) {
+      :root {
+        --cases-section-top-gap: 7rem;
+      }
+
+      .case-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .case-panel.case-panel-primary {
+        grid-template-columns: 1fr;
+      }
+
+      .case-media {
+        min-height: 440px;
+      }
+
+      .cases-story-media {
+        min-height: 0;
+      }
+
+      .case-impact-cards {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
     @media (max-width: 768px) {
-      .case-full { grid-template-columns: 1fr; }
-      .case-full.reverse { direction: ltr; }
-      .case-full-image { height: 250px; }
-      .case-full-stats { grid-template-columns: 1fr 1fr; }
+      :root {
+        --cases-section-top-gap: 3.6rem;
+      }
+
+      .cases-shell {
+        padding: 0 var(--mobile-gutter, 14px);
+      }
+
+      .cases-hero {
+        margin-bottom: 2.1rem;
+      }
+
+      .cases-hero .section-label {
+        font-size: 12px;
+        margin-bottom: 0.9rem;
+      }
+
+      .cases-headline {
+        font-size: 38px;
+        line-height: 1.1;
+        margin-bottom: 0.75rem;
+      }
+
+      .cases-subheadline {
+        font-size: 20px;
+      }
+
+      .cases-section {
+        padding-bottom: 3.2rem;
+      }
+
+      .case-media {
+        min-height: 340px;
+        border-radius: 16px;
+      }
+
+      .cases-story-media {
+        min-height: 0;
+        border-radius: 16px;
+      }
+
+      .case-content,
+      .cases-story-card {
+        border-radius: 16px;
+        padding: 1.3rem;
+      }
+
+      .case-block h3,
+      .case-impact-title {
+        font-size: 32px;
+        line-height: 1.1;
+      }
+
+      .case-impact-card strong {
+        font-size: 32px;
+      }
+
+      .case-block p,
+      .cases-story-card p {
+        font-size: 16px;
+      }
+
+      .cases-final h2 {
+        font-size: 38px;
+      }
+
+      .cases-final p {
+        font-size: 20px;
+      }
+
+      .cases-final {
+        padding-bottom: 3.8rem;
+      }
     }
   </style>
 </head>
@@ -149,14 +512,14 @@
 </header>
 
 <nav class="mobile-nav" id="mobile-nav">
-  <a href="cases.html">Кейси</a>
-  <a href="../index.html#services" class="mobile-nav-close">Послуги</a>
-  <a href="about.html">Про нас</a>
-  <a href="../index.html#pricing" class="mobile-nav-close">Ціни</a>
-  <a href="../index.html#faq" class="mobile-nav-close">FAQs</a>
-  <a href="../index.html#contact" class="mobile-nav-close">Контакти</a>
-  <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank">Instagram</a>
-  <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank">LinkedIn</a>
+  <a href="cases.html" data-i18n="nav_cases">Кейси</a>
+  <a href="../index.html#services" class="mobile-nav-close" data-i18n="nav_services">Послуги</a>
+  <a href="about.html" data-i18n="nav_about">Про нас</a>
+  <a href="../index.html#pricing" class="mobile-nav-close" data-i18n="nav_pricing">Ціни</a>
+  <a href="../index.html#faq" class="mobile-nav-close" data-i18n="nav_faq">FAQs</a>
+  <a href="../index.html#contact" class="mobile-nav-close" data-i18n="nav_contact">Контакти</a>
+  <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" data-i18n="nav_instagram">Instagram</a>
+  <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" data-i18n="nav_linkedin">LinkedIn</a>
   <div class="mobile-nav-lang lang-switcher">
     <button class="mobile-lang-trigger" type="button">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -170,93 +533,191 @@
   </div>
 </nav>
 
-<!-- Page Hero -->
-<section class="page-hero">
-  <span class="section-label" style="color:rgba(255,255,255,0.5);justify-content:center;display:flex;" data-i18n="cases_page_badge">НАШІ КЕЙСИ</span>
-  <h1 data-i18n="cases_page_title">Реальні результати</h1>
-  <p data-i18n="cases_page_subtitle">Трансформації бізнесів, які вже використовують AI для зростання та автоматизації</p>
-</section>
+<section class="cases-page" data-header-theme="light">
+  <div class="cases-shell">
+    <header class="cases-hero scroll-reveal">
+      <span class="section-label" data-i18n="cases_hero_badge">КЕЙСИ</span>
+      <h1 class="cases-headline" data-i18n="cases_hero_title">AI-трансформація операційних процесів</h1>
+      <p class="cases-subheadline" data-i18n="cases_hero_subtitle">Фінансові послуги</p>
+    </header>
 
-<!-- Cases -->
-<section class="cases-section">
-  <div class="cases-list">
-
-    <!-- Case 1 -->
-    <div class="case-full scroll-reveal">
-      <div class="case-full-image">
-        <img src="../images/case-car-dealer.jpg" alt="Car dealer transformation"
-             onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'case-full-image-placeholder\'>🚗</div>';" />
+    <article class="case-panel case-panel-primary scroll-reveal">
+      <div class="case-media">
+        <img src="../images/case-car-dealer.jpg" alt="AI transformation case in financial services"
+             onerror="this.style.display='none'; this.parentElement.style.minHeight='420px';" />
       </div>
-      <div class="case-full-content">
-        <span class="case-script-tag" data-i18n="case1_script">Client Win!</span>
-        <span class="section-label" data-i18n="case1_badge">ОДИН З НАШИХ КЛІЄНТІВ</span>
-        <h2 data-i18n="case1_title">Трансформація дилера імпортних авто</h2>
-        <p data-i18n="case1_desc">Коли ми вперше надали безкоштовну консультацію замовнику, вони переживали складний період. Після декількох discovery сесій та аналізу бізнес-процесів ми визначили ключові показники та цільову аудиторію. Впровадили AI-агентів C-level, переглянули витрати, побудували нову мотиваційну модель для команди, налаштували AI фінансовий моніторинг та автоматичні звіти для прийняття управлінських рішень. Побудували систему.</p>
-        <div class="case-full-stats">
-          <div class="case-full-stat">
-            <h3>45%</h3>
-            <p data-i18n="case1_stat1">Зросли доходи від B2B клієнтів, погасили борги та зобов'язання</p>
-          </div>
-          <div class="case-full-stat">
-            <h3>500–550</h3>
-            <p data-i18n="case1_stat2">Вийшли на нові ринки, зросла кількість імпортованих авто в місяць</p>
-          </div>
-          <div class="case-full-stat">
-            <h3>30%</h3>
-            <p data-i18n="case1_stat3">Зросла конверсія заявок на покупку авто з Європи</p>
-          </div>
-          <div class="case-full-stat">
-            <h3>80%</h3>
-            <p data-i18n="case1_stat4">Зросла кількість лояльних клієнтів, що повертаються</p>
+      <div class="case-content">
+        <div class="case-block">
+          <h3 data-i18n="cases_common_challenge">Виклик</h3>
+          <p data-i18n="cases_1_challenge">Компанія витрачала 60% часу команди на рутинні операційні завдання, що гальмувало зростання та інновації.</p>
+        </div>
+        <div class="case-block">
+          <h3 data-i18n="cases_common_solution">Рішення</h3>
+          <p data-i18n="cases_1_solution">Впровадили AI-агентів для автоматизації збору даних, первинного аналізу та підготовки звітів. Розробили дорожню карту трансформації та пілотний проєкт.</p>
+        </div>
+        <div class="case-impact">
+          <h3 class="case-impact-title" data-i18n="cases_common_impact">Результат</h3>
+          <div class="case-impact-cards">
+            <div class="case-impact-card">
+              <strong data-i18n="cases_1_metric_1_value">-45%</strong>
+              <span data-i18n="cases_1_metric_1_label">Скорочення рутини</span>
+            </div>
+            <div class="case-impact-card">
+              <strong data-i18n="cases_1_metric_2_value">+35%</strong>
+              <span data-i18n="cases_1_metric_2_label">Зростання продуктивності</span>
+            </div>
+            <div class="case-impact-card">
+              <strong data-i18n="cases_1_metric_3_value">+73%</strong>
+              <span data-i18n="cases_1_metric_3_label">ROI за 6 місяців</span>
+            </div>
           </div>
         </div>
-        <a href="../index.html#contact" class="btn btn-orange">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
-          <span data-i18n="case_cta_btn">Час трансформувати ваш бізнес</span>
+        <a href="../index.html#contact" class="btn btn-orange cases-card-btn smooth-scroll">
+          <span class="btn-text-stack">
+            <span class="btn-text default" data-i18n="cases_download_btn">Завантажити AI Readiness чекліст</span>
+            <span class="btn-text hover" data-i18n="cases_download_btn">Завантажити AI Readiness чекліст</span>
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
-    </div>
-
-    <!-- Case 2 -->
-    <div class="case-full reverse scroll-reveal" style="background:linear-gradient(135deg,var(--brand-blue-light),var(--brand-blue-dark));">
-      <div class="case-full-image">
-        <img src="../images/case-car-night.jpg" alt="AI Agent for car auction"
-             onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'case-full-image-placeholder\'>🤖</div>';" />
-      </div>
-      <div class="case-full-content" style="color:var(--white-primary);">
-        <span class="case-script-tag">Client Win!</span>
-        <span class="section-label" style="color:rgba(255,255,255,0.5);" data-i18n="case2_badge">ОДИН З НАШИХ КЛІЄНТІВ</span>
-        <h2 style="color:var(--white-primary);" data-i18n="case2_title">Впровадження AI Agent</h2>
-        <p style="color:rgba(255,255,255,0.75);" data-i18n="case2_desc">Ми допомогли компанії з продажу авто на аукціоні впровадити AI-систему, яка аналізує поведінку клієнтів на сайті, їхні вподобання та історію лотів. Завдяки цьому вони можуть пропонувати кожному відвідувачу найбільш релевантні моделі, опції та фінансові пропозиції.</p>
-        <div class="case-full-stats">
-          <div class="case-full-stat">
-            <h3 style="color:var(--white-primary);">80%</h3>
-            <p style="color:rgba(255,255,255,0.65);" data-i18n="case2_stat1_label">Збільшились продажі після впровадження комплексної системи Data &amp; Decision Intelligence.</p>
-          </div>
-          <div class="case-full-stat">
-            <h3 style="color:var(--white-primary);">50%</h3>
-            <p style="color:rgba(255,255,255,0.65);" data-i18n="case2_stat2_label">Збільшилась ефективність роботи з аукціонами після впровадження AI системи для аналізу цінових тенденцій.</p>
-          </div>
-          <div class="case-full-stat">
-            <h3 style="color:var(--white-primary);">40%</h3>
-            <p style="color:rgba(255,255,255,0.65);" data-i18n="case2_stat3_label">Звільнився час менеджерів від рутинної роботи.</p>
-          </div>
-          <div class="case-full-stat">
-            <h3 style="color:var(--white-primary);">22%</h3>
-            <p style="color:rgba(255,255,255,0.65);" data-i18n="case2_stat4_label">Підвищилась конверсія нових заявок.</p>
-          </div>
-        </div>
-        <a href="../index.html#contact" class="btn btn-orange">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
-          <span data-i18n="case2_btn">Час трансформувати ваш бізнес</span>
-        </a>
-      </div>
-    </div>
+    </article>
 
   </div>
 </section>
 
-<!-- Footer -->
+<section class="cases-section cases-section-dark" data-header-theme="dark">
+  <div class="cases-shell">
+    <header class="cases-hero scroll-reveal">
+      <h2 class="cases-headline" data-i18n="cases_2_title">Data-driven система прийняття рішень</h2>
+      <p class="cases-subheadline" data-i18n="cases_2_subtitle">E-commers</p>
+    </header>
+
+    <article class="case-panel case-panel-dark scroll-reveal">
+      <div class="case-media">
+        <img src="../images/case-car-night.jpg" alt="Data-driven decision making system case"
+             onerror="this.style.display='none'; this.parentElement.style.minHeight='420px';" />
+      </div>
+      <div class="case-content case-content-dark">
+        <div class="case-block">
+          <h3 data-i18n="cases_common_challenge">Виклик</h3>
+          <p data-i18n="cases_2_challenge">Відсутність єдиної аналітичної платформи призводила до прийняття рішень на основі інтуїції, а не даних.</p>
+        </div>
+        <div class="case-block">
+          <h3 data-i18n="cases_common_solution">Рішення</h3>
+          <p data-i18n="cases_2_solution">Спроєктували та впровадили архітектуру Data Mesh, побудували BI-дашборди та систему прийняття рішень на основі даних.</p>
+        </div>
+        <div class="case-impact">
+          <h3 class="case-impact-title" data-i18n="cases_common_impact">Результат</h3>
+          <div class="case-impact-cards">
+            <div class="case-impact-card">
+              <strong data-i18n="cases_2_metric_1_value">3x</strong>
+              <span data-i18n="cases_2_metric_1_label">Швидкість рішень</span>
+            </div>
+            <div class="case-impact-card">
+              <strong data-i18n="cases_2_metric_2_value">+40%</strong>
+              <span data-i18n="cases_2_metric_2_label">Точність прогнозів</span>
+            </div>
+            <div class="case-impact-card">
+              <strong data-i18n="cases_2_metric_3_value">+22%</strong>
+              <span data-i18n="cases_2_metric_3_label">Зростання виручки</span>
+            </div>
+          </div>
+        </div>
+        <a href="../index.html#contact" class="btn btn-orange cases-card-btn smooth-scroll">
+          <span class="btn-text-stack">
+            <span class="btn-text default" data-i18n="cases_download_btn">Завантажити AI Readiness чекліст</span>
+            <span class="btn-text hover" data-i18n="cases_download_btn">Завантажити AI Readiness чекліст</span>
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <header class="cases-hero cases-story-header scroll-reveal">
+      <h2 class="cases-headline" data-i18n="cases_3_section_title">Повна автоматизація медіа проекту</h2>
+      <p class="cases-subheadline" data-i18n="cases_3_section_subtitle">Автомобільна медіа платформа</p>
+    </header>
+
+    <article class="cases-story scroll-reveal">
+      <div class="cases-story-media">
+        <div id="cases-story-player" class="cases-story-player" data-video-id="wpxWtbtpB1Y" aria-label="YouTube player"></div>
+        <a id="cases-story-fallback" class="cases-story-fallback" href="https://youtu.be/wpxWtbtpB1Y" target="_blank" rel="noopener" data-i18n="cases_3_video_fallback">Переглянути відео на YouTube</a>
+      </div>
+      <div class="cases-story-card">
+        <h3 data-i18n="cases_3_title">Перша в Україні повністю автономна медія платформа</h3>
+        <p data-i18n="cases_3_p1">В Україні досі не було автомобільного медіа, яке пише тільки з верифікованих першоджерел, оперативно, без вигадок та без «за даними анонімних джерел». Так от, ми його побудували. І воно працює без жодної людини в редакції.</p>
+        <p data-i18n="cases_3_p2">Система автоматично ходить на перевірений перелік сайтів, фільтрує чи це справді автомобільний ринок. Якщо стаття пройшла фільтр - автоматично пишеться готовий матеріал українською, перекладається польською і англійською. Якщо є цифри - генеруються інтерактивні графіки. Якщо потрібна обкладинка - генерується зображення. І все це публікується на сайт, в Telegram канал, Linkedin, Facebook та Instagram автоматично із вказанням посилання на першоджерело.</p>
+        <p data-i18n="cases_3_p3">Варто налаштувати це один раз, і далі все по регламенту автоматично відбувається.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="cases-page" data-header-theme="light">
+  <div class="cases-shell">
+    <header class="cases-hero scroll-reveal" style="margin-bottom:2.4rem;">
+      <h2 class="cases-headline" data-i18n="cases_1b_title">AI-автоматизація клієнтського сервісу</h2>
+      <p class="cases-subheadline" data-i18n="cases_1b_subtitle">Автобізнес</p>
+    </header>
+
+    <article class="case-panel case-panel-primary scroll-reveal" style="margin-top:0;">
+      <div class="case-media">
+        <img src="../images/case-car-night.jpg" alt="AI customer service automation case"
+             onerror="this.style.display='none'; this.parentElement.style.minHeight='420px';" />
+      </div>
+      <div class="case-content">
+        <div class="case-block">
+          <h3 data-i18n="cases_common_challenge">Виклик</h3>
+          <p data-i18n="cases_1b_challenge">Високе навантаження на службу підтримки, довгий час відповіді та низька задоволеність клієнтів.</p>
+        </div>
+        <div class="case-block">
+          <h3 data-i18n="cases_common_solution">Рішення</h3>
+          <p data-i18n="cases_1b_solution">Впровадили AI чат-бот для первинної підтримки, CRM-агента для маршрутизації запитів та систему аналітики задоволеності.</p>
+        </div>
+        <div class="case-impact">
+          <h3 class="case-impact-title" data-i18n="cases_common_impact">Результат</h3>
+          <div class="case-impact-cards">
+            <div class="case-impact-card">
+              <strong data-i18n="cases_1b_metric_1_value">-70%</strong>
+              <span data-i18n="cases_1b_metric_1_label">Час відповіді</span>
+            </div>
+            <div class="case-impact-card">
+              <strong data-i18n="cases_1b_metric_2_value">+55%</strong>
+              <span data-i18n="cases_1b_metric_2_label">Задоволеність</span>
+            </div>
+            <div class="case-impact-card">
+              <strong data-i18n="cases_1b_metric_3_value">65%</strong>
+              <span data-i18n="cases_1b_metric_3_label">Автоматизація</span>
+            </div>
+          </div>
+        </div>
+        <a href="../index.html#contact" class="btn btn-orange cases-card-btn smooth-scroll">
+          <span class="btn-text-stack">
+            <span class="btn-text default" data-i18n="cases_download_btn">Завантажити AI Readiness чекліст</span>
+            <span class="btn-text hover" data-i18n="cases_download_btn">Завантажити AI Readiness чекліст</span>
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="cases-final" data-header-theme="light">
+  <div class="cases-shell scroll-reveal">
+    <p class="cases-disclaimer" data-i18n="cases_disclaimer">ДЕТАЛІ КЕЙСІВ АНОНІМІЗОВАНІ ДЛЯ ЗАХИСТУ КОНФІДЕНЦІЙНОСТІ НАШИХ КЛІЄНТІВ. РЕЗУЛЬТАТИ МОЖУТЬ ВІДРІЗНЯТИСЯ ЗАЛЕЖНО ВІД СПЕЦИФІКИ БІЗНЕСУ.</p>
+    <h2 data-i18n="cases_cta_title">Хочете подібних результатів?</h2>
+    <p data-i18n="cases_cta_subtitle">Забронюйте Discovery Call, і ми обговоримо, як досягти вимірюваних результатів для вашого бізнесу.</p>
+    <a href="../index.html#contact" class="btn btn-orange smooth-scroll">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+      <span class="btn-text-stack">
+        <span class="btn-text default" data-i18n="cases_cta_btn">Забронювати безкоштовну консультацію</span>
+        <span class="btn-text hover" data-i18n="cases_cta_btn">Забронювати безкоштовну консультацію</span>
+      </span>
+    </a>
+  </div>
+</section>
+
 <footer id="footer" data-header-theme="dark">
   <div class="footer-top">
     <div class="footer-brand">
@@ -297,7 +758,60 @@
   </div>
 </footer>
 
-<script src="../js/i18n.js"></script>
-<script src="../js/main.js"></script>
+<script src="../js/i18n.js?v=20260512a"></script>
+<script src="../js/main.js?v=20260512a"></script>
+<script>
+  (function () {
+    var holder = document.getElementById('cases-story-player');
+    var fallback = document.getElementById('cases-story-fallback');
+    if (!holder) return;
+
+    function showFallback() {
+      if (fallback) fallback.classList.add('is-visible');
+    }
+
+    function hideFallback() {
+      if (fallback) fallback.classList.remove('is-visible');
+    }
+
+    window.onYouTubeIframeAPIReady = function () {
+      try {
+        var videoId = holder.getAttribute('data-video-id') || 'wpxWtbtpB1Y';
+        var hasHttpOrigin = window.location.protocol === 'http:' || window.location.protocol === 'https:';
+        var playerVars = {
+          rel: 0,
+          playsinline: 1
+        };
+
+        if (hasHttpOrigin) {
+          playerVars.origin = window.location.origin;
+          playerVars.widget_referrer = window.location.href;
+        }
+
+        new window.YT.Player('cases-story-player', {
+          width: '100%',
+          height: '100%',
+          videoId: videoId,
+          playerVars: playerVars,
+          events: {
+            onReady: function () {
+              hideFallback();
+            },
+            onError: function () {
+              showFallback();
+            }
+          }
+        });
+      } catch (e) {
+        showFallback();
+      }
+    };
+
+    setTimeout(function () {
+      if (!window.YT || !window.YT.Player) showFallback();
+    }, 5000);
+  })();
+</script>
+<script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
