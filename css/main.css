@@ -1833,7 +1833,7 @@ h1, h2, h3, h4, h5, h6 {
 .faq-script {
   position: absolute;
   top: -2.4rem;
-  left: 50%;
+  left: 56%;
   transform: translateX(-50%);
   font-family: var(--font-script);
   font-size: 56px;
@@ -2014,7 +2014,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .contact-script {
   position: absolute;
-  top: -2.7rem;
+  top: -1.2rem;
   right: 2rem;
   font-family: var(--font-script);
   font-size: 56px;
@@ -2066,14 +2066,14 @@ h1, h2, h3, h4, h5, h6 {
 .form-group textarea {
   width: 100%;
   padding: 0.63rem 1.1rem;
-  border: 2px solid #ffffff;
+  border: 2px solid rgba(10, 34, 55, 0.2);
   border-radius: 14px;
   font-family: var(--font-subheading);
   font-size: 0.95rem;
   color: var(--black-primary);
   background: rgba(255, 255, 255, 0.86);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  transition: border-color var(--transition);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 4px 14px rgba(6, 16, 28, 0.08);
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
   outline: none;
 }
 
@@ -2086,6 +2086,8 @@ h1, h2, h3, h4, h5, h6 {
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--brand-orange);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 0 0 4px rgba(227, 92, 54, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.96);
 }
 
 .form-group input::placeholder,
@@ -2250,8 +2252,8 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255, 255, 255, 0.44);
   border: 2px solid rgba(255, 255, 255, 0.62);
   border-radius: 16px;
-  padding: 1rem 1.25rem;
-  width: clamp(290px, 30vw, 380px);
+  padding: 0.85rem 1.05rem;
+  width: clamp(260px, 27vw, 340px);
   aspect-ratio: 5 / 4;
   flex-shrink: 0;
   box-shadow: none;
@@ -2313,9 +2315,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .review-mini-card > p {
   order: 2;
-  font-size: 20px;
+  font-size: 16px;
   letter-spacing: -0.02em;
-  line-height: 1.5;
+  line-height: 1.6;
   color: rgba(41, 41, 41, 0.6);
 }
 
@@ -3558,13 +3560,13 @@ h1, h2, h3, h4, h5, h6 {
   .popular-badge,
   .faq-script,
   .contact-script {
-    font-size: 34px;
+    font-size: 38px;
     line-height: 1.1;
   }
 
   .process-number,
   .service-number {
-    font-size: 34px;
+    font-size: 38px;
   }
 
   /* Show accents that were hidden on mobile */
@@ -3587,6 +3589,7 @@ h1, h2, h3, h4, h5, h6 {
 
   .faq-script {
     top: -1.35rem;
+    left: 62%;
   }
 
   /* Place "Here to help" above the Stas photo block */
@@ -3605,7 +3608,7 @@ h1, h2, h3, h4, h5, h6 {
     top: -22px;
     right: 12px;
     font-family: var(--font-script);
-    font-size: 34px;
+    font-size: 38px;
     line-height: 1.1;
     color: var(--brand-orange);
     z-index: 85;
@@ -3651,6 +3654,21 @@ h1, h2, h3, h4, h5, h6 {
   .testimonial-text {
     font-size: 16px;
     line-height: 1.6;
+  }
+
+  .review-mini-card {
+    width: min(250px, 68vw);
+    padding: 0.8rem 0.95rem;
+  }
+
+  .review-mini-card > p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .contact-script {
+    top: -0.75rem;
+    right: 1rem;
   }
 
   /* CTA size/centering to fit full text + icon */
@@ -3755,7 +3773,7 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-nav .mobile-nav-lang .lang-dropdown {
   position: static;
   margin-top: 0.5rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.08rem;
@@ -3809,13 +3827,13 @@ h1, h2, h3, h4, h5, h6 {
   border-color: transparent;
   background: transparent;
   opacity: 1;
+  font-weight: 600;
 }
 
 .mobile-nav .mobile-lang-trigger {
-  display: none;
+  display: inline-flex;
 }
 
-.mobile-nav .mobile-nav-lang .lang-dropdown,
 .mobile-nav .mobile-nav-lang .lang-dropdown.open {
   display: flex;
 }
