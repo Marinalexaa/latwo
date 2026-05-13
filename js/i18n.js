@@ -182,7 +182,7 @@ const translations = {
     cta_label: 'РЕАЛЬНІ РЕЗУЛЬТАТИ',
     cta_title: 'Готові трасформувати ваш бізнес з AI?',
     cta_subtitle: 'Створимо з AI структуру, що звільнить вас від рутини й дозволить мислити стратегічно, творити та зростати.',
-    cta_btn: 'Забронювати безкоштовну консультацію',
+    cta_btn: 'Отримати безкоштовну консультацію',
 
     // FAQ
     faq_badge: 'ЩО НАС ЗАПИТУЮТЬ',
@@ -548,7 +548,7 @@ const translations = {
     cta_label: 'REAL RESULTS',
     cta_title: 'Ready to transform your business with AI?',
     cta_subtitle: 'We\'ll create an AI structure that frees you from routine and allows you to think strategically, create and grow.',
-    cta_btn: 'Book a Free Consultation',
+    cta_btn: 'Get a Free Consultation',
 
     // FAQ
     faq_badge: 'FREQUENTLY ASKED',
