@@ -612,8 +612,22 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 900px;
   margin: 0 auto 3rem;
   line-height: 28px;
-  animation: hero-title-appear 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation: hero-subtitle-appear 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   animation-delay: 0.32s;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transform: translateZ(0);
+}
+
+@keyframes hero-subtitle-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-stats {
@@ -3320,16 +3334,7 @@ h1, h2, h3, h4, h5, h6 {
   .why-content,
   .case-content,
   .case-2-content {
-    overflow: hidden;
-  }
-
-  .why-script,
-  .case-script,
-  .case-2-script,
-  .popular-badge,
-  .faq-script,
-  .contact-script {
-    display: none;
+    overflow: visible;
   }
 
   .services-grid {
@@ -3391,7 +3396,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .your-pain {
-    transform: translateX(20px);
+    transform: translateX(0);
   }
 
   .hero-stat {
@@ -3519,6 +3524,129 @@ h1, h2, h3, h4, h5, h6 {
   .footer-nav-columns .footer-nav-col:nth-child(3) ul li a {
     max-width: 13ch;
   }
+
+  /* Full-width inner containers to match hero photo width rhythm */
+  #problems .container,
+  #process .container,
+  #why-latwo .container,
+  #services .container,
+  #case-1 .container,
+  #testimonials .container,
+  #case-2 .container,
+  #faq .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Partner logos: larger and stable marquee on mobile */
+  .partners-track {
+    animation-duration: 24s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .partners-track img {
+    height: 84px;
+    max-width: 280px;
+  }
+
+  /* Unified accent size across homepage on mobile */
+  .your-pain,
+  .real-results,
+  .case-script,
+  .case-2-script,
+  .popular-badge,
+  .faq-script,
+  .contact-script {
+    font-size: 27px;
+    line-height: 1.1;
+  }
+
+  /* Show accents that were hidden on mobile */
+  .case-script,
+  .case-2-script,
+  .popular-badge,
+  .faq-script {
+    display: block;
+  }
+
+  .case-script,
+  .case-2-script {
+    top: -22px;
+    right: 12px;
+  }
+
+  .popular-badge {
+    top: -1.45rem;
+  }
+
+  .faq-script {
+    top: -1.35rem;
+  }
+
+  /* Place "Here to help" above the Stas photo block */
+  .why-script {
+    display: none;
+  }
+
+  .why-photo {
+    position: relative;
+    overflow: visible;
+  }
+
+  .why-photo::before {
+    content: "Here to help";
+    position: absolute;
+    top: -22px;
+    right: 12px;
+    font-family: var(--font-script);
+    font-size: 27px;
+    line-height: 1.1;
+    color: var(--brand-orange);
+    z-index: 85;
+    text-shadow: 0 6px 14px rgba(6, 16, 28, 0.2);
+    pointer-events: none;
+  }
+
+  /* Match case headings to "Latwo — ідеальний партнер" heading size */
+  .why-content h2,
+  .case-content h2,
+  .case-2-content h2 {
+    font-size: 27px;
+    line-height: 1.2;
+  }
+
+  /* Contact heading/subtitle size like FAQ */
+  .contact-inner .section-title-ghost {
+    font-size: 34px;
+    line-height: 1.1;
+  }
+
+  .contact-title-solid {
+    font-size: 27px !important;
+    line-height: 1.2;
+  }
+
+  .contact-subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* CTA size/centering to fit full text + icon */
+  .social-proof-cta .btn {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.15rem;
+    font-size: 1rem;
+  }
+
+  .social-proof-cta .btn .btn-text {
+    white-space: normal;
+    line-height: 1.25;
+  }
 }
 
 .mobile-nav {
@@ -3615,18 +3743,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav .mobile-lang-option {
-  width: 100%;
+  width: auto;
   padding: 0.55rem 0.7rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
+  background: transparent;
   color: var(--white-primary);
   font-family: var(--font-subheading);
   font-size: 13px;
   line-height: 1.3;
   font-weight: 500;
-  text-align: center;
+  text-align: left;
   margin-top: 0.28rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .mobile-nav-lang {
@@ -3635,22 +3766,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-lang-option {
-  width: 100%;
+  width: auto;
   padding: 0.55rem 0.7rem;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
+  background: transparent;
   color: var(--white-primary);
   font-family: var(--font-subheading);
   font-size: 14px;
   line-height: 1.3;
   font-weight: 500;
-  text-align: center;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .mobile-lang-option.active {
   border-color: rgba(255, 255, 255, 0.42);
-  background: rgba(255, 255, 255, 0.16);
+  background: transparent;
 }
 
 body.mobile-menu-open {
@@ -3896,6 +4030,18 @@ body.mobile-menu-open {
 
   #contact .contact-inner {
     max-width: 100% !important;
+  }
+
+  #problems .container,
+  #process .container,
+  #why-latwo .container,
+  #services .container,
+  #case-1 .container,
+  #testimonials .container,
+  #case-2 .container,
+  #faq .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   #hero .hero-buttons .btn.btn-orange {
