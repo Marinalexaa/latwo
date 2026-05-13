@@ -3,18 +3,29 @@
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initHeader();
-  initScrollReveal();
-  initScrollZoom();
-  initLangSwitcher();
-  initMobileNav();
-  initFAQ();
-  initContactForm();
-  initChecklist();
-  initPricingContactPrefill();
-  initTestimonialsHoverCarousel();
-  initSocialProofAvatars();
-  initFooterNavAnimationLabels();
+  const initSteps = [
+    initHeader,
+    initScrollReveal,
+    initScrollZoom,
+    initLangSwitcher,
+    initMobileNav,
+    initFAQ,
+    initContactForm,
+    initChecklist,
+    initPricingContactPrefill,
+    initTestimonialsHoverCarousel,
+    initSocialProofInfiniteRows,
+    initSocialProofAvatars,
+    initFooterNavAnimationLabels
+  ];
+
+  initSteps.forEach((step) => {
+    try {
+      step();
+    } catch (error) {
+      console.error('[LATWO init error]', error);
+    }
+  });
 });
 
 /* ============================================================
@@ -438,71 +449,49 @@ function initTestimonialsHoverCarousel() {
 }
 
 /* ============================================================
+   SOCIAL PROOF ROWS — seamless infinite loop (4 cards repeated)
+   ============================================================ */
+function initSocialProofInfiniteRows() {
+  const rows = document.querySelectorAll('#social-proof .reviews-row');
+  if (!rows.length) return;
+
+  rows.forEach((row) => {
+    if (row.dataset.loopReady === 'true') return;
+
+    const allCards = Array.from(row.querySelectorAll('.review-mini-card'));
+    if (allCards.length < 4) return;
+
+    const baseCards = allCards.slice(0, 4);
+
+    // Keep only the original 4 cards in markup; runtime loop uses cloned copies.
+    allCards.slice(4).forEach(card => card.remove());
+
+    baseCards.forEach((card) => {
+      row.appendChild(card.cloneNode(true));
+    });
+
+    row.dataset.loopReady = 'true';
+  });
+}
+
+/* ============================================================
    SOCIAL PROOF AVATARS — PNG with fallback
    ============================================================ */
 function initSocialProofAvatars() {
-  const cards = document.querySelectorAll('#social-proof .review-mini-card');
-  if (!cards.length) return;
-
-  const imagePrefix = window.location.pathname.includes('/en/') ? '../' : '';
-  const fallbackPool = [
-    `${imagePrefix}images/testimonial-andrii.png`,
-    `${imagePrefix}images/testimonial-dmytro.png`,
-    `${imagePrefix}images/testimonial-oksana.png`,
-    `${imagePrefix}images/testimonial-kostiantyn.png`
-  ];
-
-  cards.forEach((card, index) => {
-    const avatar = card.querySelector('.review-mini-avatar');
-    const nameEl = card.querySelector('.review-mini-name');
-    if (!avatar) return;
-
-    const rawName = (nameEl ? nameEl.textContent : '').trim();
-    if (!rawName) return;
-
-    const parts = rawName.split(/\s+/).filter(Boolean);
-    const initials = parts.slice(0, 2).map(part => part[0]).join('').toUpperCase() || rawName[0].toUpperCase();
-    const slug = slugifyName(rawName);
-    const fallbackSrc = fallbackPool[index % fallbackPool.length];
-    const avatarNameVariants = {
-      andriy: ['andriy', 'andrii'],
-      serhiy: ['serhiy', 'serhii'],
-      nataliya: ['nataliya', 'nataliia'],
-      vitaliy: ['vitaliy', 'vitalii'],
-      lyudmyla: ['lyudmyla', 'liudmyla'],
-      tetyana: ['tetyana', 'tetiana']
-    };
-
-    const slugVariants = avatarNameVariants[slug] || [slug];
-    const candidateSources = [
-      ...slugVariants.map(variant => `${imagePrefix}images/testimonial-${variant}.png`),
-      fallbackSrc
-    ];
-
-    avatar.textContent = initials;
-
-    const img = document.createElement('img');
-    img.alt = rawName;
-    img.loading = 'lazy';
-    let sourceIndex = 0;
-
-    const setNextSource = () => {
-      if (sourceIndex >= candidateSources.length) return;
-      img.src = candidateSources[sourceIndex];
-      sourceIndex += 1;
-    };
-
-    img.onerror = () => {
-      setNextSource();
-    };
-    img.onload = () => {
-      avatar.textContent = '';
-      avatar.appendChild(img);
-    };
-
-    setNextSource();
+  // Avatars are now rendered directly in HTML for deterministic behavior.
+  // Keep this hook to support cloned cards and ensure lazy-loading stays enabled.
+  document.querySelectorAll('#social-proof .review-mini-avatar img').forEach((img) => {
+    if (!img.loading) img.loading = 'lazy';
   });
 }
+
+window.addEventListener('load', () => {
+  try {
+    initSocialProofAvatars();
+  } catch (error) {
+    console.error('[LATWO avatars load error]', error);
+  }
+});
 
 /* ============================================================
    FOOTER NAV LABELS — keep hover animation text synced
