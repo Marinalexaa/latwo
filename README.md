@@ -9,7 +9,7 @@ A pixel-perfect static website clone of [latwo.eu](https://latwo.eu) — an AI c
 - **13 sections** on the main page + 4 sub-pages
 - **Animated reviews wall** (3 rows scrolling left/right/left)
 - **FAQ accordion** with smooth open/close
-- **Contact form** with mailto fallback to `latwo.eu@gmail.com`
+- **Contact form** via backend API (Vercel + Resend)
 - **Scroll reveal animations** on cards and sections
 - **Fully responsive** (mobile, tablet, desktop)
 - **GitHub Pages ready** — pure HTML/CSS/JS, no build step required
@@ -66,20 +66,30 @@ git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
 git push -u origin main
 ```
 
-## ✉️ Contact Form Setup
+## ✉️ Contact Form Setup (Vercel + Resend)
 
-The contact form currently uses a **mailto fallback** that opens the user's email client with pre-filled data to `latwo.eu@gmail.com`.
+The contact form sends data to `/api/contact` and then to your inbox via Resend.
 
-### For real email sending, integrate EmailJS:
+### 1) Add environment variables in Vercel
 
-1. Sign up at [emailjs.com](https://www.emailjs.com/)
-2. Create a service and email template
-3. Add to `index.html` before `</body>`:
-   ```html
-   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-   <script>emailjs.init("YOUR_PUBLIC_KEY");</script>
-   ```
-4. In `js/main.js`, replace `'YOUR_SERVICE_ID'` and `'YOUR_TEMPLATE_ID'` with your actual IDs
+Project → **Settings → Environment Variables**
+
+- `RESEND_API_KEY`
+- `CONTACT_FORM_TO_EMAIL` (e.g. `latwo.eu@gmail.com`)
+- `CONTACT_FORM_FROM_EMAIL` (e.g. `Latwo Website <noreply@latwo.eu>`)
+- `CONTACT_FORM_SUBJECT_PREFIX` (optional, e.g. `Latwo.eu`)
+- `CONTACT_FORM_RATE_LIMIT_MAX_REQUESTS` (optional, default `5`)
+- `CONTACT_FORM_RATE_LIMIT_WINDOW_MS` (optional, default `900000` = 15 min)
+
+Use `.env.example` as a reference for local development.
+
+### 2) Verify sender domain in Resend
+
+To send from `@latwo.eu`, verify your domain in Resend and add required DNS records.
+
+### 3) Deploy
+
+After setting env variables, redeploy the project in Vercel.
 
 ## 🎨 Design Tokens
 

@@ -722,6 +722,12 @@
       <p class="contact-subtitle" data-i18n="contact_subtitle">Для консультації або безкоштовного AI Readiness чекліста заповніть, будь ласка, форму</p>
 
       <form class="contact-form" id="contact-form">
+        <div class="form-honeypot" aria-hidden="true">
+          <label for="website-field">Website</label>
+          <input id="website-field" type="text" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+        <input type="hidden" name="form_started_at" value="" />
+
         <div class="form-row">
           <div class="form-group">
             <label><span data-i18n="contact_name">ІМ'Я</span> <span class="required">*</span></label>
@@ -762,6 +768,9 @@
           </span>
         </button>
       </form>
+      <div class="form-error" id="form-error" role="alert" aria-live="polite" data-i18n="contact_error">
+        Сталася помилка під час відправки. Спробуйте ще раз або напишіть нам на latwo.eu@gmail.com.
+      </div>
       <div class="form-success" id="form-success">
         <p data-i18n="contact_success">✅ Дякуємо! Ми отримали ваше повідомлення і зв'яжемося з вами найближчим часом.</p>
       </div>
