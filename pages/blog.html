@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Блог — Latwo AI Consulting</title>
   <meta name="description" content="Інсайти, практичні ідеї та бізнес-роздуми від команди Latwo." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://latwo.eu/pages/blog.html" />
   <link rel="stylesheet" href="../css/main.css" />
   <style>
     :root {
@@ -223,6 +225,66 @@
         font-size: 16px;
       }
     }
+
+    @media (max-width: 540px) {
+      :root {
+        --blog-top-gap: 5.8rem;
+      }
+
+      .blog-shell {
+        padding: 0 12px;
+      }
+
+      .blog-hero h1 {
+        font-size: 44px;
+      }
+
+      .blog-hero p {
+        font-size: 18px;
+      }
+
+      .blog-post-title {
+        font-size: 22px;
+      }
+
+      .blog-post-excerpt {
+        font-size: 15.5px;
+      }
+
+      .blog-post-meta {
+        font-size: 11px;
+      }
+
+      .blog-load-wrap {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 420px) {
+      :root {
+        --blog-top-gap: 5.4rem;
+      }
+
+      .blog-hero h1 {
+        font-size: 36px;
+      }
+
+      .blog-hero p {
+        font-size: 17px;
+      }
+
+      .blog-post-body {
+        padding: 1.05rem;
+      }
+
+      .blog-post-title {
+        font-size: 20px;
+      }
+
+      .blog-post-excerpt {
+        font-size: 15px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -288,65 +350,67 @@
     </header>
 
     <div class="blog-grid">
+      <!-- BLOG_GRID_START -->
       <article class="blog-post scroll-reveal">
-        <a class="blog-post-media" href="blog-article.html">
-          <img src="../images/maryna-portrait.jpg" alt="How to make better business decisions with confidence" />
+        <a class="blog-post-media" href="yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html">
+          <img src="../images/blog-gemini-handwritten-text-decoding.png" alt="Як розшифрувати рукописний текст за допомогою AI: Gemini замість перекладача за 50 євро" />
         </a>
         <div class="blog-post-body">
-          <h2 class="blog-post-title"><a href="blog-article.html" data-i18n="blog_card_1_title">Як приймати кращі бізнес-рішення впевнено</a></h2>
-          <p class="blog-post-excerpt" data-i18n="blog_card_1_excerpt">Простий фреймворк, який допомагає власникам бізнесу приймати рішення швидше, розумніше й без зайвого стресу.</p>
+          <h2 class="blog-post-title"><a href="yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html">Як розшифрувати рукописний текст за допомогою AI: Gemini замість перекладача за 50 євро</a></h2>
+          <p class="blog-post-excerpt">Старонімецький рукопис, 5000 євро за переклад від спеціаліста - або Gemini за кілька днів з точністю 95-98%. Як правильно налаштувати AI для розшифровки документів.</p>
           <div class="blog-post-meta">
-            <span data-i18n="blog_card_1_tag">МИСЛЕННЯ ТА ЛІДЕРСТВО</span>
+            <span>AI ДЛЯ ДОКУМЕНТІВ</span>
             <span class="dot"></span>
-            <span data-i18n="blog_card_1_time">5 ХВ</span>
+            <span>4 ХВ</span>
           </div>
         </div>
       </article>
 
       <article class="blog-post scroll-reveal">
-        <a class="blog-post-media" href="blog-article.html">
-          <img src="../images/case-car-night.jpg" alt="How to find your unique selling point in a crowded market" />
+        <a class="blog-post-media" href="yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html">
+          <img src="../images/blog-ai-website-manus-codex-desktop.png" alt="Як зробити сайт за допомогою AI без розробника: Manus і Codex Desktop" />
         </a>
         <div class="blog-post-body">
-          <h2 class="blog-post-title"><a href="blog-article.html" data-i18n="blog_card_2_title">Як знайти свій унікальний продажний меседж у перевантаженому ринку</a></h2>
-          <p class="blog-post-excerpt" data-i18n="blog_card_2_excerpt">Розберемо, як визначити і чітко комунікувати вашу відмінність, щоб клієнти обирали саме вас.</p>
+          <h2 class="blog-post-title"><a href="yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html">Як зробити сайт за допомогою AI без розробника: Manus і Codex Desktop</a></h2>
+          <p class="blog-post-excerpt">Без коду і розробника - сайт за кілька днів замість тисяч євро. Як AI змінює ринок SaaS і що робити бізнесу з підписками які більше не окупаються.</p>
           <div class="blog-post-meta">
-            <span data-i18n="blog_card_2_tag">ПОЗИЦІОНУВАННЯ ТА МАРКЕТИНГ</span>
+            <span>AI АВТОМАТИЗАЦІЯ</span>
             <span class="dot"></span>
-            <span data-i18n="blog_card_2_time">7 ХВ</span>
+            <span>4 ХВ</span>
           </div>
         </div>
       </article>
 
       <article class="blog-post scroll-reveal">
-        <a class="blog-post-media" href="blog-article.html">
-          <img src="../images/case-car-dealer.jpg" alt="How to build a 90-day growth roadmap for your business" />
+        <a class="blog-post-media" href="yak-nalashtuvaty-ai-pid-svii-brend.html">
+          <img src="../images/blog-ai-brand-context-project-setup.png" alt="Як налаштувати AI під свій бренд і більше не пояснювати контекст у кожному чаті" />
         </a>
         <div class="blog-post-body">
-          <h2 class="blog-post-title"><a href="blog-article.html" data-i18n="blog_card_3_title">Як побудувати 90-денну дорожню карту росту для вашого бізнесу</a></h2>
-          <p class="blog-post-excerpt" data-i18n="blog_card_3_excerpt">Практичний підхід, який допоможе перетворити стратегію на чіткий покроковий план дій на найближчі 3 місяці.</p>
+          <h2 class="blog-post-title"><a href="yak-nalashtuvaty-ai-pid-svii-brend.html">Як налаштувати AI під свій бренд і більше не пояснювати контекст щоразу</a></h2>
+          <p class="blog-post-excerpt">Функція «Проєкт» у ChatGPT і Claude дозволяє один раз зібрати базу знань бренду - і отримувати тексти у вашому стилі з першого разу. Покроковий підхід.</p>
           <div class="blog-post-meta">
-            <span data-i18n="blog_card_3_tag">СТРАТЕГІЯ ТА РОСТ</span>
+            <span>AI ДЛЯ МАРКЕТИНГУ</span>
             <span class="dot"></span>
-            <span data-i18n="blog_card_3_time">3 ХВ</span>
+            <span>5 ХВ</span>
           </div>
         </div>
       </article>
 
       <article class="blog-post scroll-reveal">
-        <a class="blog-post-media" href="blog-article.html">
-          <img src="../images/faq-consultant.jpg" alt="5 common mistakes holding small businesses back" />
+        <a class="blog-post-media" href="blog-ai-claude-gemini-chatgpt.html">
+          <img src="../images/blog-ai-tool-claude-gemini-chatgpt.png" alt="Який AI інструмент обрати для бізнесу: Claude, Gemini чи ChatGPT" />
         </a>
         <div class="blog-post-body">
-          <h2 class="blog-post-title"><a href="blog-article.html" data-i18n="blog_card_4_title">5 помилок, які найчастіше стримують малий бізнес</a></h2>
-          <p class="blog-post-excerpt" data-i18n="blog_card_4_excerpt">Які рішення найчастіше гальмують розвиток і як виправити їх швидко без зайвих витрат.</p>
+          <h2 class="blog-post-title"><a href="blog-ai-claude-gemini-chatgpt.html">Який AI інструмент обрати для бізнесу: Claude, Gemini чи ChatGPT</a></h2>
+          <p class="blog-post-excerpt">Claude, Gemini, ChatGPT - кожен має свою зону. Як обрати правильний інструмент для задачі і не витрачати токени даремно. Реальний досвід.</p>
           <div class="blog-post-meta">
-            <span data-i18n="blog_card_4_tag">СТРАТЕГІЯ ТА РОСТ</span>
+            <span>ВИБІР AI-ІНСТРУМЕНТІВ</span>
             <span class="dot"></span>
-            <span data-i18n="blog_card_4_time">4 ХВ</span>
+            <span>4 ХВ</span>
           </div>
         </div>
       </article>
+      <!-- BLOG_GRID_END -->
     </div>
 
     <div class="blog-load-wrap scroll-reveal">

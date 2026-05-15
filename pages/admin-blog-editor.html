@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latwo Admin — Редактор статей</title>
+  <link rel="stylesheet" href="../css/main.css?v=20260515c" />
+  <style>
+    :root {
+      --admin-bg: #f4f1ec;
+      --admin-panel: #ffffff;
+      --admin-border: rgba(41, 41, 41, 0.14);
+      --admin-muted: #6d6d6d;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 8% 8%, #fff6ee 0%, var(--admin-bg) 40%, #ece8e2 100%);
+      color: var(--black-primary);
+      font-family: var(--font-subheading);
+      min-height: 100vh;
+    }
+
+    .admin-wrap {
+      width: min(1360px, 96vw);
+      margin: 2rem auto;
+    }
+
+    .admin-card {
+      border: 1px solid var(--admin-border);
+      border-radius: 16px;
+      background: var(--admin-panel);
+      box-shadow: 0 14px 36px rgba(24, 17, 12, 0.08);
+    }
+
+    .login-box {
+      width: min(520px, 92vw);
+      margin: 10vh auto;
+      padding: 2rem;
+    }
+
+    .login-box h1 {
+      font-family: var(--font-heading);
+      font-size: 38px;
+      margin: 0 0 0.6rem;
+      letter-spacing: -0.03em;
+    }
+
+    .login-box p {
+      margin: 0 0 1.3rem;
+      color: var(--admin-muted);
+      line-height: 1.5;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .field label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--admin-muted);
+      font-weight: 600;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      border: 1px solid rgba(41, 41, 41, 0.24);
+      border-radius: 10px;
+      padding: 0.76rem 0.9rem;
+      font: inherit;
+      color: var(--black-primary);
+      background: #fff;
+    }
+
+    .field textarea {
+      min-height: 94px;
+      resize: vertical;
+    }
+
+    .error {
+      color: #b43131;
+      font-size: 14px;
+      min-height: 1.2em;
+      margin-top: 0.55rem;
+    }
+
+    .field-with-action {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .field-with-action input,
+    .field-with-action textarea {
+      flex: 1;
+    }
+
+    .field-with-action textarea {
+      min-height: 110px;
+    }
+
+    .field-with-action.stack {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .field-with-action.stack .mini-action {
+      width: 100%;
+    }
+
+    .mini-action {
+      white-space: nowrap;
+      min-height: 42px;
+    }
+
+    .mode-box {
+      width: min(920px, 96vw);
+      margin: 3vh auto;
+      padding: 1.2rem;
+    }
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .mode-option {
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      background: #fff;
+      padding: 1rem;
+    }
+
+    .mode-option h3 {
+      margin: 0 0 0.5rem;
+      font-family: var(--font-heading);
+      font-size: 28px;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+    }
+
+    .mode-option p {
+      margin: 0 0 0.9rem;
+      color: var(--admin-muted);
+      line-height: 1.5;
+    }
+
+    .existing-list {
+      margin-top: 0.8rem;
+      max-height: 45vh;
+      overflow: auto;
+      border: 1px solid var(--admin-border);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .existing-item {
+      padding: 0.7rem 0.75rem;
+      border-bottom: 1px solid var(--admin-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .existing-item:last-child {
+      border-bottom: none;
+    }
+
+    .existing-title {
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--black-primary);
+    }
+
+    .existing-path {
+      font-size: 12px;
+      color: var(--admin-muted);
+    }
+
+    .existing-actions {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .admin-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.1rem;
+      border-bottom: 1px solid var(--admin-border);
+      gap: 0.8rem;
+    }
+
+    .admin-head h2 {
+      margin: 0;
+      font-family: var(--font-heading);
+      letter-spacing: -0.03em;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .admin-head p {
+      margin: 0.3rem 0 0;
+      color: var(--admin-muted);
+      font-size: 14px;
+    }
+
+    .admin-head-actions {
+      display: flex;
+      gap: 0.55rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .admin-status {
+      font-size: 13px;
+      color: var(--admin-muted);
+      min-height: 1.1em;
+      text-align: right;
+      width: 100%;
+    }
+
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 0;
+      min-height: 82vh;
+    }
+
+    .panel-left {
+      padding: 1rem;
+      border-right: 1px solid var(--admin-border);
+      overflow: auto;
+    }
+
+    .panel-right {
+      padding: 1rem;
+      overflow: auto;
+    }
+
+    .panel-block {
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      padding: 0.9rem;
+      margin-bottom: 0.85rem;
+      background: #fff;
+    }
+
+    .panel-block h3 {
+      margin: 0 0 0.75rem;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .tool-btn {
+      border: 1px solid var(--admin-border);
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.42rem 0.62rem;
+      font-size: 13px;
+      cursor: pointer;
+      color: var(--black-primary);
+      min-height: 34px;
+    }
+
+    .tool-btn:hover {
+      border-color: var(--brand-orange);
+      color: var(--brand-orange);
+    }
+
+    .tool-btn-danger {
+      border-color: rgba(180, 49, 49, 0.28);
+      color: #b43131;
+    }
+
+    .tool-btn-danger:hover {
+      border-color: #b43131;
+      color: #b43131;
+    }
+
+    #editor {
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      min-height: 430px;
+      padding: 1rem;
+      line-height: 1.6;
+      background: #fff;
+      font-size: 16px;
+      color: var(--black-secondary);
+      outline: none;
+    }
+
+    #editor:empty::before {
+      content: attr(data-placeholder);
+      color: #8a8a8a;
+      pointer-events: none;
+    }
+
+    #editor h2,
+    #editor h3,
+    #editor h4 {
+      color: var(--black-primary);
+      line-height: 1.25;
+      margin: 1.1rem 0 0.6rem;
+      font-family: var(--font-heading);
+      letter-spacing: -0.03em;
+      font-weight: 400;
+    }
+
+    #editor h2 { font-size: 34px; }
+    #editor h3 { font-size: 27px; }
+    #editor h4 { font-size: 22px; }
+
+    #editor a {
+      color: var(--brand-orange);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .inline-help {
+      color: var(--admin-muted);
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 0.4rem;
+    }
+
+    .preview-shell {
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #faf8f4;
+      margin-top: 0.8rem;
+    }
+
+    .preview-head {
+      padding: 0.6rem 0.9rem;
+      background: #fff;
+      border-bottom: 1px solid var(--admin-border);
+      font-size: 13px;
+      color: var(--admin-muted);
+    }
+
+    .preview-body {
+      padding: 1rem;
+    }
+
+    .preview-article {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--admin-border);
+      border-radius: 12px;
+      padding: 1.2rem;
+    }
+
+    .preview-article .blog-article-shell {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .preview-article .blog-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--brand-orange);
+      font-family: var(--font-subheading);
+      font-size: 16px;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+      opacity: 0.85;
+      transition: opacity var(--transition);
+    }
+
+    .preview-article .blog-back-link:hover,
+    .preview-article .blog-back-link:focus-visible {
+      opacity: 1;
+    }
+
+    .preview-article .blog-back-link svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .preview-article .blog-back-link .back-label-wrap {
+      display: inline-grid;
+      align-items: center;
+      justify-items: start;
+      min-height: 1.4em;
+      overflow: hidden;
+      line-height: 1.4;
+    }
+
+    .preview-article .blog-back-link  .back-label {
+      grid-area: 1 / 1;
+      display: block;
+      white-space: nowrap;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.28s ease;
+    }
+
+    .preview-article .blog-back-link  .back-label.default {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .preview-article .blog-back-link  .back-label.hover {
+      transform: translateY(135%);
+      opacity: 0;
+    }
+
+    .preview-article .blog-back-link:hover  .back-label.default,
+    .preview-article .blog-back-link:focus-visible  .back-label.default {
+      transform: translateY(-135%);
+      opacity: 0;
+    }
+
+    .preview-article .blog-back-link:hover  .back-label.hover,
+    .preview-article .blog-back-link:focus-visible  .back-label.hover {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .preview-article .blog-article-head {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .preview-article .blog-article-meta {
+      color: var(--brand-orange);
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.6rem;
+    }
+
+    .preview-article .blog-article-media {
+      margin: 1rem 0 1.15rem;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--admin-border);
+      background: #ece9e1;
+      min-height: 120px;
+      display: grid;
+      place-items: center;
+      color: var(--admin-muted);
+      font-size: 14px;
+      text-align: center;
+      padding: 0.7rem;
+    }
+
+    .preview-article .blog-article-media img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .preview-article .blog-article-content {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--black-secondary);
+    }
+
+    .preview-article .blog-article-head h1 {
+      font-family: var(--font-heading);
+      font-size: 80px;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: var(--black-primary);
+      max-width: 980px;
+      margin: 0 auto 1rem;
+    }
+
+    .preview-article .blog-article-head p {
+      font-size: 20px;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      color: var(--black-secondary);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .preview-article .blog-article-content h2,
+    .preview-article .blog-article-content h3,
+    .preview-article .blog-article-content h4 {
+      color: var(--black-primary);
+      font-family: var(--font-heading);
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      font-weight: 400;
+    }
+
+    .preview-article .blog-article-content h2 { font-size: 40px; }
+    .preview-article .blog-article-content h3 { font-size: 30px; }
+    .preview-article .blog-article-content h4 { font-size: 24px; }
+
+    .preview-article .blog-article-content h3.faq-question-title {
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .preview-article .blog-article-content a:not(.btn),
+    .preview-article .blog-article-content a:not(.btn) * {
+      color: var(--brand-orange) !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1.5px;
+    }
+
+    .preview-article .blog-article-content .btn,
+    .preview-article .blog-article-content .btn * {
+      text-decoration: none !important;
+    }
+
+    .preview-article .blog-article-cta p {
+      font-style: italic;
+    }
+
+    .preview-article .blog-article-cta-action {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 1140px) {
+      .admin-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-left {
+        border-right: none;
+        border-bottom: 1px solid var(--admin-border);
+      }
+
+      .mode-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .admin-head-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .admin-status {
+        text-align: left;
+      }
+    }
+
+    .two-col .field-with-action {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .two-col .field-with-action .mini-action {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="loginScreen" class="login-box admin-card">
+    <h1>Latwo Admin</h1>
+    <p>Увійдіть в редактор, щоб створювати й оформлювати статті для блогу.</p>
+    <form id="loginForm">
+      <div class="field">
+        <label for="loginEmail">Email</label>
+        <input id="loginEmail" type="email" autocomplete="username" required />
+      </div>
+      <div class="field">
+        <label for="loginPassword">Пароль</label>
+        <input id="loginPassword" type="password" autocomplete="current-password" required />
+      </div>
+      <button type="submit" class="btn btn-orange" style="width:100%;">Увійти</button>
+      <div id="loginError" class="error"></div>
+    </form>
+  </div>
+
+  <div id="modeScreen" class="mode-box admin-card" style="display:none;">
+    <h2 style="margin:0 0 0.25rem;font-family:var(--font-heading);font-size:36px;letter-spacing:-0.03em;font-weight:400;">Що хочете зробити?</h2>
+    <p style="margin:0 0 1rem;color:var(--admin-muted);">Оберіть сценарій: створити нову статтю або відкрити вже опубліковану для редагування.</p>
+    <div class="mode-grid">
+      <div class="mode-option">
+        <h3>Опублікувати нову</h3>
+        <p>Відкриє чистий редактор з базовими полями та превʼю.</p>
+        <button id="startNewArticle" class="btn btn-orange" type="button">Створити нову статтю</button>
+      </div>
+      <div class="mode-option">
+        <h3>Редагувати існуючу</h3>
+        <p>Оберіть статтю зі списку, щоб завантажити її в редактор.</p>
+        <button id="refreshExisting" class="btn btn-white" type="button">Оновити список статей</button>
+      </div>
+    </div>
+    <div id="existingArticlesList" class="existing-list" style="margin-top:1rem;"></div>
+  </div>
+
+  <div id="adminScreen" class="admin-wrap admin-card" style="display:none;">
+    <div class="admin-head">
+      <div>
+        <h2>Редактор статей</h2>
+        <p>Створіть або відредагуйте статтю, перевірте превʼю та опублікуйте на сайт.</p>
+      </div>
+      <div class="admin-head-actions">
+        <button id="backToListBtn" class="btn btn-outline-dark" type="button">Назад до списку</button>
+        <button id="saveDraftBtn" class="btn btn-white" type="button">Зберегти чернетку</button>
+        <button id="previewLiveBtn" class="btn btn-white" type="button">Переглянути статтю</button>
+        <button id="publishArticleBtn" class="btn btn-orange" type="button">Опублікувати</button>
+        <button id="deleteArticleBtn" class="btn btn-outline-dark" type="button">Видалити статтю</button>
+        <button id="logoutBtn" class="btn btn-outline-dark" type="button">Вийти</button>
+        <div id="adminStatus" class="admin-status"></div>
+      </div>
+    </div>
+
+    <div class="admin-layout">
+      <aside class="panel-left">
+        <div class="panel-block">
+          <h3>Мета та SEO</h3>
+          <div class="field">
+            <label for="slug">Slug файлу</label>
+            <div class="field-with-action">
+              <input id="slug" type="text" placeholder="blog-ai-article-example" />
+              <button id="generateSlugBtn" type="button" class="tool-btn mini-action">Згенерувати</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="seoTitle">SEO Title</label>
+            <input id="seoTitle" type="text" placeholder="Наприклад: Який AI-інструмент обрати для бізнесу" />
+          </div>
+          <div class="field">
+            <label for="seoDescription">SEO Description</label>
+            <textarea id="seoDescription" placeholder="Короткий опис для Google (140-160 символів)"></textarea>
+          </div>
+          <div class="two-col">
+            <div class="field">
+              <label for="publishDate">Дата публікації</label>
+              <input id="publishDate" type="date" />
+            </div>
+            <div class="field">
+              <label for="readTime">Час читання</label>
+              <input id="readTime" type="text" placeholder="8 ХВ" />
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-block">
+          <h3>Обкладинка та автор</h3>
+          <div class="field">
+            <label for="coverImage">Файл фото (в папці images)</label>
+            <input id="coverImage" type="text" placeholder="blog-ai-tools-stanislav-lecture-laptop.jpg" />
+          </div>
+          <div class="field">
+            <label for="articleTitle">H1 статті</label>
+            <input id="articleTitle" type="text" placeholder="Введіть головний заголовок статті" />
+          </div>
+          <div class="field">
+            <label for="articleSubtitle">Підзаголовок під H1</label>
+            <div class="field-with-action stack">
+              <textarea id="articleSubtitle" placeholder="1-2 речення, що пояснюють цінність статті"></textarea>
+              <button id="generateSubtitleBtn" type="button" class="tool-btn mini-action">Згенерувати</button>
+            </div>
+          </div>
+          <div class="two-col">
+            <div class="field">
+              <label for="category">Категорія</label>
+              <div class="field-with-action">
+                <input id="category" type="text" placeholder="AI ДЛЯ БІЗНЕСУ" />
+                <button id="generateCategoryBtn" type="button" class="tool-btn mini-action">Згенерувати</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="authorName">Автор</label>
+              <input id="authorName" type="text" placeholder="Станіслав Бучацький" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="authorRole">Роль автора</label>
+            <input id="authorRole" type="text" placeholder="засновник Latwo" />
+          </div>
+        </div>
+
+        <div class="panel-block">
+          <h3>Блок заклику</h3>
+          <div class="field">
+            <label for="ctaText">Текст заклику</label>
+            <textarea id="ctaText" placeholder="Короткий заклик до дії перед кнопкою"></textarea>
+          </div>
+          <div class="two-col">
+            <div class="field">
+              <label for="ctaBtnText">Текст CTA-кнопки</label>
+              <input id="ctaBtnText" type="text" placeholder="Забронювати безкоштовну консультацію" />
+            </div>
+            <div class="field">
+              <label for="ctaBtnUrl">Посилання CTA</label>
+              <input id="ctaBtnUrl" type="text" placeholder="../index.html#contact" />
+            </div>
+          </div>
+          <button type="button" id="insertCtaBlock" class="btn btn-white" style="width:100%;">Вставити блок заклику в кінець статті</button>
+        </div>
+
+      </aside>
+
+      <main class="panel-right">
+        <div class="panel-block">
+          <h3>Редактор тексту</h3>
+          <div class="toolbar">
+            <button type="button" class="tool-btn" data-block="P">Абзац</button>
+            <button type="button" class="tool-btn" data-block="H2">H2</button>
+            <button type="button" class="tool-btn" data-block="H3">H3</button>
+            <button type="button" class="tool-btn" data-block="H4">H4</button>
+            <button type="button" class="tool-btn" data-cmd="bold"><strong>B</strong></button>
+            <button type="button" class="tool-btn" data-cmd="italic"><em>I</em></button>
+            <button type="button" class="tool-btn" data-cmd="underline"><u>U</u></button>
+            <button type="button" class="tool-btn" data-cmd="insertUnorderedList">• Список</button>
+            <button type="button" class="tool-btn" data-cmd="insertOrderedList">1. Список</button>
+            <button type="button" class="tool-btn" id="insertHr">Риска</button>
+            <button type="button" class="tool-btn" id="insertLink">Лінк</button>
+            <button type="button" class="tool-btn" id="insertInlineCta">CTA в текст</button>
+            <label class="tool-btn" style="display:inline-flex;align-items:center;gap:0.4rem;cursor:pointer;">
+              Колір
+              <input id="textColor" type="color" value="#e35c36" style="border:none;padding:0;background:none;width:26px;height:22px;" />
+            </label>
+          </div>
+          <div id="editor" contenteditable="true" data-placeholder="Почніть писати текст статті тут..."></div>
+          <p class="inline-help">Порада: спочатку виділіть текст, потім натисніть кнопку форматування.</p>
+        </div>
+
+        <div class="preview-shell">
+          <div class="preview-head">Живе превʼю статті</div>
+          <div class="preview-body">
+            <div class="preview-article" id="previewArticle"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const AUTH_EMAIL = 'maryna.alexandrova@gmail.com';
+    const AUTH_PASSWORD = '1q2w3e4r5t';
+    const AUTH_KEY = 'latwo_admin_blog_auth';
+
+    const loginScreen = document.getElementById('loginScreen');
+    const modeScreen = document.getElementById('modeScreen');
+    const adminScreen = document.getElementById('adminScreen');
+    const loginForm = document.getElementById('loginForm');
+    const loginError = document.getElementById('loginError');
+    const backToListBtn = document.getElementById('backToListBtn');
+    const saveDraftBtn = document.getElementById('saveDraftBtn');
+    const previewLiveBtn = document.getElementById('previewLiveBtn');
+    const publishArticleBtn = document.getElementById('publishArticleBtn');
+    const deleteArticleBtn = document.getElementById('deleteArticleBtn');
+    const adminStatus = document.getElementById('adminStatus');
+    const existingArticlesList = document.getElementById('existingArticlesList');
+    const startNewArticle = document.getElementById('startNewArticle');
+    const refreshExisting = document.getElementById('refreshExisting');
+
+    const slug = document.getElementById('slug');
+    const seoTitle = document.getElementById('seoTitle');
+    const seoDescription = document.getElementById('seoDescription');
+    const publishDate = document.getElementById('publishDate');
+    const readTime = document.getElementById('readTime');
+    const coverImage = document.getElementById('coverImage');
+    const articleTitle = document.getElementById('articleTitle');
+    const articleSubtitle = document.getElementById('articleSubtitle');
+    const category = document.getElementById('category');
+    const authorName = document.getElementById('authorName');
+    const authorRole = document.getElementById('authorRole');
+    const ctaText = document.getElementById('ctaText');
+    const ctaBtnText = document.getElementById('ctaBtnText');
+    const ctaBtnUrl = document.getElementById('ctaBtnUrl');
+    const generateSlugBtn = document.getElementById('generateSlugBtn');
+    const generateSubtitleBtn = document.getElementById('generateSubtitleBtn');
+    const generateCategoryBtn = document.getElementById('generateCategoryBtn');
+
+    const editor = document.getElementById('editor');
+    const previewArticle = document.getElementById('previewArticle');
+
+    const today = new Date().toISOString().slice(0, 10);
+    const API_BASE = 'http://127.0.0.1:4111';
+    const DRAFT_KEY = 'latwo_blog_editor_draft_v1';
+    let savedRange = null;
+    let apiReady = false;
+    let currentEditingSlug = null;
+
+    function getCurrentSlug() {
+      return slugify((slug.value || currentEditingSlug || '').trim());
+    }
+
+    function buildFreshSlug() {
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, '0');
+      const d = String(now.getDate()).padStart(2, '0');
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      return `nova-stattia-${y}${m}${d}-${hh}${mm}`;
+    }
+
+    function getCurrentHref() {
+      const activeSlug = getCurrentSlug();
+      return activeSlug ? `${activeSlug}.html` : '';
+    }
+
+    function updateActionButtons() {
+      const hasSlug = Boolean(getCurrentSlug());
+      previewLiveBtn.disabled = !hasSlug;
+      deleteArticleBtn.disabled = !hasSlug;
+    }
+
+    function showLoginScreen() {
+      loginScreen.style.display = 'block';
+      modeScreen.style.display = 'none';
+      adminScreen.style.display = 'none';
+    }
+
+    function showModeScreen() {
+      loginScreen.style.display = 'none';
+      modeScreen.style.display = 'block';
+      adminScreen.style.display = 'none';
+      loadExistingArticles();
+    }
+
+    function showEditorScreen() {
+      loginScreen.style.display = 'none';
+      modeScreen.style.display = 'none';
+      adminScreen.style.display = 'block';
+    }
+
+    function seedDefaults() {
+      slug.value = buildFreshSlug();
+      seoTitle.value = '';
+      seoDescription.value = '';
+      publishDate.value = today;
+      readTime.value = '8 ХВ';
+      coverImage.value = '';
+      articleTitle.value = '';
+      articleSubtitle.value = '';
+      category.value = 'AI ДЛЯ БІЗНЕСУ';
+      authorName.value = 'Станіслав Бучацький';
+      authorRole.value = 'засновник Latwo';
+      ctaText.value = '';
+      ctaBtnText.value = 'Забронювати безкоштовну консультацію';
+      ctaBtnUrl.value = '../index.html#contact';
+
+      editor.innerHTML = '';
+      currentEditingSlug = null;
+      updateActionButtons();
+      renderPreview();
+    }
+
+    function setAdminStatus(text) {
+      adminStatus.textContent = text || '';
+    }
+
+    function collectEditorData() {
+      return {
+        slug: slug.value,
+        seoTitle: seoTitle.value,
+        seoDescription: seoDescription.value,
+        publishDate: publishDate.value,
+        readTime: readTime.value,
+        coverImage: coverImage.value,
+        articleTitle: articleTitle.value,
+        articleSubtitle: articleSubtitle.value,
+        category: category.value,
+        authorName: authorName.value,
+        authorRole: authorRole.value,
+        ctaText: ctaText.value,
+        ctaBtnText: ctaBtnText.value,
+        ctaBtnUrl: ctaBtnUrl.value,
+        contentHtml: editor.innerHTML
+      };
+    }
+
+    function applyEditorData(data) {
+      if (!data) return;
+      slug.value = data.slug || slug.value;
+      seoTitle.value = data.seoTitle || seoTitle.value;
+      seoDescription.value = data.seoDescription || seoDescription.value;
+      publishDate.value = data.publishDate || publishDate.value;
+      readTime.value = data.readTime || readTime.value;
+      coverImage.value = data.coverImage || coverImage.value;
+      articleTitle.value = data.articleTitle || articleTitle.value;
+      articleSubtitle.value = data.articleSubtitle || articleSubtitle.value;
+      category.value = data.category || category.value;
+      authorName.value = data.authorName || authorName.value;
+      authorRole.value = data.authorRole || authorRole.value;
+      ctaText.value = data.ctaText || ctaText.value;
+      ctaBtnText.value = data.ctaBtnText || ctaBtnText.value;
+      ctaBtnUrl.value = data.ctaBtnUrl || ctaBtnUrl.value;
+      editor.innerHTML = data.contentHtml || data.editorHtml || editor.innerHTML;
+      updateActionButtons();
+      renderPreview();
+    }
+
+    function saveDraft() {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({ savedAt: new Date().toISOString(), data: collectEditorData() }));
+      const tm = new Date().toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' });
+      setAdminStatus(`Чернетку збережено о ${tm}`);
+    }
+
+    function restoreDraftIfExists() {
+      const raw = localStorage.getItem(DRAFT_KEY);
+      if (!raw) return false;
+      try {
+        const parsed = JSON.parse(raw);
+        if (parsed?.data) {
+          applyEditorData(parsed.data);
+          return true;
+        }
+      } catch {}
+      return false;
+    }
+
+    async function api(path, options = {}) {
+      const res = await fetch(`${API_BASE}${path}`, {
+        ...options,
+        headers: {
+          'Content-Type': 'application/json',
+          ...(options.headers || {})
+        }
+      });
+      const payload = await res.json().catch(() => ({}));
+      if (!res.ok || payload.ok === false) {
+        throw new Error(payload.error || `HTTP ${res.status}`);
+      }
+      return payload;
+    }
+
+    async function checkApiHealth() {
+      try {
+        await api('/api/health', { method: 'GET' });
+        apiReady = true;
+        return true;
+      } catch {
+        apiReady = false;
+        return false;
+      }
+    }
+
+    function safeHtml(text) {
+      return (text || '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;');
+    }
+
+    function formatDateUk(iso) {
+      if (!iso) return '';
+      const [y, m, d] = iso.split('-');
+      return `${d}.${m}.${y}`;
+    }
+
+    function slugify(value) {
+      const map = {
+        а: 'a', б: 'b', в: 'v', г: 'h', ґ: 'g', д: 'd', е: 'e', є: 'ye', ж: 'zh', з: 'z', и: 'y', і: 'i',
+        ї: 'yi', й: 'y', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p', р: 'r', с: 's', т: 't', у: 'u',
+        ф: 'f', х: 'kh', ц: 'ts', ч: 'ch', ш: 'sh', щ: 'shch', ь: '', ю: 'yu', я: 'ya'
+      };
+      const transliterated = (value || '')
+        .toLowerCase()
+        .split('')
+        .map((ch) => map[ch] ?? ch)
+        .join('');
+
+      return transliterated
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-') || 'blog-article';
+    }
+
+    async function generateSlug() {
+      const base = slugify(articleTitle.value || seoTitle.value || slug.value || 'blog-article');
+      let candidate = base;
+
+      try {
+        if (await checkApiHealth()) {
+          const response = await api('/api/posts', { method: 'GET' });
+          const used = new Set((response.posts || []).map((p) => p.slug).filter(Boolean));
+          if (currentEditingSlug) used.delete(currentEditingSlug);
+
+          if (used.has(candidate)) {
+            let i = 2;
+            while (used.has(`${base}-${i}`)) i += 1;
+            candidate = `${base}-${i}`;
+          }
+        }
+      } catch {
+        // If API is unavailable, keep the base slug without random suffixes.
+      }
+
+      slug.value = candidate;
+      renderPreview();
+    }
+
+    function generateSubtitle() {
+      const src = (seoDescription.value || '').trim();
+      if (src) {
+        articleSubtitle.value = src.length > 165 ? `${src.slice(0, 162).trim()}...` : src;
+      } else if (articleTitle.value.trim()) {
+        articleSubtitle.value = `Практичний розбір теми "${articleTitle.value.trim()}" для бізнесу без зайвої теорії.`;
+      } else {
+        articleSubtitle.value = 'Короткий підзаголовок, який пояснює цінність матеріалу.';
+      }
+      renderPreview();
+    }
+
+    function generateCategory() {
+      const basis = `${articleTitle.value} ${seoTitle.value} ${seoDescription.value} ${editor.textContent}`.toLowerCase();
+      if (basis.includes('seo') || basis.includes('google') || basis.includes('пошук')) {
+        category.value = 'SEO ТА КОНТЕНТ';
+      } else if (basis.includes('маркетинг') || basis.includes('лід') || basis.includes('продаж')) {
+        category.value = 'МАРКЕТИНГ ТА ПРОДАЖІ';
+      } else if (basis.includes('стратег') || basis.includes('масштаб') || basis.includes('рост')) {
+        category.value = 'СТРАТЕГІЯ ТА РОСТ';
+      } else {
+        category.value = 'AI ДЛЯ БІЗНЕСУ';
+      }
+      renderPreview();
+    }
+
+    function getFileNameFromPath(path) {
+      return (path || '').split('/').pop() || '';
+    }
+
+    function renderExistingArticles(list, emptyMessage = 'Поки не знайдено опублікованих статей у списку блогу.') {
+      if (!list.length) {
+        existingArticlesList.innerHTML = `<div class="existing-item"><span class="existing-title">${emptyMessage}</span></div>`;
+        return;
+      }
+
+      existingArticlesList.innerHTML = '';
+      list.forEach((itemData) => {
+        const href = itemData.href || `${itemData.slug}.html`;
+        const slugValue = itemData.slug || href.replace(/\.html$/i, '');
+        const title = itemData.title || slugValue;
+        const item = document.createElement('div');
+        item.className = 'existing-item';
+        item.innerHTML = `
+          <div>
+            <div class="existing-title">${safeHtml(title)}</div>
+            <div class="existing-path">${safeHtml(href)}</div>
+          </div>
+        `;
+        const actions = document.createElement('div');
+        actions.className = 'existing-actions';
+
+        const editBtn = document.createElement('button');
+        editBtn.className = 'tool-btn';
+        editBtn.type = 'button';
+        editBtn.textContent = 'Редагувати';
+        editBtn.addEventListener('click', () => loadArticleForEditing(slugValue));
+        actions.appendChild(editBtn);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'tool-btn tool-btn-danger';
+        deleteBtn.type = 'button';
+        deleteBtn.textContent = 'Видалити';
+        deleteBtn.addEventListener('click', async () => {
+          await deleteArticle(slugValue, title);
+        });
+        actions.appendChild(deleteBtn);
+
+        item.appendChild(actions);
+        existingArticlesList.appendChild(item);
+      });
+    }
+
+    async function loadExistingArticles() {
+      existingArticlesList.innerHTML = '<div class="existing-item"><span class="existing-title">Завантажую список статей...</span></div>';
+      try {
+        if (!(await checkApiHealth())) throw new Error('api-offline');
+        const response = await api('/api/posts', { method: 'GET' });
+        renderExistingArticles(response.posts || []);
+      } catch (error) {
+        renderExistingArticles([], 'API недоступне. Запусти: node tools/blog-admin-server.mjs');
+      }
+    }
+
+    async function loadArticleForEditing(slugValue) {
+      try {
+        if (!(await checkApiHealth())) throw new Error('api-offline');
+        const response = await api(`/api/post?slug=${encodeURIComponent(slugValue)}`, { method: 'GET' });
+        seedDefaults();
+        applyEditorData(response.post);
+        currentEditingSlug = response.post?.slug || slugValue;
+        showEditorScreen();
+        updateActionButtons();
+        renderPreview();
+        setAdminStatus(`Статтю ${slugValue}.html відкрито для редагування.`);
+      } catch (error) {
+        alert(`Не вдалося відкрити статтю для редагування (${error?.message || 'unknown'}). Запусти сервер: node tools/blog-admin-server.mjs`);
+      }
+    }
+
+    function openLiveArticle() {
+      const href = getCurrentHref();
+      if (!href) {
+        alert('Спочатку вкажіть slug або заголовок статті.');
+        return;
+      }
+      window.open(href, '_blank', 'noopener');
+    }
+
+    async function deleteArticle(slugValue, title = '') {
+      const slugToDelete = slugify(slugValue || getCurrentSlug());
+      if (!slugToDelete) {
+        alert('Не вдалося визначити slug для видалення.');
+        return;
+      }
+      const label = title || slugToDelete;
+      const confirmed = window.confirm(`Видалити статтю "${label}" назавжди?`);
+      if (!confirmed) return;
+
+      try {
+        if (!(await checkApiHealth())) throw new Error('api-offline');
+        await api(`/api/post?slug=${encodeURIComponent(slugToDelete)}`, { method: 'DELETE' });
+
+        if (currentEditingSlug === slugToDelete || getCurrentSlug() === slugToDelete) {
+          seedDefaults();
+          showModeScreen();
+          setAdminStatus(`Статтю ${slugToDelete}.html видалено.`);
+        }
+
+        await loadExistingArticles();
+      } catch (error) {
+        alert(`Видалення не вдалося (${error?.message || 'unknown'}). Запусти сервер: node tools/blog-admin-server.mjs`);
+      }
+    }
+
+    function buildCtaBlockHtml() {
+      const txt = safeHtml(ctaText.value.trim());
+      const btn = safeHtml(ctaBtnText.value.trim() || 'Забронювати безкоштовну консультацію');
+      const url = safeHtml(ctaBtnUrl.value.trim() || '../index.html#contact');
+      const author = safeHtml(authorName.value.trim() || 'Автор');
+      const role = safeHtml(authorRole.value.trim() || 'експерт');
+
+      return `\n<div class="blog-article-cta">\n  <p>${txt}</p>\n  <p><strong>${author}</strong> — ${role}.</p>\n</div>\n<div class="blog-article-cta-action">\n  <a href="${url}" class="btn btn-orange">\n    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>\n    <span class="btn-text-stack">\n      <span class="btn-text default">${btn}</span>\n      <span class="btn-text hover">${btn}</span>\n    </span>\n  </a>\n</div>`;
+    }
+
+    function buildPreview() {
+      const dateLabel = formatDateUk(publishDate.value);
+      const cover = coverImage.value.trim();
+      const coverPart = cover
+        ? `<img src="../images/${safeHtml(cover)}" alt="${safeHtml(articleTitle.value)}" />`
+        : '<span>Додайте файл обкладинки у поле ліворуч</span>';
+      const previewCta = `
+        <div class="blog-article-cta">
+          <p>${safeHtml(ctaText.value || '')}</p>
+          <p><strong>${safeHtml(authorName.value || '')}</strong> — ${safeHtml(authorRole.value || '')}.</p>
+        </div>
+        <div class="blog-article-cta-action">
+          <a href="${safeHtml(ctaBtnUrl.value || '../index.html#contact')}" class="btn btn-orange">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+            <span class="btn-text-stack">
+              <span class="btn-text default">${safeHtml(ctaBtnText.value || 'Забронювати безкоштовну консультацію')}</span>
+              <span class="btn-text hover">${safeHtml(ctaBtnText.value || 'Забронювати безкоштовну консультацію')}</span>
+            </span>
+          </a>
+        </div>`;
+
+      return `
+        <section class="blog-article-page">
+          <div class="blog-article-shell">
+            <a href="#" class="blog-back-link" onclick="return false;">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              <span class="back-label-wrap"><span class="back-label default">Назад</span><span class="back-label hover">Назад</span></span>
+            </a>
+            <header class="blog-article-head">
+              <div class="blog-article-meta">
+                <span>${safeHtml(category.value)}</span>
+                <span class="dot"></span>
+                <span>${safeHtml(readTime.value)}</span>
+                <span class="dot"></span>
+                <span>${safeHtml(dateLabel)}</span>
+              </div>
+              <h1>${safeHtml(articleTitle.value)}</h1>
+              <p>${safeHtml(articleSubtitle.value)}</p>
+            </header>
+            <div class="blog-article-media">${coverPart}</div>
+            <div class="blog-article-content">${editor.innerHTML}${previewCta}</div>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderPreview() {
+      previewArticle.innerHTML = buildPreview();
+      updateActionButtons();
+    }
+
+    function insertHtmlAtCursor(html) {
+      restoreSelection();
+      editor.focus();
+      document.execCommand('insertHTML', false, html);
+      saveSelection();
+      renderPreview();
+    }
+
+    function saveSelection() {
+      const sel = window.getSelection();
+      if (!sel || !sel.rangeCount) return;
+      const range = sel.getRangeAt(0);
+      if (editor.contains(range.commonAncestorContainer)) {
+        savedRange = range.cloneRange();
+      }
+    }
+
+    function restoreSelection() {
+      const sel = window.getSelection();
+      if (!sel) return;
+      sel.removeAllRanges();
+      if (savedRange) {
+        sel.addRange(savedRange);
+      } else {
+        const range = document.createRange();
+        range.selectNodeContents(editor);
+        range.collapse(false);
+        sel.addRange(range);
+      }
+    }
+
+    function applyCommand(command, value = null) {
+      restoreSelection();
+      editor.focus();
+      document.execCommand(command, false, value);
+      saveSelection();
+      renderPreview();
+    }
+
+    function applyTextColor(color) {
+      restoreSelection();
+      editor.focus();
+      document.execCommand('styleWithCSS', false, 'true');
+      document.execCommand('foreColor', false, color);
+      saveSelection();
+      renderPreview();
+    }
+
+    document.querySelectorAll('[data-cmd], [data-block], #insertHr, #insertLink, #insertInlineCta').forEach((el) => {
+      el.addEventListener('mousedown', (e) => e.preventDefault());
+    });
+
+    editor.addEventListener('mouseup', saveSelection);
+    editor.addEventListener('keyup', saveSelection);
+    editor.addEventListener('focus', saveSelection);
+
+    document.querySelectorAll('[data-cmd]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyCommand(btn.dataset.cmd);
+      });
+    });
+
+    document.querySelectorAll('[data-block]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyCommand('formatBlock', btn.dataset.block);
+      });
+    });
+
+    document.getElementById('textColor').addEventListener('input', (e) => {
+      applyTextColor(e.target.value);
+    });
+
+    document.getElementById('insertHr').addEventListener('click', () => {
+      applyCommand('insertHorizontalRule');
+    });
+
+    document.getElementById('insertLink').addEventListener('click', () => {
+      const url = prompt('Вставте URL посилання:', 'https://');
+      if (!url) return;
+      restoreSelection();
+      editor.focus();
+      const sel = window.getSelection();
+      if (!sel || !sel.rangeCount || sel.isCollapsed) {
+        const linkText = prompt('Текст посилання:', url);
+        if (!linkText) return;
+        insertHtmlAtCursor(`<a href="${safeHtml(url)}" target="_blank" rel="noopener">${safeHtml(linkText)}</a>`);
+        return;
+      }
+      applyCommand('createLink', url);
+    });
+
+    document.getElementById('insertInlineCta').addEventListener('click', () => {
+      const label = prompt('Текст кнопки CTA:', ctaBtnText.value || 'Забронювати безкоштовну консультацію');
+      if (!label) return;
+      const url = prompt('Посилання кнопки CTA:', ctaBtnUrl.value || '../index.html#contact');
+      if (!url) return;
+      const html = `<div class="blog-article-cta-action"><a href="${safeHtml(url)}" class="btn btn-orange"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg><span class="btn-text-stack"><span class="btn-text default">${safeHtml(label)}</span><span class="btn-text hover">${safeHtml(label)}</span></span></a></div>`;
+      insertHtmlAtCursor(html);
+    });
+
+    document.getElementById('insertCtaBlock').addEventListener('click', () => {
+      editor.innerHTML += buildCtaBlockHtml();
+      renderPreview();
+    });
+
+    generateSlugBtn.addEventListener('click', generateSlug);
+    generateSubtitleBtn.addEventListener('click', generateSubtitle);
+    generateCategoryBtn.addEventListener('click', generateCategory);
+
+    startNewArticle.addEventListener('click', () => {
+      showEditorScreen();
+      localStorage.removeItem(DRAFT_KEY);
+      seedDefaults();
+      setAdminStatus('Нова стаття готова. Усі поля очищені.');
+    });
+
+    refreshExisting.addEventListener('click', loadExistingArticles);
+
+    saveDraftBtn.addEventListener('click', () => {
+      saveDraft();
+    });
+
+    backToListBtn.addEventListener('click', () => {
+      saveDraft();
+      showModeScreen();
+      setAdminStatus('Повернулися до списку статей.');
+    });
+
+    previewLiveBtn.addEventListener('click', () => {
+      openLiveArticle();
+    });
+
+    publishArticleBtn.addEventListener('click', async () => {
+      try {
+        if (!(await checkApiHealth())) throw new Error('api-offline');
+        const payload = collectEditorData();
+        payload.slug = slugify(payload.slug || payload.articleTitle || payload.seoTitle);
+        slug.value = payload.slug;
+        const response = await api('/api/post', {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        });
+        currentEditingSlug = response.slug;
+        saveDraft();
+        setAdminStatus(`Опубліковано: ${response.file}. Список блогу оновлено.`);
+        updateActionButtons();
+        await loadExistingArticles();
+      } catch (error) {
+        alert(`Публікація не вдалась (${error?.message || 'unknown'}). Запусти сервер: node tools/blog-admin-server.mjs`);
+      }
+    });
+
+    deleteArticleBtn.addEventListener('click', async () => {
+      await deleteArticle(getCurrentSlug(), articleTitle.value.trim() || seoTitle.value.trim());
+    });
+
+    [slug, seoTitle, seoDescription, publishDate, readTime, coverImage, articleTitle, articleSubtitle, category, authorName, authorRole, ctaText, ctaBtnText, ctaBtnUrl].forEach(el => {
+      el.addEventListener('input', renderPreview);
+    });
+
+    editor.addEventListener('input', () => {
+      saveSelection();
+      renderPreview();
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem(AUTH_KEY);
+      showLoginScreen();
+      setAdminStatus('');
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+
+      if (email === AUTH_EMAIL && password === AUTH_PASSWORD) {
+        localStorage.setItem(AUTH_KEY, '1');
+        loginError.textContent = '';
+        showModeScreen();
+      } else {
+        loginError.textContent = 'Невірний email або пароль.';
+      }
+    });
+
+    if (localStorage.getItem(AUTH_KEY) === '1') {
+      showModeScreen();
+    } else {
+      showLoginScreen();
+    }
+    updateActionButtons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /pages/admin-blog-editor.html
+Disallow: /pages/test.html
+
+Sitemap: https://latwo.eu/sitemap.xml

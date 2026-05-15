@@ -416,6 +416,32 @@ h1, h2, h3, h4, h5, h6 {
   align-self: center;
 }
 
+/* Blog back-link safety fallback: prevent text truncation like "На" */
+.blog-back-link .back-label-wrap,
+.blog-back-link .back-text-stack {
+  min-width: 5ch;
+  width: max-content;
+}
+
+.blog-back-link .back-label,
+.blog-back-link .back-text {
+  width: max-content;
+  white-space: nowrap;
+}
+
+/* Blog back-link safety fallback: force arrow visibility across generated pages */
+.blog-back-link svg {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px;
+  flex: 0 0 16px;
+  flex-shrink: 0;
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  stroke: currentColor;
+}
+
 /* Language Switcher */
 .lang-switcher {
   position: relative;
