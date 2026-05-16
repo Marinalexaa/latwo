@@ -210,15 +210,7 @@
       "destination": "/en/services-1.html"
     },
     {
-      "source": "/en/services-1/",
-      "destination": "/en/services-1.html"
-    },
-    {
       "source": "/en/services-2",
-      "destination": "/en/services-2.html"
-    },
-    {
-      "source": "/en/services-2/",
       "destination": "/en/services-2.html"
     },
     {
@@ -226,15 +218,7 @@
       "destination": "/en/services-3.html"
     },
     {
-      "source": "/en/services-3/",
-      "destination": "/en/services-3.html"
-    },
-    {
       "source": "/en/services-4",
-      "destination": "/en/services-4.html"
-    },
-    {
-      "source": "/en/services-4/",
       "destination": "/en/services-4.html"
     },
     {
