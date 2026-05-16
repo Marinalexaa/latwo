@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+<title>Навчання команди працювати з AI — Latwo</title>
+  <meta name="description" content="Послуга Services-3 від Latwo: практичне навчання команди, AI-інструменти, C-level AI агенти та персональний план розвитку." />
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .service-page-bg {
+      background: var(--bg-page);
+      color: var(--black-primary);
+    }
+
+    .service-content-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .service-hero {
+      padding: 150px 0 110px;
+      text-align: center;
+    }
+
+    .service-hero .section-label {
+      margin-bottom: 1.5rem;
+      color: var(--brand-blue-light);
+      justify-content: center;
+      display: flex;
+      animation: hero-title-appear 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      animation-delay: 0.08s;
+    }
+
+    .service-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 5.2vw, 68px);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      max-width: 760px;
+      margin: 0 auto 1.75rem;
+      animation: hero-title-appear 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      animation-delay: 0.2s;
+    }
+    .service-hero .service-hero-meta {
+      font-family: var(--font-subheading);
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--brand-orange);
+      margin-bottom: 1.5rem;
+      animation: hero-title-appear 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      animation-delay: 0.32s;
+    }
+
+    .service-hero p {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: var(--black-secondary);
+      animation: hero-title-appear 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      animation-delay: 0.44s;
+    }
+
+    .service-includes {
+      padding: 0 0 5rem;
+    }
+
+    .service-includes-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .service-includes-left h2 {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      margin-bottom: 1.3rem;
+    }
+
+    .include-item {
+      margin-bottom: 1.65rem;
+    }
+
+    .include-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .include-item h3 {
+      font-family: var(--font-subheading);
+      font-size: 20px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      color: var(--black-primary);
+    }
+
+    .include-item h3 strong {
+      font-weight: 700;
+    }
+
+    .include-item p {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: #404040;
+      max-width: 97%;
+    }
+
+    .service-doc-card {
+      background: radial-gradient(135% 110% at 50% 42%, #fcfcfd 0%, #f5f7f9 54%, #edf1f5 100%);
+      border: 4px solid #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 16px 42px rgba(227, 92, 54, 0.12);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .service-doc-card .script-fade {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: #a9a9a9;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-doc-card h3 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .service-doc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.4rem;
+      flex: 1;
+    }
+
+    .service-doc-list li {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: var(--black-secondary);
+      list-style: none;
+      position: relative;
+      padding-left: 1.1rem;
+    }
+
+    .service-doc-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #8b8b8b;
+    }
+
+    .service-doc-list li strong {
+      font-weight: 700;
+      color: #5f5f5f;
+    }
+
+    .service-doc-card .btn {
+      width: 100%;
+    }
+
+    .service-results {
+      padding: 1.5rem 0 6.5rem;
+      text-align: center;
+    }
+
+    .service-results .section-label {
+      color: var(--brand-blue-light);
+      justify-content: center;
+      display: flex;
+      margin-bottom: 0.6rem;
+    }
+
+    .service-results h2 {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      margin-bottom: 1.15rem;
+    }
+
+    .service-results-intro {
+      max-width: 960px;
+      margin: 0 auto 2.1rem;
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: #3f3f3f;
+    }
+
+    .result-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .result-metric-card {
+      background: radial-gradient(135% 110% at 50% 42%, #fcfcfd 0%, #f5f7f9 54%, #edf1f5 100%);
+      border: 4px solid #ffffff;
+      border-radius: 24px;
+      padding: 1.45rem 1.2rem;
+      min-height: 228px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(6, 16, 28, 0.08);
+    }
+
+    .result-metric-card .metric-value {
+      font-family: var(--font-heading);
+      font-size: 56px;
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--brand-orange);
+      text-shadow: 0 4px 14px rgba(227, 92, 54, 0.32);
+      margin-bottom: 1rem;
+    }
+
+    .result-metric-card p {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      color: var(--brand-blue-light);
+    }
+
+    .result-points {
+      max-width: 980px;
+      margin: 0 auto 2.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+      text-align: center;
+    }
+
+    .result-point {
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: #333;
+      position: static;
+      padding-left: 0;
+    }
+
+    .result-point::before {
+      content: "⚡";
+      position: static;
+      display: inline-block;
+      margin-right: 0.45rem;
+    }
+
+    .service-results-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .service-results-actions .btn {
+      min-width: 320px;
+    }
+
+    .service-results-actions .btn-white {
+      border-color: #ffffff;
+      box-shadow: 0 10px 26px rgba(6, 16, 28, 0.08);
+    }
+
+    @media (max-width: 1120px) {
+      .service-includes-inner {
+        grid-template-columns: 1fr;
+      }
+      .service-doc-card {
+        max-width: 760px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .result-metrics {
+        grid-template-columns: 1fr;
+      }
+      .result-metric-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .service-hero {
+        padding: 120px 0 80px;
+      }
+      .service-content-wrap {
+        padding: 0 1rem;
+      }
+      .service-includes,
+      .service-results {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .service-doc-card,
+      .result-metric-card {
+        padding: 1.5rem;
+      }
+      .service-results-actions .btn {
+        min-width: 100%;
+      }
+      .result-points {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body class="service-page-bg">
+
+<header id="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-logo">Latwo</a>
+    <nav class="header-nav">
+      <a href="/cases" data-i18n="nav_cases">Кейси</a>
+      <a href="/#services" data-i18n="nav_services">Послуги</a>
+      <a href="/about-us" data-i18n="nav_about">Про нас</a>
+      <a href="/#pricing" data-i18n="nav_pricing">Ціни</a>
+      <a href="/#faq" data-i18n="nav_faq">FAQs</a>
+    </nav>
+    <div class="header-right">
+      <a href="/blog" data-i18n="nav_blog">Блог</a>
+      <a href="/#contact" data-i18n="nav_contact">Контакти</a>
+      <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="lang-switcher" id="lang-switcher">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="current-lang">Ukrainian</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <button class="lang-option" data-lang="uk">🇺🇦 Українська</button>
+          <button class="lang-option" data-lang="en">🇬🇧 English</button>
+        </div>
+      </div>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="/cases">Кейси</a>
+  <a href="/#services" class="mobile-nav-close">Послуги</a>
+  <a href="/about-us">Про нас</a>
+  <a href="/#pricing" class="mobile-nav-close">Ціни</a>
+  <a href="/#faq" class="mobile-nav-close">FAQs</a>
+  <a href="/blog" class="mobile-nav-close" data-i18n="nav_blog">Блог</a>
+  <a href="/#contact" class="mobile-nav-close">Контакти</a>
+  <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank">Instagram</a>
+  <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank">LinkedIn</a>
+  <div class="mobile-nav-lang lang-switcher">
+    <button class="mobile-lang-trigger" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span class="current-lang-label">Ukrainian</span>
+      <svg class="mobile-lang-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="lang-dropdown mobile-lang-dropdown">
+      <button class="mobile-lang-option lang-option" type="button" data-lang="uk">🇺🇦 Українська</button>
+      <button class="mobile-lang-option lang-option" type="button" data-lang="en">🇬🇧 English</button>
+    </div>
+  </div>
+</nav>
+
+<section class="service-hero" data-header-theme="light">
+  <div class="service-content-wrap">
+    <span class="section-label">ПОСЛУГИ</span>
+    <h1>Навчання команди<br />працювати з AI</h1>
+    <p class="service-hero-meta">Практичний формат · Команда будь-якого розміру · 3 дні</p>
+    <p>Більшість команд не використовує AI — не тому, що не хочуть, а тому, що ніхто не показав як це працює саме в їхній роботі. За три дні кожен учасник будує власну AI-систему — і виходить не з теорією, а з готовими інструментами, які вже працюють.</p>
+  </div>
+</section>
+
+<section class="service-includes" data-header-theme="light">
+  <div class="service-content-wrap">
+    <div class="service-includes-inner">
+      <div class="service-includes-left scroll-reveal">
+      <h2>Що включає:</h2>
+
+      <article class="include-item">
+        <h3>☑️ <strong>Підготовка</strong> — розуміємо контекст команди</h3>
+        <p>До навчання вивчаємо, які задачі виконує команда, де найбільше рутини, який рівень знайомства з AI. Програма адаптується під реальну роботу.</p>
+      </article>
+
+      <article class="include-item">
+        <h3>☑️ <strong>День 1</strong> — розуміємо AI і будуємо основу</h3>
+        <p>Розбираємо 14 AI-інструментів, вчимо, як правильно ставити задачі AI, щоб отримувати результат. Кожен учасник налаштовує AI CEO асистента — цифрового помічника який знає бізнес, розуміє цілі і відповідає як керівник.</p>
+      </article>
+
+      <article class="include-item">
+        <h3>☑️ <strong>День 2</strong> — будуємо AI-команду</h3>
+        <p>Створюємо C-Level AI агентів: CMO, CFO, COO — кожен знає свою роль і дає поради у своїй сфері. Разом будуємо карту автоматизацій — конкретний список з 10+ точок де AI замінить рутину.</p>
+      </article>
+
+      <article class="include-item">
+        <h3>☑️ <strong>1-2 тижні практики</strong> — впроваджуєте в реальному бізнесі</h3>
+        <p>Між другим і третім днем — самостійна робота. Учасники впроваджують AI-систему у своєму реальному бізнесі. Закритий чат підтримки, де можна ставити питання і отримувати відповіді.</p>
+      </article>
+
+      <article class="include-item">
+        <h3>☑️ <strong>День 3</strong> — показуєте результат і отримуєте план</h3>
+        <p>Кожен учасник презентує AI-систему, яка вже працює. Розбираємо, що вийшло і що далі. Кожен отримує персональний план на 90 днів — конкретні кроки, щоб AI-команда росла разом з бізнесом.</p>
+      </article>
+      </div>
+
+      <aside class="service-doc-card scroll-reveal">
+        <div class="script-fade">Документація</div>
+        <h3>Що буде створюватись</h3>
+        <ul class="service-doc-list">
+          <li><strong>Гайд 14 AI-інструментів</strong> — які інструменти для яких задач з конкретними прикладами.</li>
+          <li><strong>Шаблони промптів</strong> на основі принципу РОЗУМ — готові формули для найпоширеніших задач.</li>
+          <li><strong>Персональний план</strong> кожного учасника на 90 днів — що робити далі щоб система розвивалась.</li>
+        </ul>
+        <a href="/#contact" class="btn btn-orange smooth-scroll">
+          <span class="btn-text-stack">
+            <span class="btn-text default">Обрати послугу</span>
+            <span class="btn-text hover">Почати зараз</span>
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="service-results" data-header-theme="light">
+  <div class="service-content-wrap">
+    <div class="service-results-inner">
+      <span class="section-label">РЕЗУЛЬТАТ ДЛЯ БІЗНЕСУ</span>
+      <h2>Що змінюється після цього</h2>
+      <p class="service-results-intro">Команда виходить з готовою AI-системою яка вже працює. AI CEO асистент, C-Level агенти, карта автоматизацій — не теорія, а реальні інструменти налаштовані під конкретний бізнес.</p>
+
+    <div class="result-metrics">
+      <article class="result-metric-card scroll-reveal">
+        <div class="metric-value">3</div>
+        <p>дні навчання з<br />реальною практикою</p>
+      </article>
+      <article class="result-metric-card scroll-reveal">
+        <div class="metric-value">10+</div>
+        <p>годин економії кожного<br />учасника щотижня</p>
+      </article>
+      <article class="result-metric-card scroll-reveal">
+        <div class="metric-value">90</div>
+        <p>днів — персональний<br />план розвитку</p>
+      </article>
+    </div>
+
+    <div class="result-points">
+      <p class="result-point">кожен учасник будує AI CEO асистента і C-Level агентів під свій бізнес — прямо під час навчання</p>
+      <p class="result-point">команда виходить з картою автоматизацій — знає, що запускати першим і як автоматизувати рутину</p>
+      <p class="result-point">третій день — це не підсумок, це старт: кожен презентує систему, яка вже працює</p>
+    </div>
+
+      <div class="service-results-actions">
+        <a href="/#contact" class="btn btn-orange smooth-scroll">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+          <span class="btn-text-stack">
+            <span class="btn-text default">Безкоштовний Discovery Call</span>
+            <span class="btn-text hover">Забронювати зараз</span>
+          </span>
+        </a>
+        <a href="/#pricing" class="btn btn-white smooth-scroll">
+          <span class="btn-text-stack">
+            <span class="btn-text default">Переглянути пакетні пропозиції →</span>
+            <span class="btn-text hover">Дивитись пакети →</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer" data-header-theme="dark">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h2><a href="/" style="color:inherit;text-decoration:none;">Latwo</a></h2>
+      <p data-i18n="footer_desc">AI-консалтингова агенція нового покоління. Перетворіть хаос на систему та почніть зростати вже сьогодні.</p>
+    </div>
+    <div class="footer-nav-columns">
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer_nav_title">НАВІГАЦІЯ</h4>
+        <ul>
+          <li><a href="/cases" data-i18n="footer_cases">Кейси</a></li>
+          <li><a href="/#services" data-i18n="footer_services">Послуги</a></li>
+          <li><a href="/about-us" data-i18n="footer_about">Про нас</a></li>
+          <li><a href="/#pricing" data-i18n="footer_pricing">Ціни</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer_contact_title">ЗВ'ЯЗОК</h4>
+        <ul>
+          <li><a href="/#contact" data-i18n="footer_contact_link">Контакти</a></li>
+          <li><a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" rel="noopener" data-i18n="footer_instagram">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" rel="noopener" data-i18n="footer_linkedin">LinkedIn</a></li>
+          <li><a href="/blog" data-i18n="footer_blog">Блог</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer_legal_title">LEGAL</h4>
+        <ul>
+          <li><a href="/#faq" data-i18n="footer_faq">FAQs</a></li>
+          <li><a href="/privacy-policy" data-i18n="footer_privacy">Політика конфіденційності</a></li>
+          <li><a href="/cookie-policy" data-i18n="footer_cookies">Політика cookies</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer_copy">© 2026 Latwo. All rights reserved.</span>
+    <span><span data-i18n="footer_created">Created by</span> <a href="https://latwo.eu" style="text-decoration:underline;">Latwo</a></span>
+  </div>
+</footer>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

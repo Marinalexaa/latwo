@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+<title>Як зробити сайт за допомогою AI без розробника: Manus і Codex Desktop</title>
+  <meta name="description" content="Без коду і розробника - сайт за кілька днів замість тисяч євро. Як AI змінює ринок SaaS і що робити бізнесу з підписками які більше не окупаються." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://latwo.eu/blog/build-website-with-ai-manus-codex-desktop" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:site_name" content="Latwo AI Consulting" />
+  <meta property="og:title" content="Як зробити сайт за допомогою AI без розробника: Manus і Codex Desktop" />
+  <meta property="og:description" content="Без коду і розробника - сайт за кілька днів замість тисяч євро. Як AI змінює ринок SaaS і що робити бізнесу з підписками які більше не окупаються." />
+  <meta property="og:url" content="https://latwo.eu/blog/build-website-with-ai-manus-codex-desktop" />
+  <meta property="og:image" content="https://latwo.eu/images/blog-ai-website-manus-codex-desktop.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Як зробити сайт за допомогою AI без розробника: Manus і Codex Desktop" />
+  <meta name="twitter:description" content="Без коду і розробника - сайт за кілька днів замість тисяч євро. Як AI змінює ринок SaaS і що робити бізнесу з підписками які більше не окупаються." />
+  <meta name="twitter:image" content="https://latwo.eu/images/blog-ai-website-manus-codex-desktop.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Деякі бізнес-моделі просто зникають. І ось конкретний приклад чому",
+    "description": "Без коду і розробника - сайт за кілька днів замість тисяч євро. Як AI змінює ринок SaaS і що робити бізнесу з підписками які більше не окупаються.",
+    "inLanguage": "uk-UA",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://latwo.eu/blog/build-website-with-ai-manus-codex-desktop"},
+    "datePublished": "2026-05-15",
+    "dateModified": "2026-05-15",
+    "author": {"@type": "Person", "name": "Станіслав Бучацький", "url": "https://latwo.eu/about-us"},
+    "publisher": {"@type": "Organization", "name": "Latwo AI Consulting", "logo": {"@type": "ImageObject", "url": "https://latwo.eu/images/logo1.png"}},
+    "image": ["https://latwo.eu/images/blog-ai-website-manus-codex-desktop.png"],
+    "keywords": ["AI сайт", "Manus", "Codex Desktop", "SaaS", "автоматизація"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Latwo", "item": "https://latwo.eu/"},
+      {"@type": "ListItem", "position": 2, "name": "Блог", "item": "https://latwo.eu/blog"},
+      {"@type": "ListItem", "position": 3, "name": "Деякі бізнес-моделі просто зникають. І ось конкретний приклад чому", "item": "https://latwo.eu/blog/build-website-with-ai-manus-codex-desktop"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Чи можна створити комерційний сайт без програміста?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Так. Для більшості корпоративних сайтів, лендингів і базових веб-проєктів сучасні AI-інструменти дозволяють створити повноцінний продукт без глибоких технічних знань."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Які SaaS-підписки найчастіше можна оптимізувати за допомогою AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Найчастіше це конструктори сайтів, базові інструменти автоматизації, генерації контенту та типових звітів."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чи безпечно використовувати AI-згенерований код?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Для простих сайтів ризики зазвичай невеликі. Якщо проєкт містить авторизацію, платежі або обробку персональних даних, код варто перевірити фахівцю з досвідом у безпеці."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Скільки часу займає створення сайту за допомогою AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Базовий сайт можна створити протягом кількох днів, а повноцінний робочий проєкт — приблизно за один тиждень."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/main.css?v=20260515c" />
+  <style>
+    :root { --blog-article-top-gap: 5rem; }
+    .blog-article-page { background: var(--bg-page); padding: var(--blog-article-top-gap) 0 4.6rem; }
+    .blog-article-shell { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    .blog-back-link { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--brand-orange); font-family: var(--font-subheading); font-size: 16px; line-height: 1.4; letter-spacing: -0.02em; font-weight: 500; text-decoration: none; margin-bottom: 2.2rem; opacity: 0.85; transition: opacity var(--transition); }
+    .blog-back-link:hover, .blog-back-link:focus-visible { opacity: 1; }
+    .blog-back-link svg { width: 16px; height: 16px; min-width: 16px; flex: 0 0 16px; flex-shrink: 0; display: inline-block; visibility: visible; opacity: 1; stroke: currentColor; }
+    .blog-back-link .back-label-wrap { display: inline-grid; align-items: center; justify-items: start; min-height: 1.4em; min-width: 5ch; width: max-content; overflow: hidden; line-height: 1.4; }
+    .blog-back-link .back-label { grid-area: 1 / 1; display: block; width: max-content; white-space: nowrap; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.28s ease; }
+    .blog-back-link .back-label.default { transform: translateY(0); opacity: 1; }
+    .blog-back-link .back-label.hover { transform: translateY(135%); opacity: 0; }
+    .blog-back-link:hover .back-label.default, .blog-back-link:focus-visible .back-label.default { transform: translateY(-135%); opacity: 0; }
+    .blog-back-link:hover .back-label.hover, .blog-back-link:focus-visible .back-label.hover { transform: translateY(0); opacity: 1; }
+    .blog-article-head { text-align: center; margin-bottom: 2.6rem; }
+    .blog-article-meta { display: inline-flex; align-items: center; gap: 0.75rem; font-size: 12px; text-transform: uppercase; letter-spacing: -0.02em; color: var(--brand-orange); font-weight: 600; margin-bottom: 1.2rem; }
+    .blog-article-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--brand-orange); }
+    .blog-article-head h1 { font-family: var(--font-heading); font-size: 80px; font-weight: 400; line-height: 1.1; letter-spacing: -0.04em; color: var(--black-primary); max-width: 980px; margin: 0 auto 1rem; }
+    .blog-article-head p { font-size: 20px; line-height: 1.4; letter-spacing: -0.02em; color: var(--black-secondary); max-width: 760px; margin: 0 auto; }
+    .blog-article-media { border: 4px solid rgba(255, 255, 255, 0.88); border-radius: 16px; overflow: hidden; box-shadow: 0 12px 30px rgba(6, 16, 28, 0.15); margin-bottom: 2.6rem; background: #d9dde2; }
+    .blog-article-media img { width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover; }
+    .blog-article-content { max-width: 920px; margin: 0 auto; }
+    .blog-article-content h2, .blog-article-content h3, .blog-article-content h4 { font-family: var(--font-heading); line-height: 1.2; letter-spacing: -0.03em; font-weight: 400; color: var(--black-primary); margin: 2rem 0 1rem; }
+    .blog-article-content h2 { font-size: 40px; }
+    .blog-article-content h3 { font-size: 30px; }
+    .blog-article-content h4 { font-size: 24px; }
+    .blog-article-content h3.faq-question-title { font-size: 24px; }
+    .blog-article-content p { font-size: 16px; line-height: 1.6; letter-spacing: -0.02em; color: var(--black-secondary); margin: 0 0 1rem; }
+    .blog-article-content a:not(.btn), .blog-article-content a:not(.btn) * { color: var(--brand-orange) !important; text-decoration: underline !important; text-underline-offset: 2px; text-decoration-thickness: 1.5px; }
+    .blog-article-content .btn, .blog-article-content .btn * { text-decoration: none !important; }
+    .blog-article-content ul, .blog-article-content ol { margin: 0 0 1rem 1.4rem; color: var(--black-secondary); }
+    .blog-article-content li { font-size: 16px; line-height: 1.6; letter-spacing: -0.02em; margin-bottom: 0.2rem; }
+    .blog-article-cta { margin-top: 1.6rem; padding: 1.2rem 1.4rem; border: 1px solid rgba(41,41,41,.15); border-radius: 14px; background: rgba(255,255,255,.45); }
+    .blog-article-cta p { font-style: italic; }
+    .blog-article-cta-action { margin-top: 1rem; display: flex; justify-content: center; }
+    .blog-article-related { margin-top: 3.4rem; padding-top: 2.1rem; border-top: 1px solid rgba(41,41,41,.15); }
+    .blog-article-related-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem; }
+    .blog-article-related-card { display: flex; flex-direction: column; gap: 0.75rem; }
+    .blog-article-related-media { border: 4px solid rgba(255, 255, 255, 0.88); border-radius: 16px; overflow: hidden; box-shadow: 0 12px 30px rgba(6,16,28,.15); background: #d9dde2; aspect-ratio: 16 / 10; }
+    .blog-article-related-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s ease; }
+    .blog-article-related-media:hover img { transform: scale(1.06); }
+    .blog-article-related-body { border: 4px solid rgba(255,255,255,.55); border-radius: 16px; background: rgba(255,255,255,.24); box-shadow: 0 12px 28px rgba(6,16,28,.1); padding: 1.7rem 1.8rem; min-height: 238px; display: flex; flex-direction: column; }
+    .blog-article-related-title { font-family: var(--font-heading); font-size: 24px; font-weight: 400; line-height: 1.2; letter-spacing: -0.04em; color: var(--black-primary); margin-bottom: .8rem; }
+    .blog-article-related-title a { color: inherit; text-decoration: none; }
+    .blog-article-related-title a:hover { color: var(--brand-orange); }
+    .blog-article-related-excerpt { font-size: 16px; line-height: 1.6; letter-spacing: -0.02em; color: var(--black-secondary); margin-bottom: 1.4rem; }
+    .blog-article-related-meta { margin-top: auto; display: flex; align-items: center; gap: .7rem; font-size: 12px; text-transform: uppercase; letter-spacing: -0.02em; color: var(--brand-orange); font-weight: 600; }
+    .blog-article-related-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--brand-orange); opacity: .75; }
+    @media (max-width: 1024px) {
+      :root { --blog-article-top-gap: 6.4rem; }
+      .blog-article-head h1 { font-size: 64px; }
+    }
+    @media (max-width: 768px) {
+      :root { --blog-article-top-gap: 3.4rem; }
+      .blog-article-shell { padding: 0 var(--mobile-gutter, 14px); }
+      .blog-back-link { font-size: 16px; margin-bottom: 1.5rem; }
+      .blog-article-head { margin-bottom: 1.6rem; }
+      .blog-article-head h1 { font-size: 56px; margin-bottom: 0.75rem; }
+      .blog-article-head p { font-size: 20px; }
+      .blog-article-meta { flex-wrap: wrap; justify-content: center; }
+      .blog-article-media { margin-bottom: 1.8rem; }
+      .blog-article-content h2 { font-size: 36px; }
+      .blog-article-content h3 { font-size: 30px; }
+      .blog-article-content h4 { font-size: 24px; }
+      .blog-article-cta { padding: 1rem 1rem 1.1rem; }
+      .blog-article-cta-action .btn { width: min(100%, 520px); }
+      .blog-article-related { margin-top: 2.6rem; padding-top: 1.7rem; }
+      .blog-article-related-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .blog-article-related-body { padding: 1.25rem; min-height: auto; }
+    }
+    @media (max-width: 540px) {
+      .blog-article-head h1 { font-size: 44px; }
+      .blog-article-head p { font-size: 18px; }
+      .blog-article-content h2 { font-size: 32px; }
+      .blog-article-content h3 { font-size: 26px; }
+      .blog-article-content h4 { font-size: 22px; }
+      .blog-article-content p,
+      .blog-article-content li { font-size: 15.5px; }
+      .blog-article-cta-action .btn { width: 100%; }
+    }
+    @media (max-width: 420px) {
+      :root { --blog-article-top-gap: 3.2rem; }
+      .blog-back-link { font-size: 15px; }
+      .blog-article-head h1 { font-size: 36px; }
+      .blog-article-head p { font-size: 17px; }
+      .blog-article-content h2 { font-size: 28px; }
+      .blog-article-content h3 { font-size: 24px; }
+      .blog-article-content h4 { font-size: 20px; }
+      .blog-article-cta-action .btn { font-size: 18px; padding: 0.95rem 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-logo">Latwo</a>
+    <nav class="header-nav">
+      <a href="/cases" data-i18n="nav_cases">Кейси</a>
+      <a href="/#services" data-i18n="nav_services">Послуги</a>
+      <a href="/about-us" data-i18n="nav_about">Про нас</a>
+      <a href="/#pricing" data-i18n="nav_pricing">Ціни</a>
+      <a href="/#faq" data-i18n="nav_faq">FAQs</a>
+    </nav>
+    <div class="header-right">
+      <a href="/blog" class="active" data-i18n="nav_blog">Блог</a>
+      <a href="/#contact" data-i18n="nav_contact">Контакти</a>
+      <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="lang-switcher" id="lang-switcher">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="current-lang">Ukrainian</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <button class="lang-option" data-lang="uk">🇺🇦 Українська</button>
+          <button class="lang-option" data-lang="en">🇬🇧 English</button>
+        </div>
+      </div>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="/cases" data-i18n="nav_cases">Кейси</a>
+  <a href="/#services" class="mobile-nav-close" data-i18n="nav_services">Послуги</a>
+  <a href="/about-us" data-i18n="nav_about">Про нас</a>
+  <a href="/#pricing" class="mobile-nav-close" data-i18n="nav_pricing">Ціни</a>
+  <a href="/#faq" class="mobile-nav-close" data-i18n="nav_faq">FAQs</a>
+  <a href="/blog" class="mobile-nav-close" data-i18n="nav_blog">Блог</a>
+  <a href="/#contact" class="mobile-nav-close" data-i18n="nav_contact">Контакти</a>
+  <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" data-i18n="nav_instagram">Instagram</a>
+  <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" data-i18n="nav_linkedin">LinkedIn</a>
+  <div class="mobile-nav-lang lang-switcher">
+    <button class="mobile-lang-trigger" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span class="current-lang-label">Ukrainian</span>
+      <svg class="mobile-lang-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="lang-dropdown mobile-lang-dropdown">
+      <button class="mobile-lang-option lang-option" type="button" data-lang="uk">🇺🇦 Українська</button>
+      <button class="mobile-lang-option lang-option" type="button" data-lang="en">🇬🇧 English</button>
+    </div>
+  </div>
+</nav>
+
+<section class="blog-article-page" data-header-theme="light">
+  <div class="blog-article-shell">
+    <a href="/blog" class="blog-back-link" aria-label="Go back to blog">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span class="back-label-wrap"><span class="back-label default">Назад</span><span class="back-label hover">Назад</span></span>
+    </a>
+
+    <header class="blog-article-head scroll-reveal">
+      <div class="blog-article-meta"><span>AI АВТОМАТИЗАЦІЯ</span><span class="dot"></span><span>4 ХВ</span></div>
+      <h1>Деякі бізнес-моделі просто зникають. І ось конкретний приклад чому</h1>
+      <p>Як AI змінює ринок SaaS, чому сайт уже можна зробити без розробника і що це означає для бізнес-підписок.</p>
+    </header>
+
+    <div class="blog-article-media scroll-reveal">
+      <img src="../images/blog-ai-website-manus-codex-desktop.png" alt="Створення сайту за допомогою Manus і Codex Desktop без команди розробки" />
+    </div>
+
+    <article class="blog-article-content">
+      <p>Це може звучати різко, але частина продуктів і цілих категорій SaaS уже опинилася <strong>під серйозним тиском</strong>. Не тому, що вони стали гіршими. І не тому, що перестали вирішувати реальні задачі. Причина в іншому: штучний інтелект дозволяє отримати той самий результат значно <strong>швидше і дешевше</strong> та без постійної залежності від сторонньої платформи.</p>
+      <p>Один із найнаочніших прикладів — ринок конструкторів сайтів.</p>
+
+      <h2>Що відбувається з конструкторами сайтів</h2>
+      <p>Ще кілька років тому для створення професійного сайту було два основні варіанти. Перший — замовити розробку у програмістів і витратити від кількох тисяч до десятків тисяч євро. Другий — скористатися конструкторами на кшталт <a href="https://www.wix.com/" target="_blank" rel="noopener">Wix</a>, <a href="https://webflow.com/" target="_blank" rel="noopener">Webflow</a> або <a href="https://tilda.cc/" target="_blank" rel="noopener">Tilda</a> і щороку оплачувати підписку.</p>
+      <p>Це було зручно, але мало суттєві обмеження. Ви залишалися прив’язаними до чужої інфраструктури, правил і тарифів. Код, логіка роботи та можливості масштабування фактично контролювалися платформою.</p>
+      <p>Сьогодні ситуація змінилася.</p>
+
+      <h2>Як я створив сайт без розробника</h2>
+      <p>Я протестував це на власному проєкті.</p>
+      <p>Спочатку використав <a href="https://manus.im/" target="_blank" rel="noopener">Manus</a> — AI-агента, здатного виконувати складні багатокрокові завдання. Я надав посилання на сайт, структура якого мені подобалася, і попросив відтворити логіку побудови сторінок.</p>
+      <p>За короткий час отримав готову основу: структуру, контент і HTML-розмітку, яку можна було адаптувати під власні потреби.</p>
+      <p>Потім я доопрацював сайт у <a href="https://openai.com/codex/" target="_blank" rel="noopener">OpenAI Codex</a>, додаючи зміни звичайними текстовими інструкціями. Без ручного програмування, без дизайнера і без команди розробників.</p>
+      <p>У результаті я отримав <strong>повністю контрольований сайт</strong> із власним кодом, який можна розмістити на будь-якому сервері.</p>
+
+      <h2>Скільки це коштує</h2>
+      <p>Традиційна розробка корпоративного сайту часто коштує <strong>від 3 000 до 15 000 євро</strong> залежно від складності.</p>
+      <p>Конструктори сайтів мають нижчий поріг входу, але передбачають постійні платежі та обмеження екосистеми.</p>
+      <p>У випадку AI-підходу основні витрати — це підписка на інструменти та кілька днів власної роботи. Для багатьох стандартних проєктів цього достатньо, щоб отримати результат, який раніше вимагав значно більших інвестицій.</p>
+
+      <h2>Які ще бізнес-моделі опиняються під тиском</h2>
+      <p>Подібні зміни стосуються не лише конструкторів сайтів.</p>
+      <p>Під найбільшим тиском опиняються продукти, що продають автоматизацію відносно типових і повторюваних задач. Якщо AI може створити аналогічне рішення за короткий час і <strong>без довгострокової підписки</strong>, цінність таких сервісів поступово знижується.</p>
+      <p>Це стосується:</p>
+      <ul>
+        <li>• шаблонних сайтів;</li>
+        <li>• стандартних автоматизацій;</li>
+        <li>• типових звітів;</li>
+        <li>• базових інструментів для роботи з контентом;</li>
+        <li>• простих SaaS-рішень без глибокої спеціалізації.</li>
+      </ul>
+
+      <h2>Що це означає для бізнесу</h2>
+      <p>На ці зміни варто дивитися з <strong>двох позицій</strong>.</p>
+      <p>Як користувач технологій, ви можете переглянути свої поточні підписки та оцінити, які задачі вже сьогодні доцільно вирішувати за допомогою AI. Це часто дає <strong>пряму економію</strong>.</p>
+      <p>Як власник продукту, важливо оцінити, наскільки ваш бізнес залежить від логіки, яку AI може відтворити швидше та дешевше. Якщо продукт ґрунтується переважно на стандартизованих процесах, стратегічне переосмислення може бути необхідним уже зараз.</p>
+
+      <h2>Чи означає це, що розробники більше не потрібні</h2>
+      <p>Ні. Їхня <strong>роль змінюється</strong>.</p>
+      <p>AI добре справляється з рутинною та шаблонною частиною роботи. Однак архітектура систем, складні інтеграції, питання безпеки та нестандартна бізнес-логіка все ще потребують досвідчених фахівців.</p>
+      <p>Різниця полягає в тому, що розробник дедалі частіше не створює все з нуля, а доопрацьовує й оптимізує основу, згенеровану AI.</p>
+
+      <h2>Висновок</h2>
+      <p>AI поступово змінює економіку багатьох цифрових продуктів. Те, що раніше вимагало окремого SaaS або значного бюджету на розробку, сьогодні можна реалізувати за кілька днів із <strong>мінімальними витратами</strong>.</p>
+      <p>Для бізнесу це означає дві речі: з одного боку — можливість скоротити витрати, з іншого — необхідність переглянути власну модель, якщо її цінність базується на автоматизації стандартних задач.</p>
+
+      <h2>FAQ</h2>
+      <h3 class="faq-question-title">Чи можна створити комерційний сайт без програміста?</h3>
+      <p>Так. Для більшості корпоративних сайтів, лендингів і базових веб-проєктів сучасні AI-інструменти дозволяють створити повноцінний продукт без глибоких технічних знань.</p>
+
+      <h3 class="faq-question-title">Які SaaS-підписки найчастіше можна оптимізувати за допомогою AI?</h3>
+      <p>Найчастіше це конструктори сайтів, базові інструменти автоматизації, генерації контенту та типових звітів.</p>
+
+      <h3 class="faq-question-title">Чи безпечно використовувати AI-згенерований код?</h3>
+      <p>Для простих сайтів ризики зазвичай невеликі. Якщо проєкт містить авторизацію, платежі або обробку персональних даних, код варто перевірити фахівцю з досвідом у безпеці.</p>
+
+      <h3 class="faq-question-title">Скільки часу займає створення сайту за допомогою AI?</h3>
+      <p>Базовий сайт можна створити протягом кількох днів, а повноцінний робочий проєкт — приблизно за один тиждень.</p>
+
+      <div class="blog-article-cta">
+        <p>Якщо ви хочете зрозуміти, які витрати та підписки у вашому бізнесі можна оптимізувати за допомогою AI, ми можемо провести детальний аналіз і підготувати карту можливостей автоматизації. Запишіться на Discovery Call, щоб обговорити, де саме штучний інтелект здатен дати найбільший економічний ефект.</p>
+        <p><strong>Станіслав Бучацький</strong> — засновник Latwo.</p>
+      </div>
+      <div class="blog-article-cta-action">
+        <a href="/#contact" class="btn btn-orange">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+          <span class="btn-text-stack"><span class="btn-text default">Забронювати безкоштовну консультацію</span><span class="btn-text hover">Забронювати безкоштовну консультацію</span></span>
+        </a>
+      </div>
+    </article>
+
+    <section class="blog-article-related scroll-reveal" aria-label="Related articles">
+      <div class="blog-article-related-grid">
+        <article class="blog-article-related-card">
+          <a class="blog-article-related-media" href="yak-nalashtuvaty-ai-pid-svii-brend.html">
+            <img src="../images/blog-ai-brand-context-project-setup.png" alt="Як налаштувати AI під свій бренд і більше не пояснювати контекст щоразу" />
+          </a>
+          <div class="blog-article-related-body">
+            <h2 class="blog-article-related-title"><a href="yak-nalashtuvaty-ai-pid-svii-brend.html">Як налаштувати AI під свій бренд і більше не пояснювати контекст щоразу</a></h2>
+            <p class="blog-article-related-excerpt">Функція «Проєкт» у ChatGPT і Claude дозволяє один раз зібрати базу знань бренду - і отримувати тексти у вашому стилі з першого разу. Покроковий підхід.</p>
+            <div class="blog-article-related-meta"><span>AI ДЛЯ МАРКЕТИНГУ</span><span class="dot"></span><span>5 ХВ</span></div>
+          </div>
+        </article>
+
+        <article class="blog-article-related-card">
+          <a class="blog-article-related-media" href="blog-ai-claude-gemini-chatgpt.html" data-i18n="blog_ai_tools_card_href" data-i18n-attr="href">
+            <img src="../images/blog-ai-tool-claude-gemini-chatgpt.png" alt="Який AI інструмент обрати для бізнесу: Claude, Gemini чи ChatGPT" data-i18n="blog_ai_tools_card_alt" data-i18n-attr="alt" />
+          </a>
+          <div class="blog-article-related-body">
+            <h2 class="blog-article-related-title"><a href="blog-ai-claude-gemini-chatgpt.html" data-i18n="blog_ai_tools_card_href" data-i18n-attr="href"><span data-i18n="blog_ai_tools_card_title">Який AI інструмент обрати для бізнесу: Claude, Gemini чи ChatGPT</span></a></h2>
+            <p class="blog-article-related-excerpt" data-i18n="blog_ai_tools_card_excerpt">Claude, Gemini, ChatGPT - кожен має свою зону. Як обрати правильний інструмент для задачі і не витрачати токени даремно. Реальний досвід.</p>
+            <div class="blog-article-related-meta"><span data-i18n="blog_ai_tools_card_tag">ВИБІР AI-ІНСТРУМЕНТІВ</span><span class="dot"></span><span data-i18n="blog_ai_tools_card_time">4 ХВ</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</section>
+
+<footer id="footer" data-header-theme="dark">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h2><a href="/" style="color:inherit;text-decoration:none;">Latwo</a></h2>
+      <p data-i18n="footer_desc">AI-консалтингова агенція нового покоління. Перетворіть хаос на систему та почніть зростати вже сьогодні.</p>
+    </div>
+
+    <div class="footer-nav-columns">
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer_nav_title">НАВІГАЦІЯ</h4>
+        <ul>
+          <li><a href="/cases" data-i18n="footer_cases">Кейси</a></li>
+          <li><a href="/#services" data-i18n="footer_services">Послуги</a></li>
+          <li><a href="/about-us" data-i18n="footer_about">Про нас</a></li>
+          <li><a href="/#pricing" data-i18n="footer_pricing">Ціни</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer_contact_title">ЗВ'ЯЗОК</h4>
+        <ul>
+          <li><a href="/#contact" data-i18n="footer_contact_link">Контакти</a></li>
+          <li><a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" rel="noopener" data-i18n="footer_instagram">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" rel="noopener" data-i18n="footer_linkedin">LinkedIn</a></li>
+          <li><a href="/blog" data-i18n="footer_blog">Блог</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer_legal_title">LEGAL</h4>
+        <ul>
+          <li><a href="/#faq" data-i18n="footer_faq">FAQs</a></li>
+          <li><a href="/privacy-policy" data-i18n="footer_privacy">Політика конфіденційності</a></li>
+          <li><a href="/cookie-policy" data-i18n="footer_cookies">Політика cookies</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span data-i18n="footer_copy">© 2026 Latwo. All rights reserved.</span>
+    <span><span data-i18n="footer_created">Created by</span> <a href="https://latwo.eu" style="text-decoration:underline;">Latwo</a></span>
+  </div>
+</footer>
+
+<script src="../js/i18n.js?v=20260516a"></script>
+<script src="../js/main.js?v=20260516a"></script>
+</body>
+</html>

@@ -2059,6 +2059,16 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.95rem;
 }
 
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2150,6 +2160,16 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--brand-orange);
   font-weight: 600;
   font-size: 1.1rem;
+}
+
+.form-error {
+  display: none;
+  margin-top: 0.6rem;
+  text-align: center;
+  color: #b43e1f;
+  font-family: var(--font-subheading);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* ============================================================
@@ -4049,6 +4069,12 @@ body.mobile-menu-open {
   justify-content: center;
   padding: 1rem 2rem;
   font-size: 1rem;
+}
+
+.form-submit-btn[disabled] {
+  opacity: 0.72;
+  cursor: wait;
+  pointer-events: none;
 }
 
 /* Header social links class */

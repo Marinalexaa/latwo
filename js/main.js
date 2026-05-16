@@ -217,64 +217,72 @@ function toggleFaq(questionEl) {
 }
 
 /* ============================================================
-   CONTACT FORM — submit via EmailJS / fallback mailto
+   CONTACT FORM — submit via backend API (Vercel + Resend)
    ============================================================ */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
+
+  const startedAtField = form.querySelector('input[name="form_started_at"]');
+  if (startedAtField) {
+    startedAtField.value = String(Date.now());
+  }
+
   form.addEventListener('submit', submitForm);
 }
 
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault();
   const form = document.getElementById('contact-form');
   const successMsg = document.getElementById('form-success');
-  if (!form || !successMsg) return;
+  const errorMsg = document.getElementById('form-error');
+  const submitBtn = form ? form.querySelector('.form-submit-btn') : null;
+  if (!form || !successMsg || !submitBtn) return;
 
   const data = new FormData(form);
-  const name = data.get('name') || '';
-  const email = data.get('email') || '';
-  const company = data.get('company') || '';
-  const service = data.get('service') || '';
-  const message = data.get('message') || '';
-  const discovery = data.get('discovery_call') ? 'Так' : 'Ні';
+  const payload = {
+    name: String(data.get('name') || '').trim(),
+    email: String(data.get('email') || '').trim(),
+    company: String(data.get('company') || '').trim(),
+    service: String(data.get('service') || '').trim(),
+    message: String(data.get('message') || '').trim(),
+    discovery_call: Boolean(data.get('discovery_call')),
+    website: String(data.get('website') || '').trim(),
+    form_started_at: Number(data.get('form_started_at') || 0)
+  };
 
-  // Build mailto link as fallback
-  const subject = encodeURIComponent(`Нова заявка від ${name} — Latwo`);
-  const body = encodeURIComponent(
-    `Ім'я: ${name}\nEmail: ${email}\nКомпанія: ${company}\nПослуга: ${service}\nПовідомлення: ${message}\nБезкоштовна консультація: ${discovery}`
-  );
-  const mailtoLink = `mailto:latwo.eu@gmail.com?subject=${subject}&body=${body}`;
+  setFormError(errorMsg, '');
+  setSubmitLoading(submitBtn, true);
 
-  // Try EmailJS if available, otherwise use mailto
-  if (typeof emailjs !== 'undefined') {
-    const templateParams = {
-      from_name: name,
-      from_email: email,
-      company: company,
-      service: service,
-      message: message,
-      discovery_call: discovery,
-      to_email: 'latwo.eu@gmail.com'
-    };
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
 
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-      .then(() => {
-        showFormSuccess(form, successMsg);
-      })
-      .catch(() => {
-        // Fallback to mailto
-        window.location.href = mailtoLink;
-        showFormSuccess(form, successMsg);
-      });
-  } else {
-    // Direct mailto fallback
-    window.location.href = mailtoLink;
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.ok) {
+      throw new Error(result.error || `http-${response.status}`);
+    }
+
     showFormSuccess(form, successMsg);
+  } catch (error) {
+    console.error('[contact-form]', error);
+    setFormError(errorMsg, getContactErrorMessage());
+  } finally {
+    setSubmitLoading(submitBtn, false);
   }
 }
 
 function showFormSuccess(form, successMsg) {
+  const errorMsg = document.getElementById('form-error');
+  const startedAtField = form.querySelector('input[name="form_started_at"]');
+  if (errorMsg) {
+    setFormError(errorMsg, '');
+  }
   form.style.display = 'none';
   successMsg.style.display = 'block';
 
@@ -283,7 +291,47 @@ function showFormSuccess(form, successMsg) {
     form.style.display = 'flex';
     successMsg.style.display = 'none';
     form.reset();
+    if (startedAtField) {
+      startedAtField.value = String(Date.now());
+    }
   }, 8000);
+}
+
+function setFormError(errorElement, message) {
+  if (!errorElement) return;
+  if (!message) {
+    errorElement.style.display = 'none';
+    return;
+  }
+  errorElement.textContent = message;
+  errorElement.style.display = 'block';
+}
+
+function setSubmitLoading(button, isLoading) {
+  const defaultText = button.querySelector('.btn-text.default');
+  const hoverText = button.querySelector('.btn-text.hover');
+  if (!defaultText || !hoverText) return;
+
+  if (!button.dataset.defaultLabel) {
+    button.dataset.defaultLabel = defaultText.textContent.trim();
+  }
+
+  const defaultLabel = button.dataset.defaultLabel;
+  const loadingLabel = getContactSendingLabel();
+
+  button.disabled = isLoading;
+  defaultText.textContent = isLoading ? loadingLabel : defaultLabel;
+  hoverText.textContent = isLoading ? loadingLabel : defaultLabel;
+}
+
+function getContactSendingLabel() {
+  return document.documentElement.lang === 'en' ? 'Sending...' : 'Надсилаємо...';
+}
+
+function getContactErrorMessage() {
+  return document.documentElement.lang === 'en'
+    ? 'Something went wrong. Please try again or email us at latwo.eu@gmail.com.'
+    : 'Сталася помилка під час відправки. Спробуйте ще раз або напишіть нам на latwo.eu@gmail.com.';
 }
 
 /* ============================================================
