@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/uk/index.html"
+      "destination": "/index.html"
     },
     {
       "source": "/en",
