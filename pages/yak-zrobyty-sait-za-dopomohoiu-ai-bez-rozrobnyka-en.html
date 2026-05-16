@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+<title>How to Build a Website With AI Without Hiring a Developer: Manus and Codex Desktop</title>
+  <meta name="description" content="AI tools like Manus and Codex Desktop are changing how websites are built. Create a custom website in days instead of spending thousands on development or SaaS subscriptions." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://latwo.eu/en/blog/build-website-with-ai-manus-codex-desktop" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Latwo AI Consulting" />
+  <meta property="og:title" content="How to Build a Website With AI Without Hiring a Developer: Manus and Codex Desktop" />
+  <meta property="og:description" content="AI tools like Manus and Codex Desktop are changing how websites are built. Create a custom website in days instead of spending thousands on development or SaaS subscriptions." />
+  <meta property="og:url" content="https://latwo.eu/en/blog/build-website-with-ai-manus-codex-desktop" />
+  <meta property="og:image" content="https://latwo.eu/images/blog-ai-website-manus-codex-desktop.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Build a Website With AI Without Hiring a Developer: Manus and Codex Desktop" />
+  <meta name="twitter:description" content="AI tools like Manus and Codex Desktop are changing how websites are built. Create a custom website in days instead of spending thousands on development or SaaS subscriptions." />
+  <meta name="twitter:image" content="https://latwo.eu/images/blog-ai-website-manus-codex-desktop.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Some Business Models Are Already Under Pressure — and Website Builders Are One Example",
+    "description": "AI tools like Manus and Codex Desktop are changing how websites are built. Create a custom website in days instead of spending thousands on development or SaaS subscriptions.",
+    "inLanguage": "en-US",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://latwo.eu/en/blog/build-website-with-ai-manus-codex-desktop"},
+    "datePublished": "2026-05-15",
+    "dateModified": "2026-05-15",
+    "author": {"@type": "Person", "name": "Stanislav Buchatskyi", "url": "https://latwo.eu/en/about-us"},
+    "publisher": {"@type": "Organization", "name": "Latwo AI Consulting", "logo": {"@type": "ImageObject", "url": "https://latwo.eu/images/logo1.png"}},
+    "image": ["https://latwo.eu/images/blog-ai-website-manus-codex-desktop.png"],
+    "keywords": ["AI website", "Manus", "Codex Desktop", "SaaS", "automation"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Latwo", "item": "https://latwo.eu/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://latwo.eu/en/blog"},
+      {"@type": "ListItem", "position": 3, "name": "Some Business Models Are Already Under Pressure — and Website Builders Are One Example", "item": "https://latwo.eu/en/blog/build-website-with-ai-manus-codex-desktop"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can you really build a commercial website without a developer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For many business websites, landing pages, and standard web projects, yes. Modern AI tools are already capable of generating functional websites without deep technical expertise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which SaaS subscriptions are easiest to replace with AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most vulnerable categories are usually website builders, simple automation platforms, basic reporting tools, and generic content-generation services."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is AI-generated code safe to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For simple websites, the risks are usually manageable. If the project involves payments, authentication, or personal data, the code should still be reviewed by an experienced developer or security specialist."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to build a website with AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A basic business website can often be built within a few days. A more polished production-ready version usually takes around one week."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/main.css?v=20260515c" />
+  <style>
+    :root { --blog-article-top-gap: 5rem; }
+    .blog-article-page { background: var(--bg-page); padding: var(--blog-article-top-gap) 0 4.6rem; }
+    .blog-article-shell { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    .blog-back-link { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--brand-orange); font-family: var(--font-subheading); font-size: 16px; line-height: 1.4; letter-spacing: -0.02em; font-weight: 500; text-decoration: none; margin-bottom: 2.2rem; opacity: 0.85; transition: opacity var(--transition); }
+    .blog-back-link:hover, .blog-back-link:focus-visible { opacity: 1; }
+    .blog-back-link svg { width: 16px; height: 16px; min-width: 16px; flex: 0 0 16px; flex-shrink: 0; display: inline-block; visibility: visible; opacity: 1; stroke: currentColor; }
+    .blog-back-link .back-label-wrap { display: inline-grid; align-items: center; justify-items: start; min-height: 1.4em; min-width: 5ch; width: max-content; overflow: hidden; line-height: 1.4; }
+    .blog-back-link .back-label { grid-area: 1 / 1; display: block; width: max-content; white-space: nowrap; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.28s ease; }
+    .blog-back-link .back-label.default { transform: translateY(0); opacity: 1; }
+    .blog-back-link .back-label.hover { transform: translateY(135%); opacity: 0; }
+    .blog-back-link:hover .back-label.default, .blog-back-link:focus-visible .back-label.default { transform: translateY(-135%); opacity: 0; }
+    .blog-back-link:hover .back-label.hover, .blog-back-link:focus-visible .back-label.hover { transform: translateY(0); opacity: 1; }
+    .blog-article-head { text-align: center; margin-bottom: 2.6rem; }
+    .blog-article-meta { display: inline-flex; align-items: center; gap: 0.75rem; font-size: 12px; text-transform: uppercase; letter-spacing: -0.02em; color: var(--brand-orange); font-weight: 600; margin-bottom: 1.2rem; }
+    .blog-article-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--brand-orange); }
+    .blog-article-head h1 { font-family: var(--font-heading); font-size: 80px; font-weight: 400; line-height: 1.1; letter-spacing: -0.04em; color: var(--black-primary); max-width: 980px; margin: 0 auto 1rem; }
+    .blog-article-head p { font-size: 20px; line-height: 1.4; letter-spacing: -0.02em; color: var(--black-secondary); max-width: 760px; margin: 0 auto; }
+    .blog-article-media { border: 4px solid rgba(255, 255, 255, 0.88); border-radius: 16px; overflow: hidden; box-shadow: 0 12px 30px rgba(6, 16, 28, 0.15); margin-bottom: 2.6rem; background: #d9dde2; }
+    .blog-article-media img { width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover; }
+    .blog-article-content { max-width: 920px; margin: 0 auto; }
+    .blog-article-content h2, .blog-article-content h3, .blog-article-content h4 { font-family: var(--font-heading); line-height: 1.2; letter-spacing: -0.03em; font-weight: 400; color: var(--black-primary); margin: 2rem 0 1rem; }
+    .blog-article-content h2 { font-size: 40px; }
+    .blog-article-content h3 { font-size: 30px; }
+    .blog-article-content h4 { font-size: 24px; }
+    .blog-article-content h3.faq-question-title { font-size: 24px; }
+    .blog-article-content p { font-size: 16px; line-height: 1.6; letter-spacing: -0.02em; color: var(--black-secondary); margin: 0 0 1rem; }
+    .blog-article-content a:not(.btn), .blog-article-content a:not(.btn) * { color: var(--brand-orange) !important; text-decoration: underline !important; text-underline-offset: 2px; text-decoration-thickness: 1.5px; }
+    .blog-article-content .btn, .blog-article-content .btn * { text-decoration: none !important; }
+    .blog-article-content ul, .blog-article-content ol { margin: 0 0 1rem 1.4rem; color: var(--black-secondary); }
+    .blog-article-content li { font-size: 16px; line-height: 1.6; letter-spacing: -0.02em; margin-bottom: 0.2rem; }
+    .blog-article-cta { margin-top: 1.6rem; padding: 1.2rem 1.4rem; border: 1px solid rgba(41,41,41,.15); border-radius: 14px; background: rgba(255,255,255,.45); }
+    .blog-article-cta p { font-style: italic; }
+    .blog-article-cta-action { margin-top: 1rem; display: flex; justify-content: center; }
+    .blog-article-related { margin-top: 3.4rem; padding-top: 2.1rem; border-top: 1px solid rgba(41,41,41,.15); }
+    .blog-article-related-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem; }
+    .blog-article-related-card { display: flex; flex-direction: column; gap: 0.75rem; }
+    .blog-article-related-media { border: 4px solid rgba(255, 255, 255, 0.88); border-radius: 16px; overflow: hidden; box-shadow: 0 12px 30px rgba(6,16,28,.15); background: #d9dde2; aspect-ratio: 16 / 10; }
+    .blog-article-related-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s ease; }
+    .blog-article-related-media:hover img { transform: scale(1.06); }
+    .blog-article-related-body { border: 4px solid rgba(255,255,255,.55); border-radius: 16px; background: rgba(255,255,255,.24); box-shadow: 0 12px 28px rgba(6,16,28,.1); padding: 1.7rem 1.8rem; min-height: 238px; display: flex; flex-direction: column; }
+    .blog-article-related-title { font-family: var(--font-heading); font-size: 24px; font-weight: 400; line-height: 1.2; letter-spacing: -0.04em; color: var(--black-primary); margin-bottom: .8rem; }
+    .blog-article-related-title a { color: inherit; text-decoration: none; }
+    .blog-article-related-title a:hover { color: var(--brand-orange); }
+    .blog-article-related-excerpt { font-size: 16px; line-height: 1.6; letter-spacing: -0.02em; color: var(--black-secondary); margin-bottom: 1.4rem; }
+    .blog-article-related-meta { margin-top: auto; display: flex; align-items: center; gap: .7rem; font-size: 12px; text-transform: uppercase; letter-spacing: -0.02em; color: var(--brand-orange); font-weight: 600; }
+    .blog-article-related-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--brand-orange); opacity: .75; }
+    @media (max-width: 1024px) {
+      :root { --blog-article-top-gap: 6.4rem; }
+      .blog-article-head h1 { font-size: 64px; }
+    }
+    @media (max-width: 768px) {
+      :root { --blog-article-top-gap: 3.4rem; }
+      .blog-article-shell { padding: 0 var(--mobile-gutter, 14px); }
+      .blog-back-link { font-size: 16px; margin-bottom: 1.5rem; }
+      .blog-article-head { margin-bottom: 1.6rem; }
+      .blog-article-head h1 { font-size: 56px; margin-bottom: 0.75rem; }
+      .blog-article-head p { font-size: 20px; }
+      .blog-article-meta { flex-wrap: wrap; justify-content: center; }
+      .blog-article-media { margin-bottom: 1.8rem; }
+      .blog-article-content h2 { font-size: 36px; }
+      .blog-article-content h3 { font-size: 30px; }
+      .blog-article-content h4 { font-size: 24px; }
+      .blog-article-cta { padding: 1rem 1rem 1.1rem; }
+      .blog-article-cta-action .btn { width: min(100%, 520px); }
+      .blog-article-related { margin-top: 2.6rem; padding-top: 1.7rem; }
+      .blog-article-related-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .blog-article-related-body { padding: 1.25rem; min-height: auto; }
+    }
+    @media (max-width: 540px) {
+      .blog-article-head h1 { font-size: 44px; }
+      .blog-article-head p { font-size: 18px; }
+      .blog-article-content h2 { font-size: 32px; }
+      .blog-article-content h3 { font-size: 26px; }
+      .blog-article-content h4 { font-size: 22px; }
+      .blog-article-content p,
+      .blog-article-content li { font-size: 15.5px; }
+      .blog-article-cta-action .btn { width: 100%; }
+    }
+    @media (max-width: 420px) {
+      :root { --blog-article-top-gap: 3.2rem; }
+      .blog-back-link { font-size: 15px; }
+      .blog-article-head h1 { font-size: 36px; }
+      .blog-article-head p { font-size: 17px; }
+      .blog-article-content h2 { font-size: 28px; }
+      .blog-article-content h3 { font-size: 24px; }
+      .blog-article-content h4 { font-size: 20px; }
+      .blog-article-cta-action .btn { font-size: 18px; padding: 0.95rem 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="/en/" class="header-logo">Latwo</a>
+    <nav class="header-nav">
+      <a href="/en/cases" data-i18n="nav_cases">Кейси</a>
+      <a href="/en/#services" data-i18n="nav_services">Послуги</a>
+      <a href="/en/about-us" data-i18n="nav_about">Про нас</a>
+      <a href="/en/#pricing" data-i18n="nav_pricing">Ціни</a>
+      <a href="/en/#faq" data-i18n="nav_faq">FAQs</a>
+    </nav>
+    <div class="header-right">
+      <a href="/en/blog" class="active" data-i18n="nav_blog">Блог</a>
+      <a href="/en/#contact" data-i18n="nav_contact">Контакти</a>
+      <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="lang-switcher" id="lang-switcher">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="current-lang">Ukrainian</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <button class="lang-option" data-lang="uk">🇺🇦 Українська</button>
+          <button class="lang-option" data-lang="en">🇬🇧 English</button>
+        </div>
+      </div>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="/en/cases" data-i18n="nav_cases">Кейси</a>
+  <a href="/en/#services" class="mobile-nav-close" data-i18n="nav_services">Послуги</a>
+  <a href="/en/about-us" data-i18n="nav_about">Про нас</a>
+  <a href="/en/#pricing" class="mobile-nav-close" data-i18n="nav_pricing">Ціни</a>
+  <a href="/en/#faq" class="mobile-nav-close" data-i18n="nav_faq">FAQs</a>
+  <a href="/en/blog" class="mobile-nav-close" data-i18n="nav_blog">Блог</a>
+  <a href="/en/#contact" class="mobile-nav-close" data-i18n="nav_contact">Контакти</a>
+  <a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" data-i18n="nav_instagram">Instagram</a>
+  <a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" data-i18n="nav_linkedin">LinkedIn</a>
+  <div class="mobile-nav-lang lang-switcher">
+    <button class="mobile-lang-trigger" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span class="current-lang-label">Ukrainian</span>
+      <svg class="mobile-lang-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="lang-dropdown mobile-lang-dropdown">
+      <button class="mobile-lang-option lang-option" type="button" data-lang="uk">🇺🇦 Українська</button>
+      <button class="mobile-lang-option lang-option" type="button" data-lang="en">🇬🇧 English</button>
+    </div>
+  </div>
+</nav>
+
+<section class="blog-article-page" data-header-theme="light">
+  <div class="blog-article-shell">
+    <a href="/en/blog" class="blog-back-link" aria-label="Go back to blog">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span class="back-label-wrap"><span class="back-label default">Back</span><span class="back-label hover">Back</span></span>
+    </a>
+
+    <header class="blog-article-head scroll-reveal">
+      <div class="blog-article-meta"><span>AI AUTOMATION</span><span class="dot"></span><span>4 MIN</span></div>
+      <h1>Some Business Models Are Already Under Pressure — and Website Builders Are One Example</h1>
+      <p>Why AI changes SaaS economics, how to build a site without a developer, and what this means for business subscriptions.</p>
+    </header>
+
+    <div class="blog-article-media scroll-reveal">
+      <img src="../images/blog-ai-website-manus-codex-desktop.png" alt="Building a website with Manus and Codex Desktop without a development team" />
+    </div>
+
+    <article class="blog-article-content">
+      <p>This may sound harsh, but certain SaaS categories are starting to lose <strong>part of their value</strong>.</p>
+      <p>Not because the products became worse. And not because they stopped solving real problems. The shift is happening because AI can now deliver similar results <strong>faster</strong>, <strong>cheaper</strong>, and without locking businesses into long-term platform dependency.</p>
+      <p>Website builders are one of the clearest examples of this change.</p>
+
+      <h2>What Is Happening to Website Builders</h2>
+      <p>A few years ago, creating a professional website usually meant choosing between two expensive options. You either hired developers and spent anywhere from several thousand to tens of thousands of euros, or you used platforms like <a href="https://www.wix.com" target="_blank" rel="noopener">Wix</a>, <a href="https://webflow.com" target="_blank" rel="noopener">Webflow</a>, or <a href="https://tilda.cc" target="_blank" rel="noopener">Tilda</a> and paid recurring subscription fees.</p>
+      <p>Those platforms solved a real problem, but they also created limitations. Your website remained tied to someone else’s infrastructure, pricing model, ecosystem, and technical restrictions. In practice, you never fully controlled the product you were building.</p>
+      <p>That equation is starting to change.</p>
+
+      <h2>How I Built a Website Without a Developer</h2>
+      <p>I tested this approach on one of my own projects.</p>
+      <p>First, I used <a href="https://manus.im" target="_blank" rel="noopener">Manus</a>, an AI agent designed for complex multi-step tasks. I provided a reference website whose structure I liked and asked it to recreate the logic behind the page layouts.</p>
+      <p>Within a short time, I had a working foundation: page structure, content blocks, and HTML that could be customized further.</p>
+      <p>Then I refined the project inside <a href="https://openai.com/codex/" target="_blank" rel="noopener">OpenAI Codex</a> using plain text instructions. No manual coding. No designer. No development team.</p>
+      <p>The result was a <strong>fully controlled website</strong> with its own codebase that could be deployed on any server I wanted.</p>
+
+      <h2>Why This Changes the Economics</h2>
+      <p>Traditional business website development often costs between <strong>€3,000 and €15,000</strong> depending on complexity.</p>
+      <p>Website builders lowered the entry barrier, but they replaced upfront development costs with long-term dependency and recurring payments.</p>
+      <p>With AI-assisted workflows, the main investment becomes time, iteration, and access to the right tools. For many standard business websites, that is already enough to produce results that previously required significantly larger budgets.</p>
+      <p>That does not mean every SaaS product disappears overnight. But it does mean the value proposition of many tools is becoming harder to justify when AI can reproduce large parts of the outcome directly.</p>
+      <p>This pressure is especially visible in products built around repetitive, highly standardized tasks. That includes:</p>
+      <ul>
+        <li>• template-based websites;</li>
+        <li>• standard automations;</li>
+        <li>• generic reporting tools;</li>
+        <li>• basic content-generation platforms;</li>
+        <li>• simple SaaS products without deep specialization.</li>
+      </ul>
+
+      <h2>What This Means for Businesses</h2>
+      <p>For companies using technology, this creates an opportunity to rethink current subscriptions and operational costs.</p>
+      <p>Many businesses are paying for tools that solved important problems five years ago, but can now be partially replaced with AI systems that are <strong>cheaper</strong> and far more adaptable.</p>
+      <p>For SaaS founders, the question becomes more strategic. If a product’s value is based mostly on automating predictable workflows, it is worth evaluating how defensible that model remains when AI can recreate similar functionality quickly and at lower cost.</p>
+      <p>That does not mean software companies disappear. It means the market is shifting toward products with stronger specialization, deeper integrations, proprietary data, or workflows that AI alone still cannot reliably replace.</p>
+
+      <h2>Are Developers Becoming Unnecessary?</h2>
+      <p>No. Their <strong>role is changing</strong>.</p>
+      <p>AI is very good at accelerating routine implementation work and generating initial foundations. But system architecture, security, scalability, infrastructure decisions, and complex integrations still require experienced specialists.</p>
+      <p>The difference is that developers increasingly spend less time building repetitive structures from scratch and more time refining, validating, and extending AI-generated systems.</p>
+      <p>That shift is already happening across many technical teams.</p>
+
+      <h2>Final Thoughts</h2>
+      <p>AI is changing the economics of digital products faster than many companies expected.</p>
+      <p>Tasks that once required expensive SaaS subscriptions or large development budgets can now often be completed in days with relatively <strong>small investments</strong>.</p>
+      <p>For businesses, this creates both an opportunity and a warning. On one side, there is a real chance to reduce operational costs and move faster. On the other, companies whose value depends mainly on automating standard workflows may need to rethink their positioning much sooner than they anticipated.</p>
+
+      <h2>FAQ</h2>
+      <h3 class="faq-question-title">Can you really build a commercial website without a developer?</h3>
+      <p>For many business websites, landing pages, and standard web projects, yes. Modern AI tools are already capable of generating functional websites without deep technical expertise.</p>
+
+      <h3 class="faq-question-title">Which SaaS subscriptions are easiest to replace with AI?</h3>
+      <p>The most vulnerable categories are usually website builders, simple automation platforms, basic reporting tools, and generic content-generation services.</p>
+
+      <h3 class="faq-question-title">Is AI-generated code safe to use?</h3>
+      <p>For simple websites, the risks are usually manageable. If the project involves payments, authentication, or personal data, the code should still be reviewed by an experienced developer or security specialist.</p>
+
+      <h3 class="faq-question-title">How long does it take to build a website with AI?</h3>
+      <p>A basic business website can often be built within a few days. A more polished production-ready version usually takes around one week.</p>
+
+      <div class="blog-article-cta">
+        <p>If you want to understand which subscriptions, workflows, or operational costs inside your business can already be optimized with AI, we can help map out the highest-impact opportunities and build a practical automation strategy around them.</p>
+        <p>You can discuss this during a Discovery Call.</p>
+        <p><strong>Stanislav Buchatskyi</strong> — Founder of Latwo.</p>
+      </div>
+      <div class="blog-article-cta-action">
+        <a href="/en/#contact" class="btn btn-orange">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>
+          <span class="btn-text-stack"><span class="btn-text default">Book a Free Consultation</span><span class="btn-text hover">Book a Free Consultation</span></span>
+        </a>
+      </div>
+    </article>
+
+    <section class="blog-article-related scroll-reveal" aria-label="Related articles">
+      <div class="blog-article-related-grid">
+        <article class="blog-article-related-card">
+          <a class="blog-article-related-media" href="/en/blog/train-ai-for-brand-context">
+            <img src="../images/blog-ai-brand-context-project-setup.png" alt="How to Train AI to Understand Your Brand and Stop Repeating Context in Every Chat" />
+          </a>
+          <div class="blog-article-related-body">
+            <h2 class="blog-article-related-title"><a href="/en/blog/train-ai-for-brand-context">How to Train AI to Understand Your Brand and Stop Repeating Context in Every Chat</a></h2>
+            <p class="blog-article-related-excerpt">ChatGPT and Claude Projects let you build a reusable brand knowledge base, so AI can generate content in your tone and style from the first prompt.</p>
+            <div class="blog-article-related-meta"><span>AI FOR MARKETING</span><span class="dot"></span><span>5 MIN</span></div>
+          </div>
+        </article>
+
+        <article class="blog-article-related-card">
+          <a class="blog-article-related-media" href="/en/blog/ai-tools-claude-gemini-chatgpt" data-i18n="blog_ai_tools_card_href" data-i18n-attr="href">
+            <img src="../images/blog-ai-tool-claude-gemini-chatgpt.png" alt="Which AI Tool Is Best for Business: Claude, Gemini, or ChatGPT?" data-i18n="blog_ai_tools_card_alt" data-i18n-attr="alt" />
+          </a>
+          <div class="blog-article-related-body">
+            <h2 class="blog-article-related-title"><a href="/en/blog/ai-tools-claude-gemini-chatgpt" data-i18n="blog_ai_tools_card_href" data-i18n-attr="href"><span data-i18n="blog_ai_tools_card_title">Which AI Tool Is Best for Business: Claude, Gemini, or ChatGPT?</span></a></h2>
+            <p class="blog-article-related-excerpt" data-i18n="blog_ai_tools_card_excerpt">Claude, Gemini, and ChatGPT each excel at different tasks. Learn how to choose the right AI tool for your workflow and avoid wasting time, tokens, and budget.</p>
+            <div class="blog-article-related-meta"><span data-i18n="blog_ai_tools_card_tag">AI TOOL SELECTION</span><span class="dot"></span><span data-i18n="blog_ai_tools_card_time">4 MIN</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</section>
+
+<footer id="footer" data-header-theme="dark">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h2><a href="/en/" style="color:inherit;text-decoration:none;">Latwo</a></h2>
+      <p data-i18n="footer_desc">AI-консалтингова агенція нового покоління. Перетворіть хаос на систему та почніть зростати вже сьогодні.</p>
+    </div>
+
+    <div class="footer-nav-columns">
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer_nav_title">НАВІГАЦІЯ</h4>
+        <ul>
+          <li><a href="/en/cases" data-i18n="footer_cases">Кейси</a></li>
+          <li><a href="/en/#services" data-i18n="footer_services">Послуги</a></li>
+          <li><a href="/en/about-us" data-i18n="footer_about">Про нас</a></li>
+          <li><a href="/en/#pricing" data-i18n="footer_pricing">Ціни</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer_contact_title">ЗВ'ЯЗОК</h4>
+        <ul>
+          <li><a href="/en/#contact" data-i18n="footer_contact_link">Контакти</a></li>
+          <li><a href="https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp" target="_blank" rel="noopener" data-i18n="footer_instagram">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/company/latwo-ai-consulting/" target="_blank" rel="noopener" data-i18n="footer_linkedin">LinkedIn</a></li>
+          <li><a href="/en/blog" data-i18n="footer_blog">Блог</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer_legal_title">LEGAL</h4>
+        <ul>
+          <li><a href="/en/#faq" data-i18n="footer_faq">FAQs</a></li>
+          <li><a href="/en/privacy-policy" data-i18n="footer_privacy">Політика конфіденційності</a></li>
+          <li><a href="/en/cookie-policy" data-i18n="footer_cookies">Політика cookies</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span data-i18n="footer_copy">© 2026 Latwo. All rights reserved.</span>
+    <span><span data-i18n="footer_created">Created by</span> <a href="https://latwo.eu" style="text-decoration:underline;">Latwo</a></span>
+  </div>
+</footer>
+
+<script src="../js/i18n.js?v=20260512a"></script>
+<script src="../js/main.js?v=20260512a"></script>
+</body>
+</html>

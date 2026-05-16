@@ -1,4 +1,274 @@
 {
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/uk/index.html"
+    },
+    {
+      "source": "/en",
+      "destination": "/en/index.html"
+    },
+    {
+      "source": "/en/",
+      "destination": "/en/index.html"
+    },
+    {
+      "source": "/uk",
+      "destination": "/uk/index.html"
+    },
+    {
+      "source": "/uk/",
+      "destination": "/uk/index.html"
+    },
+    {
+      "source": "/uk/index.html",
+      "destination": "/uk/index.html"
+    },
+    {
+      "source": "/cases",
+      "destination": "/uk/cases.html"
+    },
+    {
+      "source": "/about-us",
+      "destination": "/uk/about-us.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/uk/blog.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/uk/privacy-policy.html"
+    },
+    {
+      "source": "/cookie-policy",
+      "destination": "/uk/cookie-policy.html"
+    },
+    {
+      "source": "/services-1",
+      "destination": "/uk/services-1.html"
+    },
+    {
+      "source": "/services-2",
+      "destination": "/uk/services-2.html"
+    },
+    {
+      "source": "/services-3",
+      "destination": "/uk/services-3.html"
+    },
+    {
+      "source": "/services-4",
+      "destination": "/uk/services-4.html"
+    },
+    {
+      "source": "/blog/ai-tools-claude-gemini-chatgpt",
+      "destination": "/uk/blog-ai-claude-gemini-chatgpt.html"
+    },
+    {
+      "source": "/blog/train-ai-for-brand-context",
+      "destination": "/uk/yak-nalashtuvaty-ai-pid-svii-brend.html"
+    },
+    {
+      "source": "/blog/build-website-with-ai-manus-codex-desktop",
+      "destination": "/uk/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html"
+    },
+    {
+      "source": "/blog/decode-handwritten-text-with-ai-gemini",
+      "destination": "/uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html"
+    },
+    {
+      "source": "/uk/cases",
+      "destination": "/uk/cases.html"
+    },
+    {
+      "source": "/uk/cases.html",
+      "destination": "/uk/cases.html"
+    },
+    {
+      "source": "/uk/about-us",
+      "destination": "/uk/about-us.html"
+    },
+    {
+      "source": "/uk/about-us.html",
+      "destination": "/uk/about-us.html"
+    },
+    {
+      "source": "/uk/blog",
+      "destination": "/uk/blog.html"
+    },
+    {
+      "source": "/uk/blog.html",
+      "destination": "/uk/blog.html"
+    },
+    {
+      "source": "/uk/privacy-policy",
+      "destination": "/uk/privacy-policy.html"
+    },
+    {
+      "source": "/uk/privacy-policy.html",
+      "destination": "/uk/privacy-policy.html"
+    },
+    {
+      "source": "/uk/cookie-policy",
+      "destination": "/uk/cookie-policy.html"
+    },
+    {
+      "source": "/uk/cookie-policy.html",
+      "destination": "/uk/cookie-policy.html"
+    },
+    {
+      "source": "/uk/services-1",
+      "destination": "/uk/services-1.html"
+    },
+    {
+      "source": "/uk/services-2",
+      "destination": "/uk/services-2.html"
+    },
+    {
+      "source": "/uk/services-3",
+      "destination": "/uk/services-3.html"
+    },
+    {
+      "source": "/uk/services-4",
+      "destination": "/uk/services-4.html"
+    },
+    {
+      "source": "/uk/services-1.html",
+      "destination": "/uk/services-1.html"
+    },
+    {
+      "source": "/uk/services-2.html",
+      "destination": "/uk/services-2.html"
+    },
+    {
+      "source": "/uk/services-3.html",
+      "destination": "/uk/services-3.html"
+    },
+    {
+      "source": "/uk/services-4.html",
+      "destination": "/uk/services-4.html"
+    },
+    {
+      "source": "/uk/blog/ai-tools-claude-gemini-chatgpt",
+      "destination": "/uk/blog-ai-claude-gemini-chatgpt.html"
+    },
+    {
+      "source": "/uk/blog/train-ai-for-brand-context",
+      "destination": "/uk/yak-nalashtuvaty-ai-pid-svii-brend.html"
+    },
+    {
+      "source": "/uk/blog/build-website-with-ai-manus-codex-desktop",
+      "destination": "/uk/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html"
+    },
+    {
+      "source": "/uk/blog/decode-handwritten-text-with-ai-gemini",
+      "destination": "/uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html"
+    },
+    {
+      "source": "/en/about-us",
+      "destination": "/en/about-us.html"
+    },
+    {
+      "source": "/en/about-us.html",
+      "destination": "/en/about-us.html"
+    },
+    {
+      "source": "/en/cases",
+      "destination": "/en/cases.html"
+    },
+    {
+      "source": "/en/cases.html",
+      "destination": "/en/cases.html"
+    },
+    {
+      "source": "/en/blog",
+      "destination": "/en/blog.html"
+    },
+    {
+      "source": "/en/blog.html",
+      "destination": "/en/blog.html"
+    },
+    {
+      "source": "/en/privacy-policy",
+      "destination": "/en/privacy-policy.html"
+    },
+    {
+      "source": "/en/privacy-policy.html",
+      "destination": "/en/privacy-policy.html"
+    },
+    {
+      "source": "/en/cookie-policy",
+      "destination": "/en/cookie-policy.html"
+    },
+    {
+      "source": "/en/cookie-policy.html",
+      "destination": "/en/cookie-policy.html"
+    },
+    {
+      "source": "/en/services-1",
+      "destination": "/en/services-1.html"
+    },
+    {
+      "source": "/en/services-1/",
+      "destination": "/en/services-1.html"
+    },
+    {
+      "source": "/en/services-2",
+      "destination": "/en/services-2.html"
+    },
+    {
+      "source": "/en/services-2/",
+      "destination": "/en/services-2.html"
+    },
+    {
+      "source": "/en/services-3",
+      "destination": "/en/services-3.html"
+    },
+    {
+      "source": "/en/services-3/",
+      "destination": "/en/services-3.html"
+    },
+    {
+      "source": "/en/services-4",
+      "destination": "/en/services-4.html"
+    },
+    {
+      "source": "/en/services-4/",
+      "destination": "/en/services-4.html"
+    },
+    {
+      "source": "/en/services-1.html",
+      "destination": "/en/services-1.html"
+    },
+    {
+      "source": "/en/services-2.html",
+      "destination": "/en/services-2.html"
+    },
+    {
+      "source": "/en/services-3.html",
+      "destination": "/en/services-3.html"
+    },
+    {
+      "source": "/en/services-4.html",
+      "destination": "/en/services-4.html"
+    },
+    {
+      "source": "/en/blog/ai-tools-claude-gemini-chatgpt",
+      "destination": "/en/blog-ai-claude-gemini-chatgpt.html"
+    },
+    {
+      "source": "/en/blog/train-ai-for-brand-context",
+      "destination": "/en/yak-nalashtuvaty-ai-pid-svii-brend.html"
+    },
+    {
+      "source": "/en/blog/build-website-with-ai-manus-codex-desktop",
+      "destination": "/en/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html"
+    },
+    {
+      "source": "/en/blog/decode-handwritten-text-with-ai-gemini",
+      "destination": "/en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
