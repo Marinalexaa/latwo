@@ -251,6 +251,13 @@ async function submitForm(e) {
     form_started_at: Number(data.get('form_started_at') || 0)
   };
 
+  // Fast client-side guard for the most common validation error.
+  if (payload.message.length < 10) {
+    setFormError(errorMsg, getContactErrorMessage('invalid-message'));
+    setSubmitLoading(submitBtn, false);
+    return;
+  }
+
   setFormError(errorMsg, '');
   setSubmitLoading(submitBtn, true);
 
@@ -265,13 +272,17 @@ async function submitForm(e) {
 
     const result = await response.json().catch(() => ({}));
     if (!response.ok || !result.ok) {
-      throw new Error(result.error || `http-${response.status}`);
+      const errorCode = result && typeof result.error === 'string'
+        ? result.error
+        : `http-${response.status}`;
+      throw new Error(errorCode);
     }
 
     showFormSuccess(form, successMsg);
   } catch (error) {
     console.error('[contact-form]', error);
-    setFormError(errorMsg, getContactErrorMessage());
+    const errorCode = typeof error?.message === 'string' ? error.message : '';
+    setFormError(errorMsg, getContactErrorMessage(errorCode));
   } finally {
     setSubmitLoading(submitBtn, false);
   }
@@ -328,8 +339,40 @@ function getContactSendingLabel() {
   return document.documentElement.lang === 'en' ? 'Sending...' : 'Надсилаємо...';
 }
 
-function getContactErrorMessage() {
-  return document.documentElement.lang === 'en'
+function getContactErrorMessage(errorCode = '') {
+  const isEn = document.documentElement.lang === 'en';
+
+  if (errorCode === 'invalid-message') {
+    return isEn
+      ? 'Please describe your request in at least 10 characters.'
+      : 'Опишіть запит щонайменше 10 символами.';
+  }
+
+  if (errorCode === 'invalid-email') {
+    return isEn
+      ? 'Please enter a valid email address.'
+      : 'Введіть коректну email-адресу.';
+  }
+
+  if (errorCode === 'invalid-name') {
+    return isEn
+      ? 'Please enter your name (at least 2 characters).'
+      : "Введіть ім'я (щонайменше 2 символи).";
+  }
+
+  if (errorCode === 'invalid-service') {
+    return isEn
+      ? 'Please select a service option.'
+      : 'Оберіть варіант послуги.';
+  }
+
+  if (errorCode === 'rate-limited') {
+    return isEn
+      ? 'Too many attempts. Please wait a few minutes and try again.'
+      : 'Забагато спроб. Зачекайте кілька хвилин і спробуйте знову.';
+  }
+
+  return isEn
     ? 'Something went wrong. Please try again or email us at latwo.eu@gmail.com.'
     : 'Сталася помилка під час відправки. Спробуйте ще раз або напишіть нам на latwo.eu@gmail.com.';
 }
