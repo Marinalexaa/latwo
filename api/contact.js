@@ -8,6 +8,9 @@ const RATE_LIMIT_MAX_REQUESTS = Number.isFinite(Number(process.env.CONTACT_FORM_
   : 5;
 const SAFE_RATE_LIMIT_WINDOW_MS = Math.max(1000, Math.floor(RATE_LIMIT_WINDOW_MS));
 const SAFE_RATE_LIMIT_MAX_REQUESTS = Math.max(1, Math.floor(RATE_LIMIT_MAX_REQUESTS));
+const MAX_REQUEST_BODY_BYTES = Number.isFinite(Number(process.env.CONTACT_FORM_MAX_BODY_BYTES))
+  ? Math.max(1024, Math.floor(Number(process.env.CONTACT_FORM_MAX_BODY_BYTES)))
+  : 16 * 1024;
 const rateLimitStore = new Map();
 
 const SERVICE_LABELS = {
@@ -19,6 +22,7 @@ const SERVICE_LABELS = {
 function setJsonHeaders(res) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
 }
 
 function getClientIp(req) {
@@ -52,12 +56,43 @@ function validatePayload(payload) {
   const discoveryCall = Boolean(payload?.discovery_call);
   const website = trimString(payload?.website, 200);
   const formStartedAt = Number(payload?.form_started_at || 0);
+  const consentId = trimString(payload?.consent_id, 120);
+  const consentVersion = trimString(payload?.consent_version, 60);
+  const consentTimestamp = trimString(payload?.consent_timestamp, 60);
+  const consentSource = trimString(payload?.consent_source, 80);
+  const consentSnapshotRaw = trimString(payload?.consent_snapshot, 1000);
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!name || name.length < 2) return { error: 'invalid-name' };
   if (!emailOk) return { error: 'invalid-email' };
   if (!service || !SERVICE_LABELS[service]) return { error: 'invalid-service' };
   if (!message || message.length < 10) return { error: 'invalid-message' };
+
+  let consentSnapshot = null;
+  if (consentSnapshotRaw) {
+    try {
+      const parsed = JSON.parse(consentSnapshotRaw);
+      if (parsed && typeof parsed === 'object') {
+        consentSnapshot = {
+          essential: parsed.essential === true,
+          analytics: Boolean(parsed.analytics),
+          marketing: Boolean(parsed.marketing)
+        };
+      }
+    } catch (_error) {
+      consentSnapshot = null;
+    }
+  }
+
+  const consent = (consentId && consentVersion && consentTimestamp)
+    ? {
+        id: consentId,
+        version: consentVersion,
+        timestamp: consentTimestamp,
+        source: consentSource || '',
+        snapshot: consentSnapshot
+      }
+    : null;
 
   return {
     data: {
@@ -69,7 +104,8 @@ function validatePayload(payload) {
       message,
       discoveryCall,
       website,
-      formStartedAt
+      formStartedAt,
+      consent
     }
   };
 }
@@ -89,6 +125,41 @@ function checkRateLimit(ip) {
   return true;
 }
 
+function parseHostHeader(req) {
+  const host = String(req.headers['x-forwarded-host'] || req.headers.host || '').trim().toLowerCase();
+  return host.split(',')[0].trim();
+}
+
+function isCrossSiteRequest(req) {
+  const secFetchSite = String(req.headers['sec-fetch-site'] || '').toLowerCase();
+  return secFetchSite === 'cross-site';
+}
+
+function isOriginAllowed(req) {
+  const origin = String(req.headers.origin || '').trim();
+  if (!origin || origin === 'null') return true;
+
+  let originHost = '';
+  try {
+    originHost = new URL(origin).host.toLowerCase();
+  } catch (_error) {
+    return false;
+  }
+
+  const requestHost = parseHostHeader(req);
+  if (!requestHost) return false;
+
+  return originHost === requestHost;
+}
+
+function getPayloadBytes(payload) {
+  try {
+    return Buffer.byteLength(JSON.stringify(payload || {}), 'utf8');
+  } catch (_error) {
+    return Number.POSITIVE_INFINITY;
+  }
+}
+
 async function sendWithResend(payload) {
   const resendApiKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.CONTACT_FORM_TO_EMAIL || 'latwo.eu@gmail.com';
@@ -106,6 +177,9 @@ async function sendWithResend(payload) {
   const subject = `[${subjectPrefix}] Нова заявка: ${payload.name}`;
   const replyTo = payload.email;
   const discoveryLabel = payload.discoveryCall ? 'Так' : 'Ні';
+  const consentLine = payload.consent
+    ? `id=${payload.consent.id}; version=${payload.consent.version}; timestamp=${payload.consent.timestamp}; source=${payload.consent.source || '-'}; choices=${payload.consent.snapshot ? JSON.stringify(payload.consent.snapshot) : '-'}`
+    : 'не надано';
 
   const text = [
     'Нова заявка з контактної форми Latwo',
@@ -119,6 +193,9 @@ async function sendWithResend(payload) {
     'Повідомлення:',
     payload.message,
     '',
+    'Cookie consent:',
+    consentLine,
+    '',
     `Дата: ${submittedAt}`
   ].join('\n');
 
@@ -131,6 +208,7 @@ async function sendWithResend(payload) {
     <p><strong>Безкоштовна консультація:</strong> ${escapeHtml(discoveryLabel)}</p>
     <p><strong>Повідомлення:</strong></p>
     <p style="white-space:pre-wrap;">${escapeHtml(payload.message)}</p>
+    <p><strong>Cookie consent:</strong> ${escapeHtml(consentLine)}</p>
     <hr />
     <p><small>Дата: ${escapeHtml(submittedAt)}</small></p>
   `;
@@ -171,6 +249,10 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'method-not-allowed' });
   }
 
+  if (isCrossSiteRequest(req) || !isOriginAllowed(req)) {
+    return res.status(403).json({ ok: false, error: 'forbidden-origin' });
+  }
+
   const ip = getClientIp(req);
   if (!checkRateLimit(ip)) {
     return res.status(429).json({ ok: false, error: 'rate-limited' });
@@ -186,6 +268,10 @@ module.exports = async function handler(req, res) {
   }
   if (!payload || typeof payload !== 'object') {
     payload = {};
+  }
+
+  if (getPayloadBytes(payload) > MAX_REQUEST_BODY_BYTES) {
+    return res.status(413).json({ ok: false, error: 'payload-too-large' });
   }
 
   const validation = validatePayload(payload);

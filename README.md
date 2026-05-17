@@ -80,8 +80,23 @@ Project → **Settings → Environment Variables**
 - `CONTACT_FORM_SUBJECT_PREFIX` (optional, e.g. `Latwo.eu`)
 - `CONTACT_FORM_RATE_LIMIT_MAX_REQUESTS` (optional, default `5`)
 - `CONTACT_FORM_RATE_LIMIT_WINDOW_MS` (optional, default `900000` = 15 min)
+- `CONTACT_FORM_MAX_BODY_BYTES` (optional, default `16384`)
+- `CONSENT_LOG_SALT` (recommended, random long string for hashing consent log IPs)
+- `SUPABASE_URL` (for consent audit storage)
+- `SUPABASE_SERVICE_ROLE_KEY` (server-only key, never expose client-side)
+- `SUPABASE_CONSENT_TABLE` (optional, default `cookie_consents`)
+- `SUPABASE_TIMEOUT_MS` (optional, default `5000`)
 
 Use `.env.example` as a reference for local development.
+
+### Cookie consent audit storage (Supabase)
+
+1. Open Supabase SQL Editor and run:
+   - `supabase/cookie_consents.sql`
+2. Add Supabase environment variables in Vercel (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`)
+3. Redeploy.
+
+After this, `/api/consent` stores consent records in Supabase and keeps runtime logs as a backup trace.
 
 ### 2) Verify sender domain in Resend
 
