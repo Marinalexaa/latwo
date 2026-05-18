@@ -391,25 +391,25 @@ const translations = {
     blog_card_4_excerpt: 'Які рішення найчастіше гальмують розвиток і як виправити їх швидко без зайвих витрат.',
     blog_card_4_tag: 'СТРАТЕГІЯ ТА РОСТ',
     blog_card_4_time: '4 ХВ',
-    blog_ai_tools_card_href: '/blog/ai-tools-claude-gemini-chatgpt',
+    blog_ai_tools_card_href: '/uk/blog-ai-claude-gemini-chatgpt.html',
     blog_ai_tools_card_alt: 'Який AI інструмент обрати для бізнесу: Claude, Gemini чи ChatGPT',
     blog_ai_tools_card_title: 'Який AI інструмент обрати для бізнесу: Claude, Gemini чи ChatGPT',
     blog_ai_tools_card_excerpt: 'Claude, Gemini, ChatGPT - кожен має свою зону. Як обрати правильний інструмент для задачі і не витрачати токени даремно. Реальний досвід.',
     blog_ai_tools_card_tag: 'ВИБІР AI-ІНСТРУМЕНТІВ',
     blog_ai_tools_card_time: '4 ХВ',
-    blog_ai_handwriting_card_href: '/blog/decode-handwritten-text-with-ai-gemini',
+    blog_ai_handwriting_card_href: '/uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html',
     blog_ai_handwriting_card_alt: 'Як розшифрувати рукописний текст за допомогою AI: Gemini замість перекладача за 50 євро',
     blog_ai_handwriting_card_title: 'Як розшифрувати рукописний текст за допомогою AI: Gemini замість перекладача за 50 євро',
     blog_ai_handwriting_card_excerpt: 'Старонімецький рукопис, 5000 євро за переклад від спеціаліста - або Gemini за кілька днів з точністю 95-98%. Як правильно налаштувати AI для розшифровки документів.',
     blog_ai_handwriting_card_tag: 'AI ДЛЯ ДОКУМЕНТІВ',
     blog_ai_handwriting_card_time: '4 ХВ',
-    blog_ai_brand_card_href: '/blog/train-ai-for-brand-context',
+    blog_ai_brand_card_href: '/uk/yak-nalashtuvaty-ai-pid-svii-brend.html',
     blog_ai_brand_card_alt: 'Як налаштувати AI під свій бренд і більше не пояснювати контекст у кожному чаті',
     blog_ai_brand_card_title: 'Як налаштувати AI під свій бренд і більше не пояснювати контекст щоразу',
     blog_ai_brand_card_excerpt: 'Функція «Проєкт» у ChatGPT і Claude дозволяє один раз зібрати базу знань бренду - і отримувати тексти у вашому стилі з першого разу. Покроковий підхід.',
     blog_ai_brand_card_tag: 'AI ДЛЯ МАРКЕТИНГУ',
     blog_ai_brand_card_time: '5 ХВ',
-    blog_ai_website_card_href: '/blog/build-website-with-ai-manus-codex-desktop',
+    blog_ai_website_card_href: '/uk/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html',
     blog_ai_website_card_alt: 'Як зробити сайт за допомогою AI без розробника: Manus і Codex Desktop',
     blog_ai_website_card_title: 'Як зробити сайт за допомогою AI без розробника: Manus і Codex Desktop',
     blog_ai_website_card_excerpt: 'Без коду і розробника - сайт за кілька днів замість тисяч євро. Як AI змінює ринок SaaS і що робити бізнесу з підписками які більше не окупаються.',
@@ -819,25 +819,25 @@ const translations = {
     blog_card_4_excerpt: 'Avoid the pitfalls that stop most small businesses from growing and learn how to fix them quickly.',
     blog_card_4_tag: 'STRATEGY & GROWTH',
     blog_card_4_time: '4 MINS',
-    blog_ai_tools_card_href: '/en/blog/ai-tools-claude-gemini-chatgpt',
+    blog_ai_tools_card_href: '/en/blog-ai-claude-gemini-chatgpt.html',
     blog_ai_tools_card_alt: 'Which AI Tool Is Best for Business: Claude, Gemini, or ChatGPT?',
     blog_ai_tools_card_title: 'Which AI Tool Is Best for Business: Claude, Gemini, or ChatGPT?',
     blog_ai_tools_card_excerpt: 'Claude, Gemini, and ChatGPT each excel at different tasks. Learn how to choose the right AI tool for your workflow and avoid wasting time, tokens, and budget.',
     blog_ai_tools_card_tag: 'AI TOOL SELECTION',
     blog_ai_tools_card_time: '4 MIN',
-    blog_ai_handwriting_card_href: '/en/blog/decode-handwritten-text-with-ai-gemini',
+    blog_ai_handwriting_card_href: '/en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html',
     blog_ai_handwriting_card_alt: 'How to Decode Handwritten Text With AI: Using Gemini Instead of Paying €50 Per Page for Translation',
     blog_ai_handwriting_card_title: 'How to Decode Handwritten Text With AI: Using Gemini Instead of Paying €50 Per Page for Translation',
     blog_ai_handwriting_card_excerpt: 'An old German handwritten archive, a €5,000 translation estimate, and Gemini delivering 95–98% accuracy in just a few days. How to set up AI properly for document transcription.',
     blog_ai_handwriting_card_tag: 'AI FOR DOCUMENTS',
     blog_ai_handwriting_card_time: '4 MIN',
-    blog_ai_brand_card_href: '/en/blog/train-ai-for-brand-context',
+    blog_ai_brand_card_href: '/en/yak-nalashtuvaty-ai-pid-svii-brend.html',
     blog_ai_brand_card_alt: 'How to Train AI to Understand Your Brand and Stop Repeating Context in Every Chat',
     blog_ai_brand_card_title: 'How to Train AI to Understand Your Brand and Stop Repeating Context in Every Chat',
     blog_ai_brand_card_excerpt: 'ChatGPT and Claude Projects let you build a reusable brand knowledge base, so AI can generate content in your tone and style from the first prompt.',
     blog_ai_brand_card_tag: 'AI FOR MARKETING',
     blog_ai_brand_card_time: '5 MIN',
-    blog_ai_website_card_href: '/en/blog/build-website-with-ai-manus-codex-desktop',
+    blog_ai_website_card_href: '/en/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html',
     blog_ai_website_card_alt: 'How to Build a Website With AI Without Hiring a Developer: Manus and Codex Desktop',
     blog_ai_website_card_title: 'How to Build a Website With AI Without Hiring a Developer: Manus and Codex Desktop',
     blog_ai_website_card_excerpt: 'AI tools like Manus and Codex Desktop are changing how websites are built. Create a custom website in days instead of spending thousands on development or SaaS subscriptions.',
@@ -921,26 +921,6 @@ function getLanguageRedirectPath(lang) {
     if (path.endsWith('/en/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html') && lang === 'uk') return path.replace('/en/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html', '/uk/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html');
     if (path.endsWith('/uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html') && lang === 'en') return path.replace('/uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html', '/en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html');
     if (path.endsWith('/en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html') && lang === 'uk') return path.replace('/en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html', '/uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html');
-    if (path.endsWith('/pages/about.html') && lang === 'en') return path.replace('/pages/about.html', '/en/about-us.html');
-    if (path.endsWith('/pages/about.html') && lang === 'uk') return path.replace('/pages/about.html', '/uk/about-us.html');
-    if (path.endsWith('/pages/cases.html') && lang === 'en') return path.replace('/pages/cases.html', '/en/cases.html');
-    if (path.endsWith('/pages/en/cases.html') && lang === 'uk') return path.replace('/pages/en/cases.html', '/uk/cases.html');
-    if (path.endsWith('/pages/services-1.html') && lang === 'en') return path.replace('/pages/services-1.html', enService1Path);
-    if (path.endsWith('/pages/services-2.html') && lang === 'en') return path.replace('/pages/services-2.html', enService2Path);
-    if (path.endsWith('/pages/services-3.html') && lang === 'en') return path.replace('/pages/services-3.html', enService3Path);
-    if (path.endsWith('/pages/services-4.html') && lang === 'en') return path.replace('/pages/services-4.html', enService4Path);
-    if (path.endsWith('/pages/services-1-en.html') && lang === 'uk') return path.replace('/pages/services-1-en.html', '/pages/services-1.html');
-    if (path.endsWith('/pages/services-2-en.html') && lang === 'uk') return path.replace('/pages/services-2-en.html', '/pages/services-2.html');
-    if (path.endsWith('/pages/services-3-en.html') && lang === 'uk') return path.replace('/pages/services-3-en.html', '/pages/services-3.html');
-    if (path.endsWith('/pages/services-4-en.html') && lang === 'uk') return path.replace('/pages/services-4-en.html', '/pages/services-4.html');
-    if (path.endsWith('/pages/blog-ai-claude-gemini-chatgpt.html') && lang === 'en') return path.replace('/pages/blog-ai-claude-gemini-chatgpt.html', '/pages/blog-ai-claude-gemini-chatgpt-en.html');
-    if (path.endsWith('/pages/blog-ai-claude-gemini-chatgpt-en.html') && lang === 'uk') return path.replace('/pages/blog-ai-claude-gemini-chatgpt-en.html', '/pages/blog-ai-claude-gemini-chatgpt.html');
-    if (path.endsWith('/pages/yak-nalashtuvaty-ai-pid-svii-brend.html') && lang === 'en') return path.replace('/pages/yak-nalashtuvaty-ai-pid-svii-brend.html', '/pages/yak-nalashtuvaty-ai-pid-svii-brend-en.html');
-    if (path.endsWith('/pages/yak-nalashtuvaty-ai-pid-svii-brend-en.html') && lang === 'uk') return path.replace('/pages/yak-nalashtuvaty-ai-pid-svii-brend-en.html', '/pages/yak-nalashtuvaty-ai-pid-svii-brend.html');
-    if (path.endsWith('/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html') && lang === 'en') return path.replace('/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html', '/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka-en.html');
-    if (path.endsWith('/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka-en.html') && lang === 'uk') return path.replace('/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka-en.html', '/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html');
-    if (path.endsWith('/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html') && lang === 'en') return path.replace('/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html', '/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai-en.html');
-    if (path.endsWith('/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai-en.html') && lang === 'uk') return path.replace('/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai-en.html', '/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html');
     if (!path.includes('/en/') && !path.includes('/uk/') && lang === 'en' && path.endsWith('/index.html')) {
       return path.replace(/\/index\.html$/, enRootPath);
     }
@@ -973,13 +953,9 @@ function getLanguageRedirectPath(lang) {
     '/uk/about-us': '/en/about-us',
     '/uk/about-us.html': '/en/about-us',
     '/services-1': '/en/services-1',
-    'services-1/index.html': '/en/services-1',
     '/services-2': '/en/services-2',
-    'services-2/index.html': '/en/services-2',
     '/services-3': '/en/services-3',
-    'services-3/index.html': '/en/services-3',
     '/services-4': '/en/services-4',
-    'services-4/index.html': '/en/services-4',
     '/uk/services-1': '/en/services-1',
     '/uk/services-2': '/en/services-2',
     '/uk/services-3': '/en/services-3',
@@ -988,19 +964,6 @@ function getLanguageRedirectPath(lang) {
     '/uk/services-2.html': '/en/services-2',
     '/uk/services-3.html': '/en/services-3',
     '/uk/services-4.html': '/en/services-4',
-    '/pages/about.html': '/en/about-us',
-    '/pages/cases.html': '/en/cases',
-    '/pages/blog.html': '/en/blog',
-    '/pages/privacy.html': '/en/privacy-policy',
-    '/pages/cookies.html': '/en/cookie-policy',
-    '/pages/services-1.html': '/en/services-1',
-    '/pages/services-2.html': '/en/services-2',
-    '/pages/services-3.html': '/en/services-3',
-    '/pages/services-4.html': '/en/services-4',
-    '/pages/services-1-en.html': '/en/services-1',
-    '/pages/services-2-en.html': '/en/services-2',
-    '/pages/services-3-en.html': '/en/services-3',
-    '/pages/services-4-en.html': '/en/services-4',
     '/uk/blog/ai-tools-claude-gemini-chatgpt': '/en/blog/ai-tools-claude-gemini-chatgpt',
     '/uk/blog/train-ai-for-brand-context': '/en/blog/train-ai-for-brand-context',
     '/uk/blog/build-website-with-ai-manus-codex-desktop': '/en/blog/build-website-with-ai-manus-codex-desktop',
@@ -1009,18 +972,10 @@ function getLanguageRedirectPath(lang) {
     '/blog/train-ai-for-brand-context': '/en/blog/train-ai-for-brand-context',
     '/blog/build-website-with-ai-manus-codex-desktop': '/en/blog/build-website-with-ai-manus-codex-desktop',
     '/blog/decode-handwritten-text-with-ai-gemini': '/en/blog/decode-handwritten-text-with-ai-gemini',
-    '/uk/blog-ai-claude-gemini-chatgpt.html': '/en/blog/ai-tools-claude-gemini-chatgpt',
-    '/uk/yak-nalashtuvaty-ai-pid-svii-brend.html': '/en/blog/train-ai-for-brand-context',
-    '/uk/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html': '/en/blog/build-website-with-ai-manus-codex-desktop',
-    '/uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html': '/en/blog/decode-handwritten-text-with-ai-gemini',
-    '/pages/blog-ai-claude-gemini-chatgpt.html': '/en/blog/ai-tools-claude-gemini-chatgpt',
-    '/pages/blog-ai-claude-gemini-chatgpt-en.html': '/en/blog/ai-tools-claude-gemini-chatgpt',
-    '/pages/yak-nalashtuvaty-ai-pid-svii-brend.html': '/en/blog/train-ai-for-brand-context',
-    '/pages/yak-nalashtuvaty-ai-pid-svii-brend-en.html': '/en/blog/train-ai-for-brand-context',
-    '/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html': '/en/blog/build-website-with-ai-manus-codex-desktop',
-    '/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka-en.html': '/en/blog/build-website-with-ai-manus-codex-desktop',
-    '/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html': '/en/blog/decode-handwritten-text-with-ai-gemini',
-    '/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai-en.html': '/en/blog/decode-handwritten-text-with-ai-gemini'
+    '/uk/blog-ai-claude-gemini-chatgpt.html': '/en/blog-ai-claude-gemini-chatgpt.html',
+    '/uk/yak-nalashtuvaty-ai-pid-svii-brend.html': '/en/yak-nalashtuvaty-ai-pid-svii-brend.html',
+    '/uk/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html': '/en/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html',
+    '/uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html': '/en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html'
   };
 
   const enToUkMap = {
@@ -1040,23 +995,23 @@ function getLanguageRedirectPath(lang) {
     '/en/services-1': '/services-1',
     '/en/services-1/': '/services-1',
     '/en/services-1.html': '/services-1',
-    '/en/services-1/index.html': '/services-1',
     '/en/services-2': '/services-2',
     '/en/services-2/': '/services-2',
     '/en/services-2.html': '/services-2',
-    '/en/services-2/index.html': '/services-2',
     '/en/services-3': '/services-3',
     '/en/services-3/': '/services-3',
     '/en/services-3.html': '/services-3',
-    '/en/services-3/index.html': '/services-3',
     '/en/services-4': '/services-4',
     '/en/services-4/': '/services-4',
     '/en/services-4.html': '/services-4',
-    '/en/services-4/index.html': '/services-4',
     '/en/blog/ai-tools-claude-gemini-chatgpt': '/blog/ai-tools-claude-gemini-chatgpt',
     '/en/blog/train-ai-for-brand-context': '/blog/train-ai-for-brand-context',
     '/en/blog/build-website-with-ai-manus-codex-desktop': '/blog/build-website-with-ai-manus-codex-desktop',
-    '/en/blog/decode-handwritten-text-with-ai-gemini': '/blog/decode-handwritten-text-with-ai-gemini'
+    '/en/blog/decode-handwritten-text-with-ai-gemini': '/blog/decode-handwritten-text-with-ai-gemini',
+    '/en/blog-ai-claude-gemini-chatgpt.html': '/uk/blog-ai-claude-gemini-chatgpt.html',
+    '/en/yak-nalashtuvaty-ai-pid-svii-brend.html': '/uk/yak-nalashtuvaty-ai-pid-svii-brend.html',
+    '/en/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html': '/uk/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html',
+    '/en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html': '/uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html'
   };
 
   if (lang === 'en') {
@@ -1104,24 +1059,11 @@ function getLanguageFromPath() {
   if (path.endsWith('/en/yak-nalashtuvaty-ai-pid-svii-brend.html')) return 'en';
   if (path.endsWith('/en/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html')) return 'en';
   if (path.endsWith('/en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html')) return 'en';
-  if (path.endsWith('/pages/en/cases.html')) return 'en';
-  if (path.endsWith('/pages/services-1-en.html')) return 'en';
-  if (path.endsWith('/en/services-1/') || path.endsWith('/en/services-1/index.html')) return 'en';
-  if (path.endsWith('/pages/services-2-en.html')) return 'en';
-  if (path.endsWith('/en/services-2/') || path.endsWith('/en/services-2/index.html')) return 'en';
-  if (path.endsWith('/pages/services-3-en.html')) return 'en';
-  if (path.endsWith('/en/services-3/') || path.endsWith('/en/services-3/index.html')) return 'en';
-  if (path.endsWith('/pages/services-4-en.html')) return 'en';
-  if (path.endsWith('/pages/blog-ai-claude-gemini-chatgpt-en.html')) return 'en';
-  if (path.endsWith('/pages/yak-nalashtuvaty-ai-pid-svii-brend-en.html')) return 'en';
-  if (path.endsWith('/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka-en.html')) return 'en';
-  if (path.endsWith('/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai-en.html')) return 'en';
-  if (path.endsWith('/en/services-4/') || path.endsWith('/en/services-4/index.html')) return 'en';
+  if (path.endsWith('/en/services-1/')) return 'en';
+  if (path.endsWith('/en/services-2/')) return 'en';
+  if (path.endsWith('/en/services-3/')) return 'en';
+  if (path.endsWith('/en/services-4/')) return 'en';
   if (path.endsWith('/en/') || path.endsWith('/en/index.html')) return 'en';
-  if (path.endsWith('/pages/services-1.html')) return 'uk';
-  if (path.endsWith('/pages/services-2.html')) return 'uk';
-  if (path.endsWith('/pages/services-3.html')) return 'uk';
-  if (path.endsWith('/pages/services-4.html')) return 'uk';
   return null;
 }
 
@@ -1151,6 +1093,7 @@ function normalizeFileProtocolEnLinks() {
     '/uk/cases': 'uk/cases.html',
     '/uk/cases.html': 'uk/cases.html',
     '/blog': 'uk/blog.html',
+    '/uk/blog.html': 'uk/blog.html',
     '/privacy-policy': 'uk/privacy-policy.html',
     '/cookie-policy': 'uk/cookie-policy.html',
     '/services-1': 'uk/services-1.html',
@@ -1161,6 +1104,10 @@ function normalizeFileProtocolEnLinks() {
     '/blog/train-ai-for-brand-context': 'uk/yak-nalashtuvaty-ai-pid-svii-brend.html',
     '/blog/build-website-with-ai-manus-codex-desktop': 'uk/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html',
     '/blog/decode-handwritten-text-with-ai-gemini': 'uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html',
+    '/uk/blog-ai-claude-gemini-chatgpt.html': 'uk/blog-ai-claude-gemini-chatgpt.html',
+    '/uk/yak-nalashtuvaty-ai-pid-svii-brend.html': 'uk/yak-nalashtuvaty-ai-pid-svii-brend.html',
+    '/uk/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html': 'uk/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html',
+    '/uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html': 'uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html',
 
     '/en': 'en/index.html',
     '/en/': 'en/index.html',
@@ -1183,24 +1130,24 @@ function normalizeFileProtocolEnLinks() {
     '/en/services-1': 'en/services-1.html',
     '/en/services-1/': 'en/services-1.html',
     '/en/services-1.html': 'en/services-1.html',
-    '/en/services-1/index.html': 'en/services-1.html',
     '/en/services-2': 'en/services-2.html',
     '/en/services-2/': 'en/services-2.html',
     '/en/services-2.html': 'en/services-2.html',
-    '/en/services-2/index.html': 'en/services-2.html',
     '/en/services-3': 'en/services-3.html',
     '/en/services-3/': 'en/services-3.html',
     '/en/services-3.html': 'en/services-3.html',
-    '/en/services-3/index.html': 'en/services-3.html',
     '/en/services-4': 'en/services-4.html',
     '/en/services-4/': 'en/services-4.html',
     '/en/services-4.html': 'en/services-4.html',
-    '/en/services-4/index.html': 'en/services-4.html',
 
     '/en/blog/ai-tools-claude-gemini-chatgpt': 'en/blog-ai-claude-gemini-chatgpt.html',
     '/en/blog/train-ai-for-brand-context': 'en/yak-nalashtuvaty-ai-pid-svii-brend.html',
     '/en/blog/build-website-with-ai-manus-codex-desktop': 'en/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html',
-    '/en/blog/decode-handwritten-text-with-ai-gemini': 'en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html'
+    '/en/blog/decode-handwritten-text-with-ai-gemini': 'en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html',
+    '/en/blog-ai-claude-gemini-chatgpt.html': 'en/blog-ai-claude-gemini-chatgpt.html',
+    '/en/yak-nalashtuvaty-ai-pid-svii-brend.html': 'en/yak-nalashtuvaty-ai-pid-svii-brend.html',
+    '/en/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html': 'en/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html',
+    '/en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html': 'en/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html'
   };
 
   document.querySelectorAll('a[href]').forEach((link) => {
@@ -1235,38 +1182,22 @@ function normalizeLocalizedLinks() {
     '/cases': '/en/cases',
     '/uk/cases': '/en/cases',
     '/uk/cases.html': '/en/cases',
-    '../pages/cases.html': '/en/cases',
-    'pages/cases.html': '/en/cases',
-    '/pages/cases.html': '/en/cases',
-
     'about.html': '/en/about-us',
-    '../pages/about.html': '/en/about-us',
-    'pages/about.html': '/en/about-us',
-    '/pages/about.html': '/en/about-us',
     '/about-us': '/en/about-us',
     '/uk/about-us': '/en/about-us',
     '/uk/about-us.html': '/en/about-us',
 
     'blog.html': '/en/blog',
-    '../pages/blog.html': '/en/blog',
-    'pages/blog.html': '/en/blog',
-    '/pages/blog.html': '/en/blog',
     '/blog': '/en/blog',
     '/uk/blog': '/en/blog',
     '/uk/blog.html': '/en/blog',
 
     'privacy.html': '/en/privacy-policy',
-    '../pages/privacy.html': '/en/privacy-policy',
-    'pages/privacy.html': '/en/privacy-policy',
-    '/pages/privacy.html': '/en/privacy-policy',
     '/privacy-policy': '/en/privacy-policy',
     '/uk/privacy-policy': '/en/privacy-policy',
     '/uk/privacy-policy.html': '/en/privacy-policy',
 
     'cookies.html': '/en/cookie-policy',
-    '../pages/cookies.html': '/en/cookie-policy',
-    'pages/cookies.html': '/en/cookie-policy',
-    '/pages/cookies.html': '/en/cookie-policy',
     '/cookie-policy': '/en/cookie-policy',
     '/uk/cookie-policy': '/en/cookie-policy',
     '/uk/cookie-policy.html': '/en/cookie-policy',
@@ -1288,27 +1219,19 @@ function normalizeLocalizedLinks() {
     '/blog/decode-handwritten-text-with-ai-gemini': '/en/blog/decode-handwritten-text-with-ai-gemini',
 
     'blog-ai-claude-gemini-chatgpt-en.html': '/en/blog/ai-tools-claude-gemini-chatgpt',
-    '/pages/blog-ai-claude-gemini-chatgpt-en.html': '/en/blog/ai-tools-claude-gemini-chatgpt',
     'blog-ai-claude-gemini-chatgpt.html': '/en/blog/ai-tools-claude-gemini-chatgpt',
-    '/pages/blog-ai-claude-gemini-chatgpt.html': '/en/blog/ai-tools-claude-gemini-chatgpt',
     '/uk/blog-ai-claude-gemini-chatgpt.html': '/en/blog/ai-tools-claude-gemini-chatgpt',
 
     'yak-nalashtuvaty-ai-pid-svii-brend-en.html': '/en/blog/train-ai-for-brand-context',
-    '/pages/yak-nalashtuvaty-ai-pid-svii-brend-en.html': '/en/blog/train-ai-for-brand-context',
     'yak-nalashtuvaty-ai-pid-svii-brend.html': '/en/blog/train-ai-for-brand-context',
-    '/pages/yak-nalashtuvaty-ai-pid-svii-brend.html': '/en/blog/train-ai-for-brand-context',
     '/uk/yak-nalashtuvaty-ai-pid-svii-brend.html': '/en/blog/train-ai-for-brand-context',
 
     'yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka-en.html': '/en/blog/build-website-with-ai-manus-codex-desktop',
-    '/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka-en.html': '/en/blog/build-website-with-ai-manus-codex-desktop',
     'yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html': '/en/blog/build-website-with-ai-manus-codex-desktop',
-    '/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html': '/en/blog/build-website-with-ai-manus-codex-desktop',
     '/uk/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html': '/en/blog/build-website-with-ai-manus-codex-desktop',
 
     'yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai-en.html': '/en/blog/decode-handwritten-text-with-ai-gemini',
-    '/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai-en.html': '/en/blog/decode-handwritten-text-with-ai-gemini',
     'yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html': '/en/blog/decode-handwritten-text-with-ai-gemini',
-    '/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html': '/en/blog/decode-handwritten-text-with-ai-gemini',
     '/uk/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html': '/en/blog/decode-handwritten-text-with-ai-gemini'
   };
 

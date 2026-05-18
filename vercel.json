@@ -1,5 +1,137 @@
 {
   "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/pages/about.html",
+      "destination": "/about-us",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog.html",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/pages/cases.html",
+      "destination": "/cases",
+      "permanent": true
+    },
+    {
+      "source": "/pages/privacy.html",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/pages/cookies.html",
+      "destination": "/cookie-policy",
+      "permanent": true
+    },
+    {
+      "source": "/pages/en/cases.html",
+      "destination": "/en/cases",
+      "permanent": true
+    },
+    {
+      "source": "/pages/services-1.html",
+      "destination": "/services-1",
+      "permanent": true
+    },
+    {
+      "source": "/pages/services-2.html",
+      "destination": "/services-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/services-3.html",
+      "destination": "/services-3",
+      "permanent": true
+    },
+    {
+      "source": "/pages/services-4.html",
+      "destination": "/services-4",
+      "permanent": true
+    },
+    {
+      "source": "/pages/services-1-en.html",
+      "destination": "/en/services-1",
+      "permanent": true
+    },
+    {
+      "source": "/pages/services-2-en.html",
+      "destination": "/en/services-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/services-3-en.html",
+      "destination": "/en/services-3",
+      "permanent": true
+    },
+    {
+      "source": "/pages/services-4-en.html",
+      "destination": "/en/services-4",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog-ai-claude-gemini-chatgpt.html",
+      "destination": "/blog/ai-tools-claude-gemini-chatgpt",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog-ai-claude-gemini-chatgpt-en.html",
+      "destination": "/en/blog/ai-tools-claude-gemini-chatgpt",
+      "permanent": true
+    },
+    {
+      "source": "/pages/yak-nalashtuvaty-ai-pid-svii-brend.html",
+      "destination": "/blog/train-ai-for-brand-context",
+      "permanent": true
+    },
+    {
+      "source": "/pages/yak-nalashtuvaty-ai-pid-svii-brend-en.html",
+      "destination": "/en/blog/train-ai-for-brand-context",
+      "permanent": true
+    },
+    {
+      "source": "/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka.html",
+      "destination": "/blog/build-website-with-ai-manus-codex-desktop",
+      "permanent": true
+    },
+    {
+      "source": "/pages/yak-zrobyty-sait-za-dopomohoiu-ai-bez-rozrobnyka-en.html",
+      "destination": "/en/blog/build-website-with-ai-manus-codex-desktop",
+      "permanent": true
+    },
+    {
+      "source": "/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai.html",
+      "destination": "/blog/decode-handwritten-text-with-ai-gemini",
+      "permanent": true
+    },
+    {
+      "source": "/pages/yak-rozshyfrovuvaty-rukopysnyi-tekst-za-dopomohoiu-ai-en.html",
+      "destination": "/en/blog/decode-handwritten-text-with-ai-gemini",
+      "permanent": true
+    },
+    {
+      "source": "/en/services-1/index.html",
+      "destination": "/en/services-1",
+      "permanent": true
+    },
+    {
+      "source": "/en/services-2/index.html",
+      "destination": "/en/services-2",
+      "permanent": true
+    },
+    {
+      "source": "/en/services-3/index.html",
+      "destination": "/en/services-3",
+      "permanent": true
+    },
+    {
+      "source": "/en/services-4/index.html",
+      "destination": "/en/services-4",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/",
