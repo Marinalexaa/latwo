@@ -6,7 +6,7 @@ A pixel-perfect static website clone of [latwo.eu](https://latwo.eu) — an AI c
 
 - **Bilingual** — Ukrainian 🇺🇦 and English 🇬🇧 (toggle in header)
 - **Fixed header** with transparent scroll effect
-- **13 sections** on the main page + 4 sub-pages
+- **13 sections** on the main page + localized content pages
 - **Animated reviews wall** (3 rows scrolling left/right/left)
 - **FAQ accordion** with smooth open/close
 - **Contact form** via backend API (Vercel + Resend)
@@ -25,11 +25,15 @@ latwo/
 │   ├── i18n.js             # Ukrainian & English translations
 │   └── main.js             # Interactions, FAQ, form, animations
 ├── images/                 # Add your images here (see below)
+├── uk/                     # Ukrainian pages, blog, and service pages
+├── en/                     # English pages, blog, and service pages
 ├── pages/
-│   ├── cases.html          # Cases sub-page
-│   ├── about.html          # About sub-page
-│   ├── privacy.html        # Privacy Policy
-│   └── cookies.html        # Cookie Policy
+│   └── admin-blog-editor.html # Local blog admin page
+├── api/                    # Serverless form endpoints
+├── tools/                  # Local helper scripts
+├── robots.txt
+├── sitemap.xml
+├── vercel.json
 └── README.md
 ```
 
