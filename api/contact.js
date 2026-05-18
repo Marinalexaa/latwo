@@ -1,4 +1,6 @@
 const { randomUUID } = require('crypto');
+const fs = require('fs');
+const path = require('path');
 
 const RATE_LIMIT_WINDOW_MS = Number.isFinite(Number(process.env.CONTACT_FORM_RATE_LIMIT_WINDOW_MS))
   ? Number(process.env.CONTACT_FORM_RATE_LIMIT_WINDOW_MS)
@@ -18,6 +20,16 @@ const SERVICE_LABELS = {
   growth: 'Growth (MVP Development)',
   scale: 'Scale (AI Business Transformation)'
 };
+const SERVICE_LABELS_UK = {
+  start: 'Старт (Навчання по АІ)',
+  growth: 'Ріст (Розробка MVP)',
+  scale: 'Масштаб (АІ трансформація бізнесу)'
+};
+const CHECKLIST_FILE_NAME = 'AI_Readiness_Checklist_Latwo.pdf';
+const CHECKLIST_FILE_PATH = path.join(process.cwd(), 'files', 'ai-readiness-checklist-latwo.pdf');
+const DEFAULT_SITE_URL = 'https://latwo.eu';
+const LINKEDIN_URL = 'https://www.linkedin.com/company/latwo-ai-consulting/';
+const INSTAGRAM_URL = 'https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp';
 
 function setJsonHeaders(res) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -38,6 +50,11 @@ function trimString(value, max = 4000) {
   return value.trim().slice(0, max);
 }
 
+function normalizeSiteUrl(value) {
+  const url = trimString(value, 300) || DEFAULT_SITE_URL;
+  return url.replace(/\/+$/, '');
+}
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, '&amp;')
@@ -45,6 +62,16 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function sanitizeMessagePreview(value, max = 600) {
+  const cleaned = trimString(value, 4000)
+    .replace(/\r\n?/g, '\n')
+    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
+    .replace(/\n{3,}/g, '\n\n');
+  const chars = Array.from(cleaned);
+  if (chars.length <= max) return cleaned;
+  return `${chars.slice(0, max).join('').trimEnd()}...`;
 }
 
 function validatePayload(payload) {
@@ -61,6 +88,7 @@ function validatePayload(payload) {
   const consentTimestamp = trimString(payload?.consent_timestamp, 60);
   const consentSource = trimString(payload?.consent_source, 80);
   const consentSnapshotRaw = trimString(payload?.consent_snapshot, 1000);
+  const lang = trimString(payload?.lang, 8).toLowerCase();
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!name || name.length < 2) return { error: 'invalid-name' };
@@ -101,10 +129,12 @@ function validatePayload(payload) {
       company,
       service,
       serviceLabel: SERVICE_LABELS[service],
+      serviceLabelUk: SERVICE_LABELS_UK[service],
       message,
       discoveryCall,
       website,
       formStartedAt,
+      lang: lang === 'en' ? 'en' : 'uk',
       consent
     }
   };
@@ -236,6 +266,125 @@ async function sendWithResend(payload) {
   }
 }
 
+async function sendChecklistAutoReply(payload) {
+  const resendApiKey = process.env.RESEND_API_KEY;
+  const fromEmail = process.env.CONTACT_FORM_FROM_EMAIL;
+  const replyToEmail = process.env.CONTACT_FORM_REPLY_TO_EMAIL
+    || process.env.CONTACT_FORM_TO_EMAIL
+    || 'latwo.eu@gmail.com';
+  const siteUrl = normalizeSiteUrl(process.env.CONTACT_FORM_SITE_URL);
+  const checklistUrl = `${siteUrl}/files/ai-readiness-checklist-latwo.pdf`;
+
+  if (!resendApiKey) {
+    throw new Error('missing-RESEND_API_KEY');
+  }
+  if (!fromEmail) {
+    throw new Error('missing-CONTACT_FORM_FROM_EMAIL');
+  }
+
+  const messagePreview = sanitizeMessagePreview(payload.message);
+  const escapedName = escapeHtml(payload.name);
+  const escapedMessage = escapeHtml(messagePreview).replace(/\n/g, '<br />');
+  const autoReplyServiceLabel = payload.serviceLabelUk || payload.serviceLabel;
+  const escapedService = escapeHtml(autoReplyServiceLabel);
+  const attachment = fs.readFileSync(CHECKLIST_FILE_PATH).toString('base64');
+
+  const subject = 'Ваш AI Readiness Checklist всередині';
+  const text = [
+    `Вітаю, ${payload.name}!`,
+    '',
+    'Дякуємо за звернення до Latwo.',
+    '',
+    'Ми отримали ваш запит:',
+    '',
+    `"${messagePreview}"`,
+    '',
+    'Команда вже опрацьовує його, і найближчим часом з вами зв’яжеться менеджер.',
+    '',
+    'Також надсилаємо вам AI Readiness Checklist — короткий практичний матеріал, який допоможе зрозуміти:',
+    '',
+    '• чи готовий ваш бізнес до AI',
+    '• які процеси варто автоматизувати першими',
+    '• де AI реально економить час і ресурси',
+    '• які задачі не варто автоматизувати поспіхом',
+    '',
+    'Ви обрали пакет послуги:',
+    `"${autoReplyServiceLabel}"`,
+    '',
+    'Це хороший момент, щоб системно подивитись на процеси компанії й знайти точки росту без зайвої складності та хаосу.',
+    '',
+    `Відкрити AI Readiness Checklist: ${checklistUrl}`,
+    '',
+    'Команда Latwo',
+    'AI Consulting & Automation',
+    '',
+    siteUrl,
+    LINKEDIN_URL,
+    INSTAGRAM_URL
+  ].join('\n');
+
+  const html = `
+    <div style="margin:0;padding:0;background:#f5f7f9;color:#292929;font-family:Arial,sans-serif;">
+      <div style="max-width:640px;margin:0 auto;padding:32px 20px;">
+        <div style="background:#ffffff;border:1px solid #e3e7eb;border-radius:16px;padding:32px;">
+          <p style="margin:0 0 18px;font-size:16px;line-height:1.6;">Вітаю, ${escapedName}!</p>
+          <p style="margin:0 0 18px;font-size:16px;line-height:1.6;">Дякуємо за звернення до Latwo.</p>
+          <p style="margin:0 0 10px;font-size:16px;line-height:1.6;">Ми отримали ваш запит:</p>
+          <blockquote style="margin:0 0 22px;padding:16px 18px;border-left:3px solid #ef6c3a;background:#f7f8fa;color:#4b5563;font-size:15px;line-height:1.6;">${escapedMessage}</blockquote>
+          <p style="margin:0 0 18px;font-size:16px;line-height:1.6;">Команда вже опрацьовує його, і найближчим часом з вами зв’яжеться менеджер.</p>
+          <p style="margin:0 0 10px;font-size:16px;line-height:1.6;">Також надсилаємо вам AI Readiness Checklist — короткий практичний матеріал, який допоможе зрозуміти:</p>
+          <ul style="margin:0 0 22px;padding-left:22px;font-size:16px;line-height:1.7;">
+            <li>чи готовий ваш бізнес до AI</li>
+            <li>які процеси варто автоматизувати першими</li>
+            <li>де AI реально економить час і ресурси</li>
+            <li>які задачі не варто автоматизувати поспіхом</li>
+          </ul>
+          <p style="margin:0 0 8px;font-size:16px;line-height:1.6;">Ви обрали пакет послуги:</p>
+          <p style="margin:0 0 22px;font-size:16px;line-height:1.6;"><strong>“${escapedService}”</strong></p>
+          <p style="margin:0 0 24px;font-size:16px;line-height:1.6;">Це хороший момент, щоб системно подивитись на процеси компанії й знайти точки росту без зайвої складності та хаосу.</p>
+          <p style="margin:0 0 28px;">
+            <a href="${checklistUrl}" style="display:inline-block;background:#ef6c3a;color:#ffffff;text-decoration:none;border-radius:999px;padding:14px 22px;font-size:16px;font-weight:600;">Відкрити AI Readiness Checklist</a>
+          </p>
+          <p style="margin:0;font-size:16px;line-height:1.6;">Команда Latwo<br />AI Consulting &amp; Automation</p>
+        </div>
+        <div style="padding:18px 8px 0;color:#6b7280;font-size:14px;line-height:1.7;">
+          <a href="${siteUrl}" style="color:#6b7280;">${siteUrl}</a><br />
+          <a href="${LINKEDIN_URL}" style="color:#6b7280;">LinkedIn</a> ·
+          <a href="${INSTAGRAM_URL}" style="color:#6b7280;">Instagram</a>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${resendApiKey}`,
+      'Content-Type': 'application/json',
+      'Idempotency-Key': randomUUID()
+    },
+    body: JSON.stringify({
+      from: fromEmail,
+      to: [payload.email],
+      subject,
+      reply_to: [replyToEmail],
+      text,
+      html,
+      attachments: [
+        {
+          content: attachment,
+          filename: CHECKLIST_FILE_NAME
+        }
+      ]
+    })
+  });
+
+  const raw = await response.text();
+  if (!response.ok) {
+    throw new Error(`resend-autoreply-error:${response.status}:${raw}`);
+  }
+}
+
 module.exports = async function handler(req, res) {
   setJsonHeaders(res);
 
@@ -296,6 +445,11 @@ module.exports = async function handler(req, res) {
 
   try {
     await sendWithResend(data);
+    try {
+      await sendChecklistAutoReply(data);
+    } catch (error) {
+      console.error('[contact-autoreply]', error);
+    }
     return res.status(200).json({ ok: true });
   } catch (error) {
     console.error('[contact-api]', error);
