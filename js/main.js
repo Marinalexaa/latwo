@@ -35,6 +35,8 @@ const COOKIE_CONSENT_HISTORY_KEY = 'latwo_cookie_consent_history_v1';
 const COOKIE_CONSENT_COOKIE_NAME = 'latwo_cookie_consent';
 const COOKIE_CONSENT_MAX_AGE_DAYS = 180;
 const COOKIE_CONSENT_LOG_ENDPOINT = '/api/consent';
+const COOKIE_MANAGE_ICON_VARIANT = 'shield-lock'; // 'cookie-gear' | 'sliders' | 'shield-lock'
+const GA_MEASUREMENT_ID = 'G-N5GLEV2DST';
 
 /* ============================================================
    HEADER — scroll transparent effect
@@ -291,6 +293,30 @@ function getCookieConsentCopy() {
   };
 }
 
+function getCookieManageIconMarkup() {
+  switch (COOKIE_MANAGE_ICON_VARIANT) {
+    case 'sliders':
+      return `
+        <svg class="cookie-manage-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4 6a2 2 0 0 1 2-2h.5a2 2 0 0 1 2 2v.2h9A1.3 1.3 0 0 1 19 7.5 1.3 1.3 0 0 1 17.5 8.8h-9V9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Zm2 9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h.5a2 2 0 0 0 2-2v-.2h9A1.3 1.3 0 0 0 19 16.5 1.3 1.3 0 0 0 17.5 15.2h-9V15a2 2 0 0 0-2-2Zm10-5a2 2 0 0 0-2 2v.2H6.5A1.3 1.3 0 0 0 5 13.5a1.3 1.3 0 0 0 1.5 1.3H14v.2a2 2 0 0 0 2 2h.5a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2Z"/>
+        </svg>
+      `;
+    case 'shield-lock':
+      return `
+        <svg class="cookie-manage-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M12 2.2 4.5 5v6.4c0 5.2 3.3 8.7 7.5 10.5 4.2-1.8 7.5-5.3 7.5-10.5V5L12 2.2Zm0 2.2 5.3 2v5c0 4.1-2.4 7-5.3 8.4-2.9-1.4-5.3-4.3-5.3-8.4v-5Zm0 4.1a2.7 2.7 0 0 0-2.7 2.7v1H9a1 1 0 0 0-1 1v3.2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V13a1 1 0 0 0-1-1h-.3v-1A2.7 2.7 0 0 0 12 8.5Zm-1 3a1 1 0 1 1 2 0v1h-2Z"/>
+        </svg>
+      `;
+    case 'cookie-gear':
+    default:
+      return `
+        <svg class="cookie-manage-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M8.3 3.6a3.1 3.1 0 1 1 6.2 0h1.1a3.1 3.1 0 1 1 3.1 3.1v1.1a3.1 3.1 0 1 1 0 6.2v1.1a3.1 3.1 0 1 1-3.1 3.1h-1.1a3.1 3.1 0 1 1-6.2 0H7.2a3.1 3.1 0 1 1-3.1-3.1v-1.1a3.1 3.1 0 1 1 0-6.2V6.7A3.1 3.1 0 1 1 7.2 3.6Zm3.7 3.3a5.1 5.1 0 1 0 0 10.2 5.1 5.1 0 0 0 0-10.2Zm0 2.4a2.7 2.7 0 1 1 0 5.4 2.7 2.7 0 0 1 0-5.4Z"/>
+        </svg>
+      `;
+  }
+}
+
 function ensureCookieConsentUi() {
   if (document.getElementById('cookie-consent-root')) return;
 
@@ -360,7 +386,16 @@ function ensureCookieConsentUi() {
       </div>
     </section>
 
-    <button type="button" class="cookie-manage-btn" id="cookie-manage-btn" hidden>${escapeHtmlText(copy.openSettings)}</button>
+    <button
+      type="button"
+      class="cookie-manage-btn"
+      id="cookie-manage-btn"
+      hidden
+      aria-label="${escapeHtmlText(copy.openSettings)}"
+      title="${escapeHtmlText(copy.openSettings)}"
+    >
+      ${getCookieManageIconMarkup()}
+    </button>
   `;
 
   document.body.appendChild(root);
@@ -383,10 +418,10 @@ function bindCookieConsentEvents() {
     rejectAll.addEventListener('click', () => saveConsentAndApply({ analytics: false, marketing: false }, 'banner-reject-all'));
   }
   if (openSettings) {
-    openSettings.addEventListener('click', () => openCookieSettingsModal());
+    openSettings.addEventListener('click', () => openCookieSettingsModal({ fromBanner: true }));
   }
   if (closeSettings) {
-    closeSettings.addEventListener('click', () => closeCookieSettingsModal());
+    closeSettings.addEventListener('click', () => closeCookieSettingsModal({ restoreBanner: true, autoRejectOnFirstVisit: true }));
   }
   if (modalRejectAll) {
     modalRejectAll.addEventListener('click', () => saveConsentAndApply({ analytics: false, marketing: false }, 'modal-reject-all'));
@@ -399,11 +434,19 @@ function bindCookieConsentEvents() {
     });
   }
   if (manageBtn) {
-    manageBtn.addEventListener('click', () => openCookieSettingsModal());
+    manageBtn.addEventListener('click', () => openCookieSettingsModal({ fromBanner: false }));
   }
   if (backdrop) {
-    backdrop.addEventListener('click', () => closeCookieSettingsModal());
+    backdrop.addEventListener('click', () => closeCookieSettingsModal({ restoreBanner: true, autoRejectOnFirstVisit: true }));
   }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const modal = document.getElementById('cookie-consent-modal');
+    if (modal && !modal.hidden) {
+      closeCookieSettingsModal({ restoreBanner: true, autoRejectOnFirstVisit: true });
+    }
+  });
 }
 
 function saveConsentAndApply(choices, source) {
@@ -546,10 +589,14 @@ function hideCookieBanner() {
   if (banner) banner.hidden = true;
 }
 
-function openCookieSettingsModal() {
+function openCookieSettingsModal(options = {}) {
   const modal = document.getElementById('cookie-consent-modal');
   const backdrop = document.getElementById('cookie-consent-backdrop');
   if (!modal || !backdrop) return;
+
+  if (options.fromBanner) {
+    hideCookieBanner();
+  }
 
   const current = window.latwoCookieConsent;
   const analytics = Boolean(current && current.consent && current.consent.analytics);
@@ -563,11 +610,23 @@ function openCookieSettingsModal() {
   modal.hidden = false;
 }
 
-function closeCookieSettingsModal() {
+function closeCookieSettingsModal(options = {}) {
+  const hadConsent = Boolean(readCookieConsentRecord());
+
+  if (!hadConsent && options.autoRejectOnFirstVisit) {
+    saveConsentAndApply({ analytics: false, marketing: false }, 'modal-close-reject');
+    return;
+  }
+
   const modal = document.getElementById('cookie-consent-modal');
   const backdrop = document.getElementById('cookie-consent-backdrop');
   if (modal) modal.hidden = true;
   if (backdrop) backdrop.hidden = true;
+
+  const shouldRestoreBanner = Boolean(options.restoreBanner);
+  if (shouldRestoreBanner && !hadConsent) {
+    showCookieBanner();
+  }
 }
 
 function applyConsentRecord(record, options = {}) {
@@ -586,6 +645,8 @@ function applyConsentRecord(record, options = {}) {
 }
 
 function runConsentGatedScripts(consent) {
+  ensureGoogleAnalytics(consent);
+
   const placeholders = Array.from(document.querySelectorAll('script[data-consent-src][data-consent-category]'));
   placeholders.forEach((placeholder) => {
     if (placeholder.dataset.consentLoaded === '1') return;
@@ -605,6 +666,30 @@ function runConsentGatedScripts(consent) {
     placeholder.parentNode.insertBefore(script, placeholder.nextSibling);
     placeholder.dataset.consentLoaded = '1';
   });
+}
+
+function ensureGoogleAnalytics(consent) {
+  if (!GA_MEASUREMENT_ID) return;
+  if (!consent || !consent.analytics) return;
+  if (window.__latwoGaInitialized) return;
+
+  window.__latwoGaInitialized = true;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function gtag() {
+    window.dataLayer.push(arguments);
+  };
+
+  window.gtag('js', new Date());
+  window.gtag('config', GA_MEASUREMENT_ID, {
+    anonymize_ip: true
+  });
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_MEASUREMENT_ID)}`;
+  script.dataset.consentCategory = 'analytics';
+  script.dataset.injectedByConsent = '1';
+  document.head.appendChild(script);
 }
 
 function syncConsentToForm(record) {
@@ -748,9 +833,14 @@ async function submitForm(e) {
     consent_source: String(data.get('consent_source') || '').trim(),
     consent_snapshot: String(data.get('consent_snapshot') || '').trim()
   };
+  const trackingMeta = getContactTrackingMeta(payload);
 
   // Fast client-side guard for the most common validation error.
   if (payload.message.length < 10) {
+    trackContactFormEvent('contact_form_submit_error', {
+      ...trackingMeta,
+      error_code: 'invalid-message'
+    });
     setFormError(errorMsg, getContactErrorMessage('invalid-message'));
     setSubmitLoading(submitBtn, false);
     return;
@@ -776,13 +866,38 @@ async function submitForm(e) {
       throw new Error(errorCode);
     }
 
+    trackContactFormEvent('contact_form_submit_success', trackingMeta);
     showFormSuccess(form, successMsg);
   } catch (error) {
     console.error('[contact-form]', error);
     const errorCode = typeof error?.message === 'string' ? error.message : '';
+    trackContactFormEvent('contact_form_submit_error', {
+      ...trackingMeta,
+      error_code: errorCode || 'unknown'
+    });
     setFormError(errorMsg, getContactErrorMessage(errorCode));
   } finally {
     setSubmitLoading(submitBtn, false);
+  }
+}
+
+function getContactTrackingMeta(payload = {}) {
+  return {
+    locale: document.documentElement.lang === 'en' ? 'en' : 'uk',
+    service: payload.service || 'unknown',
+    has_company: Boolean(payload.company),
+    discovery_call: Boolean(payload.discovery_call)
+  };
+}
+
+function trackContactFormEvent(eventName, eventParams = {}) {
+  if (!eventName) return;
+  if (typeof window.gtag !== 'function') return;
+
+  try {
+    window.gtag('event', eventName, eventParams);
+  } catch (_error) {
+    // Non-blocking by design.
   }
 }
 
@@ -884,8 +999,8 @@ function getContactErrorMessage(errorCode = '') {
   }
 
   return isEn
-    ? 'Something went wrong. Please try again or email us at latwo.eu@gmail.com.'
-    : 'Сталася помилка під час відправки. Спробуйте ще раз або напишіть нам на latwo.eu@gmail.com.';
+    ? 'Something went wrong. Please try again or email us at contact@latwo.eu.'
+    : 'Сталася помилка під час відправки. Спробуйте ще раз або напишіть нам на contact@latwo.eu.';
 }
 
 /* ============================================================

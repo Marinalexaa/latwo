@@ -9,73 +9,180 @@
   <link rel="stylesheet" href="../css/main.css" />
   <style>
     .policy-page {
-      padding: 140px 2rem 5rem;
-      background: var(--bg-page);
+      padding: 150px clamp(1rem, 3vw, 2rem) 5rem;
       min-height: 100vh;
+      background: var(--bg-page);
     }
+
     .policy-inner {
-      max-width: 800px;
+      max-width: 1280px;
       margin: 0 auto;
-      background: var(--bg-white);
-      border-radius: 20px;
-      padding: 3rem;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 0 2rem;
     }
+
     .policy-inner h1 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+      font-family: var(--font-heading);
+      font-size: 80px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin: 0 auto 2.2rem;
       color: var(--black-primary);
+      max-width: 14ch;
     }
+
     .policy-date {
-      font-size: 0.85rem;
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.4;
       color: var(--black-secondary);
-      margin-bottom: 2rem;
+      margin: 0 auto 2rem;
       display: block;
+      max-width: 980px;
     }
+
     .policy-inner h2 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin: 2rem 0 0.75rem;
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      margin: 2rem auto 1.2rem;
       color: var(--black-primary);
+      max-width: 980px;
     }
-    .policy-inner p, .policy-inner li {
-      font-size: 0.9rem;
+
+    .policy-inner p,
+    .policy-inner li {
+      font-family: var(--font-body);
+      font-size: 16px;
       color: var(--black-secondary);
-      line-height: 1.7;
-      margin-bottom: 0.75rem;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      margin: 0 auto 0.75rem;
+      max-width: 980px;
     }
+
     .policy-inner ul {
-      padding-left: 1.5rem;
-      margin-bottom: 1rem;
+      padding-left: 1.3rem;
+      margin-bottom: 1.3rem;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
     }
+
+    .policy-inner strong {
+      color: var(--black-primary);
+      font-weight: 700;
+    }
+
     .policy-inner a {
       color: var(--brand-orange);
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
     }
+
     .cookie-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 1rem 0 1.5rem;
-      font-size: 0.85rem;
+      margin: 1rem auto 1.5rem;
+      font-family: var(--font-body);
+      font-size: 16px;
+      max-width: 980px;
     }
+
     .cookie-table th {
-      background: var(--brand-blue-light);
-      color: var(--white-primary);
-      padding: 0.75rem 1rem;
+      background: #dddddd;
+      color: var(--black-primary);
+      padding: 0.8rem 0.9rem;
       text-align: left;
+      font-size: 16px;
       font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.6;
+      border-bottom: 1px solid #cfcfcf;
     }
+
     .cookie-table td {
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--white-secondary);
+      padding: 0.8rem 0.9rem;
+      border-bottom: 1px solid #d6d6d6;
       color: var(--black-secondary);
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
       vertical-align: top;
     }
+
     .cookie-table tr:last-child td {
       border-bottom: none;
     }
+
     .cookie-table tr:nth-child(even) td {
-      background: rgba(0,0,0,0.02);
+      background: #ebebeb;
+    }
+
+    .consent-audit-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .consent-audit-list li {
+      position: relative;
+      padding-left: 1.1rem;
+    }
+
+    .consent-audit-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--black-primary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .policy-page {
+        padding-top: 120px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .policy-page {
+        padding: 108px 12px 3.2rem;
+      }
+
+      .policy-inner {
+        padding: 0 12px;
+      }
+
+      .policy-inner h1 {
+        font-size: 38px;
+        line-height: 1.1;
+        margin-bottom: 1.1rem;
+      }
+
+      .policy-date {
+        font-size: 18px;
+        margin-bottom: 1.6rem;
+      }
+
+      .policy-inner h2 {
+        font-size: 32px;
+        margin-bottom: 0.85rem;
+      }
+
+      .cookie-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .cookie-table td,
+      .cookie-table th {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
@@ -134,14 +241,14 @@
 <main class="policy-page">
   <div class="policy-inner">
     <h1>Політика cookies</h1>
-    <span class="policy-date">Останнє оновлення: 1 січня 2026 року</span>
+    <span class="policy-date">Останнє оновлення: 18 травня 2026 року</span>
 
-    <p>Ця Політика cookies пояснює, що таке файли cookie, як ми їх використовуємо на веб-сайті latwo.eu, та які у вас є варіанти щодо їх використання.</p>
+    <p>Ця Політика cookies пояснює, що таке файли cookie та подібні технології, як ми їх використовуємо на сайті latwo.eu, і як ви можете керувати своїм вибором.</p>
 
-    <h2>1. Що таке файли cookie?</h2>
-    <p>Файли cookie — це невеликі текстові файли, які зберігаються на вашому пристрої (комп'ютері, смартфоні або планшеті) під час відвідування веб-сайту. Вони широко використовуються для забезпечення роботи сайтів або їх більш ефективної роботи, а також для надання інформації власникам сайту.</p>
+    <h2>1. Що таке cookie та подібні технології?</h2>
+    <p>Cookie — це невеликі текстові файли, які зберігаються у браузері під час відвідування сайту. Також ми використовуємо localStorage для збереження технічних налаштувань (наприклад, мови та вашого вибору щодо cookies).</p>
 
-    <h2>2. Які файли cookie ми використовуємо</h2>
+    <h2>2. Які саме технології зберігання ми використовуємо</h2>
 
     <table class="cookie-table">
       <thead>
@@ -149,32 +256,58 @@
           <th>Назва</th>
           <th>Тип</th>
           <th>Термін дії</th>
+          <th>Де зберігається</th>
           <th>Призначення</th>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td>latwo_cookie_consent</td>
+          <td>Обов'язковий</td>
+          <td>180 днів</td>
+          <td>Cookie</td>
+          <td>Зберігає ваш вибір щодо категорій cookies</td>
+        </tr>
+        <tr>
+          <td>latwo_cookie_consent_v1</td>
+          <td>Обов'язковий</td>
+          <td>До очищення браузера</td>
+          <td>localStorage</td>
+          <td>Поточний запис згоди (id, версія, час, категорії)</td>
+        </tr>
+        <tr>
+          <td>latwo_cookie_consent_history_v1</td>
+          <td>Обов'язковий</td>
+          <td>До очищення браузера</td>
+          <td>localStorage</td>
+          <td>Історія останніх змін згоди (до 25 записів)</td>
+        </tr>
+        <tr>
           <td>latwo_lang</td>
           <td>Функціональний</td>
-          <td>1 рік</td>
-          <td>Зберігає обрану мову інтерфейсу (українська або англійська)</td>
+          <td>До очищення браузера</td>
+          <td>localStorage</td>
+          <td>Зберігає вибрану мову інтерфейсу</td>
         </tr>
         <tr>
           <td>_ga</td>
           <td>Аналітичний</td>
           <td>2 роки</td>
+          <td>Cookie (після згоди)</td>
           <td>Google Analytics — відстеження відвідувань сайту</td>
         </tr>
         <tr>
           <td>_ga_*</td>
           <td>Аналітичний</td>
           <td>2 роки</td>
+          <td>Cookie (після згоди)</td>
           <td>Google Analytics — збереження стану сесії</td>
         </tr>
         <tr>
           <td>_gid</td>
           <td>Аналітичний</td>
           <td>24 години</td>
+          <td>Cookie (після згоди)</td>
           <td>Google Analytics — розрізнення користувачів</td>
         </tr>
       </tbody>
@@ -182,21 +315,39 @@
 
     <h2>3. Типи файлів cookie за призначенням</h2>
 
-    <p><strong>Необхідні cookie</strong> — забезпечують базову функціональність сайту. Без них сайт не може коректно працювати. Вони не збирають особисту інформацію та не можуть бути відключені.</p>
+    <p><strong>Обов'язкові cookies</strong> — потрібні для базової роботи сайту, безпеки та збереження вашого вибору щодо конфіденційності.</p>
 
-    <p><strong>Функціональні cookie</strong> — дозволяють сайту запам'ятовувати ваші вподобання (наприклад, обрану мову) для покращення вашого досвіду.</p>
+    <p><strong>Аналітичні cookies</strong> — використовуються для аналізу відвідуваності та покращення сайту (Google Analytics 4).</p>
 
-    <p><strong>Аналітичні cookie</strong> — допомагають нам розуміти, як відвідувачі взаємодіють із сайтом, збираючи та звітуючи про анонімну інформацію. Це дозволяє нам покращувати роботу сайту.</p>
+    <p><strong>Маркетингові та медіа cookies</strong> — потрібні для завантаження сторонніх вбудованих сервісів (наприклад, відео) та пов'язаних трекерів.</p>
 
-    <h2>4. Управління файлами cookie</h2>
-    <p>Ви можете контролювати та/або видаляти файли cookie за своїм бажанням. Більшість браузерів дозволяють:</p>
-    <ul>
-      <li>Переглядати файли cookie, збережені на вашому пристрої;</li>
-      <li>Видаляти всі або окремі файли cookie;</li>
-      <li>Блокувати файли cookie від усіх або окремих сайтів;</li>
-      <li>Налаштовувати параметри для різних типів cookie.</li>
+    <h2>4. Як ми отримуємо вашу згоду</h2>
+    <p>Під час першого відвідування ви бачите банер і можете:</p>
+    <ul class="consent-audit-list">
+      <li>прийняти всі cookies;</li>
+      <li>відхилити необов'язкові cookies;</li>
+      <li>налаштувати категорії окремо.</li>
     </ul>
-    <p>Зверніть увагу: відключення певних cookie може вплинути на функціональність сайту.</p>
+    <p>До надання згоди ми не активуємо аналітичні та маркетингові/медіа категорії.</p>
+
+    <h2>5. Google Analytics</h2>
+    <p>Ми використовуємо Google Analytics 4 для анонімної статистики використання сайту (перегляди сторінок, взаємодії, базові технічні параметри). Google Analytics активується лише після згоди на аналітичні cookies.</p>
+
+    <h2>6. Логування вашого вибору (cookie consent audit)</h2>
+    <p>Для підтвердження згоди/відмови ми можемо зберігати:</p>
+    <ul class="consent-audit-list">
+      <li>ідентифікатор згоди;</li>
+      <li>версію політики;</li>
+      <li>час і джерело дії (банер/налаштування);</li>
+      <li>мову та сторінку, де зроблено вибір;</li>
+      <li>стан категорій (essential/analytics/marketing);</li>
+      <li>хеш IP (ip_hash) та хеш user-agent (user_agent_hash).</li>
+    </ul>
+    <p>Це потрібно для дотримання вимог конфіденційності та безпеки.</p>
+
+    <h2>7. Як керувати cookies</h2>
+    <p>Ви можете змінити вибір у будь-який момент через кнопку налаштувань cookies на сайті або через налаштування браузера (перегляд, видалення, блокування cookies).</p>
+    <p>Зверніть увагу: відключення обов'язкових cookies може вплинути на роботу сайту.</p>
     <p>Інструкції для популярних браузерів:</p>
     <ul>
       <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
@@ -205,16 +356,16 @@
       <li><a href="https://support.microsoft.com/uk-ua/windows/видалення-та-керування-файлами-cookie-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener">Microsoft Edge</a></li>
     </ul>
 
-    <h2>5. Сторонні cookie</h2>
-    <p>Деякі cookie на нашому сайті встановлюються сторонніми сервісами. Ми використовуємо Google Analytics для аналізу трафіку. Ці сервіси можуть встановлювати власні cookie відповідно до своїх політик конфіденційності.</p>
+    <h2>8. Сторонні сервіси</h2>
+    <p>На окремих сторінках можуть використовуватись сторонні вбудовані сервіси (наприклад, відео). Вони завантажуються лише за відповідною згодою.</p>
 
-    <h2>6. Зміни до цієї Політики</h2>
-    <p>Ми можемо оновлювати цю Політику cookies. Рекомендуємо регулярно перевіряти цю сторінку для ознайомлення з актуальною версією.</p>
+    <h2>9. Зміни до цієї Політики</h2>
+    <p>Ми можемо оновлювати цю Політику cookies. Актуальна версія завжди доступна на цій сторінці із датою оновлення.</p>
 
-    <h2>7. Контактна інформація</h2>
+    <h2>10. Контактна інформація</h2>
     <p>Якщо у вас є питання щодо використання файлів cookie, зв'яжіться з нами:</p>
     <ul>
-      <li>Email: <a href="mailto:latwo.eu@gmail.com">latwo.eu@gmail.com</a></li>
+      <li>Email: <a href="mailto:contact@latwo.eu">contact@latwo.eu</a></li>
       <li>Веб-сайт: <a href="https://latwo.eu" target="_blank" rel="noopener">latwo.eu</a></li>
     </ul>
   </div>

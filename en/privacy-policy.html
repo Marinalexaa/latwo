@@ -1,56 +1,147 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/x-icon" href="../favicon.ico" />
-<title>Політика конфіденційності — Latwo AI Consulting</title>
-  <meta name="description" content="Політика конфіденційності Latwo AI Consulting." />
+<title>Privacy Policy — Latwo AI Consulting</title>
+  <meta name="description" content="Privacy Policy of Latwo AI Consulting." />
   <link rel="stylesheet" href="../css/main.css" />
   <style>
     .policy-page {
-      padding: 140px 2rem 5rem;
-      background: var(--bg-page);
+      padding: 150px clamp(1rem, 3vw, 2rem) 5rem;
       min-height: 100vh;
+      background: var(--bg-page);
     }
     .policy-inner {
-      max-width: 800px;
+      max-width: 1280px;
       margin: 0 auto;
-      background: var(--bg-white);
-      border-radius: 20px;
-      padding: 3rem;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 0 2rem;
     }
     .policy-inner h1 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+      font-family: var(--font-heading);
+      font-size: 80px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin: 0 auto 2.2rem;
       color: var(--black-primary);
+      max-width: 14ch;
     }
+
     .policy-date {
-      font-size: 0.85rem;
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.4;
       color: var(--black-secondary);
-      margin-bottom: 2rem;
+      margin: 0 auto 2rem;
       display: block;
+      max-width: 980px;
     }
+
     .policy-inner h2 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin: 2rem 0 0.75rem;
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      margin: 2rem auto 1.2rem;
       color: var(--black-primary);
+      max-width: 980px;
     }
-    .policy-inner p, .policy-inner li {
-      font-size: 0.9rem;
+
+    .policy-inner p,
+    .policy-inner li {
+      font-family: var(--font-body);
+      font-size: 16px;
       color: var(--black-secondary);
-      line-height: 1.7;
-      margin-bottom: 0.75rem;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      margin: 0 auto 0.75rem;
+      max-width: 980px;
     }
+
     .policy-inner ul {
-      padding-left: 1.5rem;
-      margin-bottom: 1rem;
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1.3rem;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
     }
+
+    .policy-inner ul li {
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .policy-inner ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0.8em;
+      transform: translateY(-50%);
+      color: var(--black-secondary);
+      font-size: 1em;
+      line-height: 1;
+    }
+
+    .policy-contact-list {
+      list-style: none;
+      padding-left: 1.3rem;
+    }
+
+    .policy-contact-list li {
+      padding-left: 0;
+    }
+
+    .policy-inner ul.policy-contact-list li::before {
+      content: none;
+    }
+
+    .policy-inner strong {
+      color: var(--black-primary);
+      font-weight: 700;
+    }
+
     .policy-inner a {
       color: var(--brand-orange);
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+
+    @media (max-width: 900px) {
+      .policy-page {
+        padding-top: 120px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .policy-page {
+        padding: 108px 12px 3.2rem;
+      }
+
+      .policy-inner {
+        padding: 0 12px;
+      }
+
+      .policy-inner h1 {
+        font-size: 38px;
+        line-height: 1.1;
+        margin-bottom: 1.1rem;
+      }
+
+      .policy-date {
+        font-size: 18px;
+        margin-bottom: 1.6rem;
+      }
+
+      .policy-inner h2 {
+        font-size: 32px;
+        margin-bottom: 0.85rem;
+      }
     }
   </style>
 </head>
@@ -108,73 +199,56 @@
 
 <main class="policy-page">
   <div class="policy-inner">
-    <h1>Політика конфіденційності</h1>
-    <span class="policy-date">Останнє оновлення: 1 січня 2026 року</span>
+    <h1>Privacy Policy</h1>
+    <span class="policy-date">Last updated: May 18, 2026</span>
 
-    <p>Ця Політика конфіденційності описує, як Latwo AI Consulting («ми», «нас» або «наш») збирає, використовує та захищає вашу особисту інформацію, коли ви відвідуєте наш веб-сайт latwo.eu або користуєтесь нашими послугами.</p>
+    <p>This Privacy Policy explains how Latwo AI Consulting ("we", "us", "our") collects, uses, stores, and protects personal data of users of the website latwo.eu.</p>
 
-    <h2>1. Яку інформацію ми збираємо</h2>
-    <p>Ми можемо збирати такі типи інформації:</p>
+    <h2>1. What data we collect</h2>
+    <p>We may process the following categories of data:</p>
     <ul>
-      <li><strong>Особиста інформація:</strong> ім'я, адреса електронної пошти, назва компанії, яку ви надаєте через контактну форму.</li>
-      <li><strong>Технічні дані:</strong> IP-адреса, тип браузера, операційна система, сторінки, які ви відвідуєте, час та дата відвідування.</li>
-      <li><strong>Файли cookie:</strong> ми використовуємо файли cookie для покращення роботи сайту. Детальніше — у нашій <a href="/en/cookie-policy">Політиці cookies</a>.</li>
+      <li>data you submit in the contact form (name, email, company name, selected service, message text, choice regarding a free consultation);</li>
+      <li>technical data (IP address, browser type, user-agent, visited pages, date/time of request, basic device technical parameters);</li>
+      <li>cookie consent data (consent ID, policy version, timestamp, action source, language, page, selected categories);</li>
+      <li>data related to cookies and localStorage (see our <a href="/en/cookie-policy">Cookie Policy</a>).</li>
     </ul>
 
-    <h2>2. Як ми використовуємо вашу інформацію</h2>
-    <p>Зібрана інформація використовується для:</p>
+    <h2>2. How we use data</h2>
+    <p>We use data to process your requests, provide consultations, communicate about services, improve the website and user experience, analyze website usage (with the relevant consent), and ensure security, abuse prevention, and legal compliance.</p>
+
+    <h2>3. Legal basis for processing</h2>
+    <p>We process data based on your consent (including analytics/marketing cookies), necessity for contract performance or pre-contractual steps, our legitimate interests (security, service stability, service improvement), and legal obligations.</p>
+
+    <h2>4. Data sharing</h2>
+    <p>We do not sell your personal data. Data may be processed by our service providers that support website operations, including email delivery, hosting, analytics, and storage of technical consent logs.</p>
+
+    <h2>5. Cookies, localStorage, and analytics</h2>
+    <p>The website uses essential technical storage mechanisms (cookies/localStorage) and optional categories (analytics, marketing/media) only after your consent. Google Analytics 4 is activated only after analytics consent is granted.</p>
+
+    <h2>6. Consent logging and security</h2>
+    <p>To confirm the fact of consent/rejection, we may store technical records including ip_hash and user_agent_hash. We apply technical and organizational safeguards to protect data from unauthorized access, alteration, or loss.</p>
+
+    <h2>7. Data retention</h2>
+    <p>We keep data only as long as needed for the purposes described in this Policy or as required by law. Retention periods for cookie/localStorage data depend on the settings described in the Cookie Policy and your browser choices.</p>
+
+    <h2>8. Your rights</h2>
+    <p>You have the right to:</p>
     <ul>
-      <li>Відповіді на ваші запити та надання консультацій;</li>
-      <li>Надсилання запитаної інформації про наші послуги;</li>
-      <li>Покращення нашого веб-сайту та послуг;</li>
-      <li>Аналізу використання сайту для оптимізації контенту;</li>
-      <li>Дотримання юридичних зобов'язань.</li>
+      <li>access, correct, delete, restrict, or object to processing of your personal data;</li>
+      <li>receive your data in a portable format (where applicable) and withdraw consent at any time for processing based on consent.</li>
     </ul>
 
-    <h2>3. Правова підстава для обробки</h2>
-    <p>Ми обробляємо ваші персональні дані на підставі:</p>
-    <ul>
-      <li>Вашої згоди (наприклад, при заповненні контактної форми);</li>
-      <li>Виконання договору або підготовки до укладення договору;</li>
-      <li>Наших законних інтересів у покращенні послуг та безпеки сайту.</li>
-    </ul>
+    <h2>9. Third-party links</h2>
+    <p>The website may contain links to third-party resources. We do not control their privacy practices and recommend reviewing their policies separately.</p>
 
-    <h2>4. Передача даних третім особам</h2>
-    <p>Ми не продаємо, не обмінюємо та не передаємо ваші персональні дані стороннім особам без вашої згоди, за винятком:</p>
-    <ul>
-      <li>Постачальників послуг, які допомагають нам у роботі сайту (наприклад, хостинг, аналітика);</li>
-      <li>Випадків, коли це вимагається законом або судовим рішенням.</li>
-    </ul>
+    <h2>10. Policy updates</h2>
+    <p>We may update this Privacy Policy from time to time. The current version is always published on this page with the update date.</p>
 
-    <h2>5. Зберігання даних</h2>
-    <p>Ми зберігаємо ваші персональні дані лише стільки, скільки необхідно для досягнення цілей, зазначених у цій Політиці, або відповідно до вимог законодавства.</p>
-
-    <h2>6. Ваші права</h2>
-    <p>Відповідно до чинного законодавства про захист даних (зокрема GDPR), ви маєте право:</p>
-    <ul>
-      <li>Отримати доступ до своїх персональних даних;</li>
-      <li>Виправити неточні дані;</li>
-      <li>Видалити свої дані («право на забуття»);</li>
-      <li>Обмежити або заперечити обробку даних;</li>
-      <li>Отримати свої дані у портативному форматі;</li>
-      <li>Відкликати згоду в будь-який час.</li>
-    </ul>
-    <p>Для реалізації своїх прав зверніться до нас: <a href="mailto:latwo.eu@gmail.com">latwo.eu@gmail.com</a></p>
-
-    <h2>7. Безпека даних</h2>
-    <p>Ми вживаємо відповідних технічних та організаційних заходів для захисту ваших персональних даних від несанкціонованого доступу, розкриття, зміни або знищення.</p>
-
-    <h2>8. Посилання на сторонні сайти</h2>
-    <p>Наш сайт може містити посилання на сторонні веб-сайти. Ми не несемо відповідальності за їх практики конфіденційності та рекомендуємо ознайомитись з їхніми політиками.</p>
-
-    <h2>9. Зміни до цієї Політики</h2>
-    <p>Ми можемо оновлювати цю Політику конфіденційності. Про суттєві зміни ми повідомимо, розмістивши нову версію на цій сторінці із зазначенням дати оновлення.</p>
-
-    <h2>10. Контактна інформація</h2>
-    <p>Якщо у вас є питання щодо цієї Політики конфіденційності, зв'яжіться з нами:</p>
-    <ul>
-      <li>Email: <a href="mailto:latwo.eu@gmail.com">latwo.eu@gmail.com</a></li>
-      <li>Веб-сайт: <a href="https://latwo.eu" target="_blank" rel="noopener">latwo.eu</a></li>
+    <h2>11. Contact information</h2>
+    <p>If you have questions about this Policy or data processing, contact us:</p>
+    <ul class="policy-contact-list">
+      <li>Email: <a href="mailto:contact@latwo.eu">contact@latwo.eu</a></li>
+      <li>Website: <a href="https://latwo.eu" target="_blank" rel="noopener">latwo.eu</a></li>
     </ul>
   </div>
 </main>
