@@ -343,7 +343,7 @@ async function sendChecklistAutoReply(payload) {
           <p style="margin:0 0 22px;font-size:16px;line-height:1.6;"><strong>“${escapedService}”</strong></p>
           <p style="margin:0 0 24px;font-size:16px;line-height:1.6;">Це хороший момент, щоб системно подивитись на процеси компанії й знайти точки росту без зайвої складності та хаосу.</p>
           <p style="margin:0 0 28px;">
-            <a href="${checklistUrl}" style="display:inline-block;background:#ef6c3a;color:#ffffff;text-decoration:none;border-radius:999px;padding:14px 22px;font-size:16px;font-weight:600;">Відкрити AI Readiness Checklist</a>
+            <a href="${checklistUrl}" style="display:inline-block;background:#ef6c3a;color:#ffffff;text-decoration:none;border-radius:999px;padding:14px 22px;font-size:16px;font-weight:600;line-height:1.3;text-align:center;">Відкрити AI Readiness Checklist</a>
           </p>
           <p style="margin:0;font-size:16px;line-height:1.6;">Команда Latwo<br />AI Consulting &amp; Automation</p>
         </div>
