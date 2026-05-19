@@ -825,6 +825,7 @@ async function submitForm(e) {
     service: String(data.get('service') || '').trim(),
     message: String(data.get('message') || '').trim(),
     discovery_call: Boolean(data.get('discovery_call')),
+    lang: document.documentElement.lang === 'en' ? 'en' : 'uk',
     website: String(data.get('website') || '').trim(),
     form_started_at: Number(data.get('form_started_at') || 0),
     consent_id: String(data.get('consent_id') || '').trim(),
