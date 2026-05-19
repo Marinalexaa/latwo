@@ -25,8 +25,18 @@ const SERVICE_LABELS_UK = {
   growth: 'Ріст (Розробка MVP)',
   scale: 'Масштаб (АІ трансформація бізнесу)'
 };
-const CHECKLIST_FILE_NAME = 'AI_Readiness_Checklist_Latwo.pdf';
-const CHECKLIST_FILE_PATH = path.join(process.cwd(), 'files', 'ai-readiness-checklist-latwo.pdf');
+const CHECKLISTS = {
+  uk: {
+    fileName: 'AI_Readiness_Check_UA.pdf',
+    publicPath: '/files/ai-readiness-checklist-latwo-ua.pdf',
+    filePath: path.join(process.cwd(), 'files', 'ai-readiness-checklist-latwo-ua.pdf')
+  },
+  en: {
+    fileName: 'AI_Readiness_Check_ENG.pdf',
+    publicPath: '/files/ai-readiness-checklist-latwo-en.pdf',
+    filePath: path.join(process.cwd(), 'files', 'ai-readiness-checklist-latwo-en.pdf')
+  }
+};
 const DEFAULT_SITE_URL = 'https://latwo.eu';
 const LINKEDIN_URL = 'https://www.linkedin.com/company/latwo-ai-consulting/';
 const INSTAGRAM_URL = 'https://www.instagram.com/latwo.aiconsulting?igsh=OTBqMGtrdnpoMXRp';
@@ -273,7 +283,9 @@ async function sendChecklistAutoReply(payload) {
     || process.env.CONTACT_FORM_TO_EMAIL
     || 'latwo.eu@gmail.com';
   const siteUrl = normalizeSiteUrl(process.env.CONTACT_FORM_SITE_URL);
-  const checklistUrl = `${siteUrl}/files/ai-readiness-checklist-latwo.pdf`;
+  const lang = payload.lang === 'en' ? 'en' : 'uk';
+  const checklist = CHECKLISTS[lang];
+  const checklistUrl = `${siteUrl}${checklist.publicPath}`;
 
   if (!resendApiKey) {
     throw new Error('missing-RESEND_API_KEY');
@@ -285,45 +297,114 @@ async function sendChecklistAutoReply(payload) {
   const messagePreview = sanitizeMessagePreview(payload.message);
   const escapedName = escapeHtml(payload.name);
   const escapedMessage = escapeHtml(messagePreview).replace(/\n/g, '<br />');
-  const autoReplyServiceLabel = payload.serviceLabelUk || payload.serviceLabel;
+  const autoReplyServiceLabel = lang === 'en'
+    ? payload.serviceLabel
+    : (payload.serviceLabelUk || payload.serviceLabel);
   const escapedService = escapeHtml(autoReplyServiceLabel);
-  const attachment = fs.readFileSync(CHECKLIST_FILE_PATH).toString('base64');
+  const attachment = fs.readFileSync(checklist.filePath).toString('base64');
 
-  const subject = 'Ваш AI Readiness Checklist всередині';
-  const text = [
-    `Вітаю, ${payload.name}!`,
-    '',
-    'Дякуємо за звернення до Latwo.',
-    '',
-    'Ми отримали ваш запит:',
-    '',
-    `"${messagePreview}"`,
-    '',
-    'Команда вже опрацьовує його, і найближчим часом з вами зв’яжеться менеджер.',
-    '',
-    'Також надсилаємо вам AI Readiness Checklist — короткий практичний матеріал, який допоможе зрозуміти:',
-    '',
-    '• чи готовий ваш бізнес до AI',
-    '• які процеси варто автоматизувати першими',
-    '• де AI реально економить час і ресурси',
-    '• які задачі не варто автоматизувати поспіхом',
-    '',
-    'Ви обрали пакет послуги:',
-    `"${autoReplyServiceLabel}"`,
-    '',
-    'Це хороший момент, щоб системно подивитись на процеси компанії й знайти точки росту без зайвої складності та хаосу.',
-    '',
-    `Відкрити AI Readiness Checklist: ${checklistUrl}`,
-    '',
-    'Команда Latwo',
-    'AI Consulting & Automation',
-    '',
-    siteUrl,
-    LINKEDIN_URL,
-    INSTAGRAM_URL
-  ].join('\n');
+  const subject = lang === 'en'
+    ? 'Your AI Readiness Checklist is inside'
+    : 'Ваш AI Readiness Checklist всередині';
 
-  const html = `
+  const text = lang === 'en'
+    ? [
+        `Hi, ${payload.name}!`,
+        '',
+        'Thank you for contacting Latwo.',
+        '',
+        'We received your request:',
+        '',
+        `"${messagePreview}"`,
+        '',
+        'Our team is already reviewing it, and a manager will contact you shortly.',
+        '',
+        'We are also sending you the AI Readiness Checklist — a short practical guide that will help you understand:',
+        '',
+        '• whether your business is ready for AI',
+        '• which processes are worth automating first',
+        '• where AI can genuinely save time and resources',
+        '• which tasks should not be automated in a rush',
+        '',
+        'You selected the service package:',
+        `"${autoReplyServiceLabel}"`,
+        '',
+        'This is a good moment to look at your company processes systematically and find growth opportunities without unnecessary complexity or chaos.',
+        '',
+        `Open AI Readiness Checklist: ${checklistUrl}`,
+        '',
+        'Latwo Team',
+        'AI Consulting & Automation',
+        '',
+        siteUrl,
+        LINKEDIN_URL,
+        INSTAGRAM_URL
+      ].join('\n')
+    : [
+        `Вітаю, ${payload.name}!`,
+        '',
+        'Дякуємо за звернення до Latwo.',
+        '',
+        'Ми отримали ваш запит:',
+        '',
+        `"${messagePreview}"`,
+        '',
+        'Команда вже опрацьовує його, і найближчим часом з вами зв’яжеться менеджер.',
+        '',
+        'Також надсилаємо вам AI Readiness Checklist — короткий практичний матеріал, який допоможе зрозуміти:',
+        '',
+        '• чи готовий ваш бізнес до AI',
+        '• які процеси варто автоматизувати першими',
+        '• де AI реально економить час і ресурси',
+        '• які задачі не варто автоматизувати поспіхом',
+        '',
+        'Ви обрали пакет послуги:',
+        `"${autoReplyServiceLabel}"`,
+        '',
+        'Це хороший момент, щоб системно подивитись на процеси компанії й знайти точки росту без зайвої складності та хаосу.',
+        '',
+        `Відкрити AI Readiness Checklist: ${checklistUrl}`,
+        '',
+        'Команда Latwo',
+        'AI Consulting & Automation',
+        '',
+        siteUrl,
+        LINKEDIN_URL,
+        INSTAGRAM_URL
+      ].join('\n');
+
+  const html = lang === 'en' ? `
+    <div style="margin:0;padding:0;background:#f5f7f9;color:#292929;font-family:Arial,sans-serif;">
+      <div style="max-width:640px;margin:0 auto;padding:32px 20px;">
+        <div style="background:#ffffff;border:1px solid #e3e7eb;border-radius:16px;padding:32px;">
+          <p style="margin:0 0 18px;font-size:16px;line-height:1.6;">Hi, ${escapedName}!</p>
+          <p style="margin:0 0 18px;font-size:16px;line-height:1.6;">Thank you for contacting Latwo.</p>
+          <p style="margin:0 0 10px;font-size:16px;line-height:1.6;">We received your request:</p>
+          <blockquote style="margin:0 0 22px;padding:16px 18px;border-left:3px solid #ef6c3a;background:#f7f8fa;color:#4b5563;font-size:15px;line-height:1.6;">${escapedMessage}</blockquote>
+          <p style="margin:0 0 18px;font-size:16px;line-height:1.6;">Our team is already reviewing it, and a manager will contact you shortly.</p>
+          <p style="margin:0 0 10px;font-size:16px;line-height:1.6;">We are also sending you the AI Readiness Checklist — a short practical guide that will help you understand:</p>
+          <ul style="margin:0 0 22px;padding-left:22px;font-size:16px;line-height:1.7;">
+            <li>whether your business is ready for AI</li>
+            <li>which processes are worth automating first</li>
+            <li>where AI can genuinely save time and resources</li>
+            <li>which tasks should not be automated in a rush</li>
+          </ul>
+          <p style="margin:0 0 8px;font-size:16px;line-height:1.6;">You selected the service package:</p>
+          <p style="margin:0 0 22px;font-size:16px;line-height:1.6;"><strong>“${escapedService}”</strong></p>
+          <p style="margin:0 0 24px;font-size:16px;line-height:1.6;">This is a good moment to look at your company processes systematically and find growth opportunities without unnecessary complexity or chaos.</p>
+          <p style="margin:0 0 28px;">
+            <a href="${checklistUrl}" style="display:inline-block;background:#ef6c3a;color:#ffffff;text-decoration:none;border-radius:999px;padding:14px 22px;font-size:16px;font-weight:600;line-height:1.3;text-align:center;">Open AI Readiness Checklist</a>
+          </p>
+          <p style="margin:0;font-size:16px;line-height:1.6;">Latwo Team<br />AI Consulting &amp; Automation</p>
+        </div>
+        <div style="padding:18px 8px 0;color:#6b7280;font-size:14px;line-height:1.7;">
+          <a href="${siteUrl}" style="color:#6b7280;">${siteUrl}</a><br />
+          <a href="${LINKEDIN_URL}" style="color:#6b7280;">LinkedIn</a> ·
+          <a href="${INSTAGRAM_URL}" style="color:#6b7280;">Instagram</a>
+        </div>
+      </div>
+    </div>
+  ` : `
     <div style="margin:0;padding:0;background:#f5f7f9;color:#292929;font-family:Arial,sans-serif;">
       <div style="max-width:640px;margin:0 auto;padding:32px 20px;">
         <div style="background:#ffffff;border:1px solid #e3e7eb;border-radius:16px;padding:32px;">
@@ -373,7 +454,7 @@ async function sendChecklistAutoReply(payload) {
       attachments: [
         {
           content: attachment,
-          filename: CHECKLIST_FILE_NAME
+          filename: checklist.fileName
         }
       ]
     })
